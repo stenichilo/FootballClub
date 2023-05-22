@@ -1,11 +1,19 @@
 package it.corso.model;
 
+import java.util.ArrayList;
+import java.util.List;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+
 
 @Entity
 @Table(name="prodotti")
@@ -21,8 +29,8 @@ public class Prodotto {
 	@Column(name="descrizione")
 	private String descrizione;
 	
-	@Column(name="id_categoria")
-	private int id_categoria;
+	@Column(name="categoria")
+	private String categoria;
 	
 	@Column(name="immagine")
 	private String immagine;
@@ -30,6 +38,13 @@ public class Prodotto {
 	@Column(name="prezzo")
 	private double prezzo;
 
+	
+	@ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+	@JoinTable(
+			name="prodotti_ordini",
+			joinColumns = @JoinColumn(name="id_prodotto", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name="id_ordine", referencedColumnName = "id"))
+	private List<Ordine> ordini = new ArrayList<>();
 	
 	
 	public int getId() {
@@ -56,12 +71,12 @@ public class Prodotto {
 		this.descrizione = descrizione;
 	}
 
-	public int getId_categoria() {
-		return id_categoria;
+	public String getCategoria() {
+		return categoria;
 	}
 
-	public void setId_categoria(int id_categoria) {
-		this.id_categoria = id_categoria;
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
 	}
 
 	public String getImmagine() {
