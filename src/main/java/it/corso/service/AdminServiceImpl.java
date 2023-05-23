@@ -27,7 +27,7 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public boolean controlloLogin(HttpSession session, String username, String password) {
-		if(getAdminByUsername(username) == null) {
+		if(getAdminByUsername(username) != null) {
 			return false;
 		} else {
 			Admin admin = getAdminByUsername(username);
