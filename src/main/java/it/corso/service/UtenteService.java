@@ -10,7 +10,6 @@ public interface UtenteService {
 	Utente getUtenteById(int id);
 	List<Utente> getUtenti();
 	void eliminaUtente(Utente utente);
-	
-	
+	boolean controlloLogin(HttpSession session, String username, String password);
 
 }
