@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import it.corso.service.AdminService;
 import jakarta.servlet.http.HttpSession;
@@ -18,20 +17,17 @@ public class IndexController {
 	private AdminService adminService;
 	
 	@GetMapping
-	public String getPage(@RequestParam(name="le", required = false) String le) {
+	public String getPage() {
 		
 		return "indexProva";
 	}
 	
 	@PostMapping
-	public String login(
-			HttpSession session, 
-			@RequestParam("username") String username,
-			@RequestParam("password") String password) {
+	public String login(HttpSession session, String username, String password) {
 		if (adminService.controlloLogin(session, username, password)) {
 			return "redirect:/provaReserved";
 		} else {
-			return "redirect:/?le";
+			return "redirect:/";
 		}
 		
 	}
