@@ -6,7 +6,7 @@ import it.corso.model.Ordine;
 
 public interface OrdineService {
 
-	void registraOrdine(Ordine ordine, Object...datiOrdine);
+	public void registraOrdine(Ordine ordine);
 	Ordine getOrdineById(int id);
 	List<Ordine> getOrdini();
 	void eliminaOrdine(Ordine ordine);
