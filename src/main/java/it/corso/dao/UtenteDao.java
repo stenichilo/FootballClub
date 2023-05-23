@@ -9,5 +9,5 @@ import it.corso.model.Utente;
 public interface UtenteDao extends CrudRepository<Utente, Integer>{
 
 	@Query(value="SELECT * FROM utenti WHERE username=:desc", nativeQuery = true)
-	Optional<Utente> findByUsername(@Param("desc") String username);
+	Utente findByUsernameAndPassword(String username, String password);
 }

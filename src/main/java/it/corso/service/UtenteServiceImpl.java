@@ -1,11 +1,9 @@
 package it.corso.service;
 
 import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import it.corso.dao.UtenteDao;
-import it.corso.model.Admin;
 import it.corso.model.Utente;
 import jakarta.servlet.http.HttpSession;
 
@@ -40,29 +38,14 @@ public class UtenteServiceImpl implements UtenteService {
 	}
 
 	@Override
-	public Utente getUtenteByUsername(String username) {
-		Optional<Utente> optional = utenteDao.findByUsername(username);
-		if(optional.isEmpty()) {
-			return null;
-		} else {
-			return optional.get();
-		}
-	}
-	
-	@Override
 	public boolean controlloLogin(HttpSession session, String username, String password) {
-		if(getUtenteByUsername(username) == null) {
+		Utente utente = utenteDao.findByUsernameAndPassword(username, password);
+		if (utente == null) {
 			return false;
-		} else {
-			Utente utente = getUtenteByUsername(username);
-			if (utente.getPassword().equals(password)){
-				session.setAttribute("utente", utente);
-				return true;
-			} else {
-				return false;
-			}
 		}
-		
+		session.setAttribute("admin", utente);
+		return true;
+			
 	}
 	
 

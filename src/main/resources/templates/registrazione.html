@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Registrazione</title>
+	</head>
+	<body>
+		<form action="/registrazione" method="post" th:object="${utente}">
+			<input type="text" name="nome" th:field="${nome}" placeholder="Il tuo nome">
+			<p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" style="color:red;"></p>
+			<br>
+			<input type="text" name="cognome" th:field="${cognome}" placeholder="Il tuo cognome">
+			<p th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}" style="color:red;"></p>
+			<br>
+			<input type="text" name="via" th:field="${via}" placeholder="La tua via">
+			<p th:if="${#fields.hasErrors('via')}" th:errors="*{via}" style="color:red;"></p>
+			<br>
+			<input type="text" name="civico" th:field="${civico}" placeholder="Numero civico">
+			<p th:if="${#fields.hasErrors('civico')}" th:errors="*{civico}" style="color:red;"></p>
+			<br>
+			<input type="text" name="cap" th:field="${cap}" placeholder="Cap">
+			<p th:if="${#fields.hasErrors('cap')}" th:errors="*{cap}" style="color:red;"></p>
+			<br>
+			<input type="text" name="comune" th:field="${comune}" placeholder="comune">
+			<p th:if="${#fields.hasErrors('comune')}" th:errors="*{comune}" style="color:red;"></p>
+			<br>
+			<input type="text" name="provincia" th:field="${provincia}" placeholder="provincia">
+			<p th:if="${#fields.hasErrors('provincia')}" th:errors="*{provincia}" style="color:red;"></p>
+			<br>
+			<input type="text" name="telefono" th:field="${telefono}" placeholder="telefono">
+			<p th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}" style="color:red;"></p>
+			<br>
+			<input type="text" name="mail" th:field="${mail}" placeholder="mail">
+			<p th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}" style="color:red;"></p>
+			<br>
+			<input type="text" name="username" th:field="${username}" placeholder="username">
+			<p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" style="color:red;"></p>
+			<br>
+			<input type="password" name="password" th:field="${password}" placeholder="La tua password">
+			<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" style="color:red;"></p>
+			<br>
+			<input type="submit" value="Registra utente">
+		</form>
+		<div th:if="${errore}">
+			<p style="color:red">Errore di compilazione!</p>
+		</div>
+	</body>
+</html>

@@ -11,7 +11,6 @@ public interface UtenteService {
 	Utente getUtenteById(int id);
 	List<Utente> getUtenti();
 	void eliminaUtente(Utente utente);
-	Utente getUtenteByUsername(String username);
 	boolean controlloLogin(HttpSession session, String username, String password);
 
 }
