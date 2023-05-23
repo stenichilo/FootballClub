@@ -13,6 +13,10 @@
 			<input type="password" name="password">
 			<br>
 			<input type="submit" value="Login">
+			<p th:if="${logError}" style="color: red">Credenziali errate!</p>
+			<ul>
+			<li th:each="n :${news}" th:text=""></li>
+			</ul>
 		</form>
 	</body>
 </html>
