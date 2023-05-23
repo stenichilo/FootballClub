@@ -43,7 +43,7 @@ public class UtenteServiceImpl implements UtenteService {
 		if (utente == null) {
 			return false;
 		}
-		session.setAttribute("admin", utente);
+		session.setAttribute("utente", utente);
 		return true;
 			
 	}

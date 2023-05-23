@@ -44,11 +44,7 @@
 					<div class="forget">
 						<a href="#">Password dimenticata?</a>
 					</div>
-					<div class="link-log">
-						<p>
-							Non hai un account? <a href="#">Iscriviti</a>
-						</p>
-					</div>
+					
 				</form>
 			</div>
 		</div>
@@ -59,38 +55,32 @@
 			class="esc-button" style="--clr: #ed1c24"><button type="button"
 				class="btn-close btn-close-white" aria-label="Close"></button> <i></i></a>
 		<div class="nd-popup-box">
-			<form action="/login/regi">
+			<form action="/login/registrazione" th:object="${utente}" method="post">
 				<h2 class="nd-h2">Welcome to BARI</h2>
 				<div class="form-container">
 					<div class="column">
-						<input type="text" placeholder="Nome" class="nd-input">
-						<input type="text" placeholder="Indirizzo" class="nd-input"> 
-						<input type="text" placeholder="Cap" class="nd-input"> 
-						<input type="text" placeholder="Provincia" class="nd-input"> 
-						<input type="email" placeholder="E-mail" class="nd-input"> 
-						<input type="password" placeholder="Password" class="nd-input">
+						<input type="text" th:field="*{nome}" tabindex="1" placeholder="Nome" class="nd-input">
+						<input type="text" th:field="*{via}" tabindex="3" placeholder="Via/Piazza" class="nd-input"> 
+						<input type="text" th:field="*{cap}" tabindex="5" placeholder="Cap" class="nd-input"> 
+						<input type="text" th:field="*{provincia}" tabindex="7" placeholder="Provincia" class="nd-input"> 
+						<input type="email" th:field="*{mail}" tabindex="9" placeholder="E-mail" class="nd-input"> 
+						<input type="password" th:field="*{password}" tabindex="11" placeholder="Password" class="nd-input">
 					</div>
 					<div class="column">
-						<input type="text" placeholder="Cognome" class="nd-input">
-						<input type="text" placeholder="Numero civico" class="nd-input">
-						<input type="text" placeholder="Città" class="nd-input"> <input
-							type="text" placeholder="Numero cellulare" class="nd-input">
-						<input type="text" placeholder="Username" class="nd-input">
-						<input type="password" placeholder="Ripeti Password"
-							class="nd-input">
+						<input type="text" th:field="*{cognome}" tabindex="2" placeholder="Cognome" class="nd-input">
+						<input type="text" th:field="*{civico}" tabindex="4" placeholder="Numero civico" class="nd-input">
+						<input type="text" th:field="*{comune}" tabindex="6" placeholder="Comune" class="nd-input"> 
+						<input type="text" th:field="*{telefono}" tabindex="8" placeholder="Numero telefono" class="nd-input">
+						<input type="text" th:field="*{username}" tabindex="10" placeholder="Username" class="nd-input">
+						<input type="password" tabindex="12" placeholder="Ripeti Password" class="nd-input">
 					</div>
 				</div>
 				<div class="trattamento">
-					<input type="checkbox" id="trattamento"> <label
-						for="trattamento-dati">Accetto il trattamento dei dati
-						personali.</label>
+					<input type="checkbox" id="trattamento" required="required"> 
+					<label	for="trattamento-dati">Accetto il trattamento dei dati personali.</label>
 				</div>
-				<a href="#" class="nd-button-log">SIGN-UP</a>
-				<div class="link-log">
-					<p>
-						Hai già un account? <a href="#">Accedi</a>
-					</p>
-				</div>
+				<input type="submit" value="Registrati">
+				
 			</form>
 		</div>
 	</div>

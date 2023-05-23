@@ -17,50 +17,50 @@ public class Utente {
 	private int id;
 	
 	@Column(name="nome")
-	@Pattern(regexp = "[a-zA-Z\\s']{2,50}", message = "Caratteri non ammessi!")
+	@Pattern(regexp = "[a-zA-Z\\s']{2,50}")
 	private String nome;
 	
 	
 	@Column(name="cognome")
-	@Pattern(regexp = "[a-zA-Z\\s']{2,50}", message = "Caratteri non ammessi!")
+	@Pattern(regexp = "[a-zA-Z\\s']{2,50}")
 	private String cognome;
 	
 	
 	@Column(name="via")
-	@Pattern(regexp = "[a-zA-Z\\s']{2,50}", message = "Caratteri non ammessi!")
+	@Pattern(regexp = "[a-zA-Z\\s']{2,50}")
 	private String via;
 	
 	
 	@Column(name="civico")
-	@Pattern(regexp = "[0-9a-zA-Z\\s/]{1,10}", message = "Caratteri non ammessi!")
+	@Pattern(regexp = "[0-9a-zA-Z\\s/]{1,10}")
 	private String civico;
 	
 	
 	@Column(name="cap")
-	@Pattern(regexp = "[0-9]{5}", message = "Caratteri non ammessi!")
+	@Pattern(regexp = "[0-9]{5}")
 	private String cap;
 	
 	@Column(name="comune")
-	@Pattern(regexp = "[A-Za-z\\s']{2,50}", message = "Caratteri non ammessi!")
+	@Pattern(regexp = "[A-Za-z\\s']{2,50}")
 	private String comune;
 	
 	@Column(name="provincia")
-	@Pattern(regexp = "[A-Z]{2}", message = "Caratteri non ammessi!")
+	@Pattern(regexp = "[A-Za-z]{2}")
 	private String provincia;
 	
-	@Pattern(regexp = "[0-9+]{8,15}", message = "Caratteri non ammessi!")
+	@Pattern(regexp = "[0-9+]{8,15}")
 	@Column(name="telefono")
 	private String telefono;
 	
 	@Column(name="mail")
-	@Pattern(regexp = "[A-Za-z0-9.-_]+@+[a-z]+.+[a-z]")
+	@Pattern(regexp = "[A-z0-9\\.\\+_-]+@[A-z0-9\\._-]+\\.[A-z]{2,6}")
 	private String mail;
 	
 	@Column(name="username")
-	@Pattern(regexp = "[a-zA-Z0-9.]{3,20}", message = "Username non valido, caratteri non ammessi!")
+	@Pattern(regexp = "[a-zA-Z0-9.]{3,20}")
 	private String username;
 	
-	@Pattern(regexp = "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,20}", message = "Password troppo debole!")
+	@Pattern(regexp = "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,20}")
 	@Column(name="password")
 	private String password;
 	
