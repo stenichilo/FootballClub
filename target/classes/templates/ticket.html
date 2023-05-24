@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Ticket</title>
+	</head>
+	<body>
+		<table>
+			<tr th:each="biglietto : ${biglietti}">
+				<td th:text="${biglietto.nome}"></td>
+				<td><a th:href="@{dettaglio(id=${biglietto.id})}">Dettaglio</a></td>
+			</tr>
+		</table>
+		<a th:href="@{index}">Torna alla Home Page</a>
+	</body>
+</html>

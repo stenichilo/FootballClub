@@ -20,8 +20,19 @@ public class News {
 	
 	@Column(name="descrizione")
 	private String descrizione;
+	
+	@Column(name="immagine")
+	private String immagine;
 
 	
+	public String getImmagine() {
+		return immagine;
+	}
+
+	public void setImmagine(String immagine) {
+		this.immagine = immagine;
+	}
+
 	public int getId() {
 		return id;
 	}

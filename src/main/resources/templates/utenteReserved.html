@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="ISO-8859-1">
-		<title>Insert title here</title>
+		<title>Area Riservata Utente</title>
 	</head>
 	<body>
+		<table>
+			<tr>
+				<td th:text="'Nome e cognome: ' + ${utente.nome} + ' ' +${utente.cognome}"></td>
+			</tr>
+			<tr th:each="o : ${ordini}">
+				<td th:text="${o.id}"></td>
+				<td th:text="${o.data}"></td>
+				<td th:text="${o.importo}"></td>
+			</tr>
+			</table>
+			<table>
+			<tr th:each="p : ${carrello}">
+				<td th:text="${p.nome}"></td>
+				<td th:text="${p.descrizione}"></td>
+				<td th:text="${p.categoria}"></td>
+			</tr>
+			<tr th:if="!${oa}">
+				<td><a th:href="@{utenteReserved/inviaOrdine}"><button>Invia Ordine</button></a></td>
+			</tr>			
+		</table>
+	
 	
 	</body>
 </html>

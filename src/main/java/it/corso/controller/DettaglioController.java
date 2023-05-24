@@ -29,6 +29,6 @@ public class DettaglioController {
 	@GetMapping("/aggiungi")
 	public String aggiungiACarrello(HttpSession session, @RequestParam("id") int id) {
 		prodottoService.aggiungiACarrello(session, id);
-		return "redirect:/dettaglio?pa";
+		return "redirect:/dettaglio?id="+id+"&pa";
 	}
 }

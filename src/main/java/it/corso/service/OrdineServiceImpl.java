@@ -37,7 +37,7 @@ public class OrdineServiceImpl implements OrdineService {
 		}
 		ordine.setImporto(importo);
 		ordineDao.save(ordine);
-
+		
 	}
 
 	@Override
@@ -56,6 +56,11 @@ public class OrdineServiceImpl implements OrdineService {
 	public void eliminaOrdine(Ordine ordine) {
 		ordineDao.delete(ordine);
 
+	}
+
+	@Override
+	public List<Ordine> getOrdineByUtente(Utente utente) {
+		return ordineDao.findByUtente(utente);
 	}
 
 }

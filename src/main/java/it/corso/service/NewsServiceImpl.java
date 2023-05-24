@@ -1,10 +1,11 @@
 package it.corso.service;
 
+import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.springframework.web.multipart.MultipartFile;
 import it.corso.dao.NewsDao;
 import it.corso.model.News;
 
@@ -15,7 +16,22 @@ public class NewsServiceImpl implements NewsService {
 	private NewsDao newsDao;
 	
 	@Override
-	public void registraNews(News news) {
+	public void registraNews(Object... dati) {
+		News news = new News();
+		String titolo = (String) dati[0];
+		String descrizione = (String) dati[1];
+		MultipartFile immagine = (MultipartFile) dati[2];
+		news.setTitolo(titolo);
+		news.setDescrizione(descrizione);
+		if(immagine!=null && !immagine.isEmpty()) {
+			try {
+				String contentType = immagine.getContentType();
+				news.setImmagine("data:" + contentType + ";base64,"+ Base64.getEncoder().encodeToString(immagine.getBytes()));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		// registrazione del libro
 		newsDao.save(news);
 
 	}

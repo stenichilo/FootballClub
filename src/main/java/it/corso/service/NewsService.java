@@ -6,7 +6,7 @@ import it.corso.model.News;
 
 public interface NewsService {
 
-	public void registraNews(News news);
+	public void registraNews(Object... dati);
 	News getNewsById(int id);
 	List<News> getNews();
 	void eliminaNews(News news);
