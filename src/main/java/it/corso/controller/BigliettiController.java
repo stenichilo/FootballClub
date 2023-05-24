@@ -17,7 +17,7 @@ public class BigliettiController {
 	
 	@GetMapping
 	public String getPage(Model model) {
-		model.addAttribute("biglietti", prodottoService.getProdotti("biglietti"));
+		model.addAttribute("biglietti", prodottoService.getProdottiByCategoria("biglietti"));
 		
 		return "ticket";
 	}

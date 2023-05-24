@@ -11,21 +11,24 @@ import it.corso.service.ProdottoService;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("/shop")
-public class ShopController {
+@RequestMapping("/dettaglio")
+public class DettaglioController {
 
-	
 	@Autowired
 	private ProdottoService prodottoService;
 	
 	
 	@GetMapping
-	public String getPage(Model model) {
-		
-		model.addAttribute("catalogo", prodottoService.getProdottiByCategoria("prodotti"));
-		
-		return "shop";
+	public String getPage(Model model, @RequestParam("id") int id, @RequestParam(name="pa", required = false) String pa) {
+		model.addAttribute("prodotto", prodottoService.getProdottoById(id));
+		model.addAttribute("pa", pa != null);
+		return "dettaglio";
 	}
 	
 	
+	@GetMapping("/aggiungi")
+	public String aggiungiACarrello(HttpSession session, @RequestParam("id") int id) {
+		prodottoService.aggiungiACarrello(session, id);
+		return "redirect:/dettaglio?pa";
+	}
 }

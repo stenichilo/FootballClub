@@ -1,6 +1,7 @@
 package it.corso.service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import it.corso.dao.ProdottoDao;
 import it.corso.model.Prodotto;
+import jakarta.servlet.http.HttpSession;
 
 
 @Service
@@ -50,15 +52,35 @@ public class ProdottoServiceImpl implements ProdottoService {
 	}
 
 	@Override
-	public List<Prodotto> getProdotti(String categoria) {
+	public List<Prodotto> getProdottiByCategoria (String categoria) {
 		
-		return (List<Prodotto>) prodottoDao.findByCategoria(categoria);
+		return prodottoDao.findByCategoria(categoria);
 	}
 
 	@Override
 	public void cancellaProdotto(Prodotto prodotto) {
 		prodottoDao.delete(prodotto);
 
+	}
+
+
+	@Override
+	public void aggiungiACarrello(HttpSession session, int id) {
+		
+		Prodotto prodotto = prodottoDao.findById(id).get();
+		List<Prodotto> catalogo = (List<Prodotto>) prodottoDao.findAll();
+		List<Prodotto> carrello = session.getAttribute("carrello") == null ? new ArrayList<>()
+				: (List<Prodotto>) session.getAttribute("carrello");
+		carrello.add(prodotto);
+		session.setAttribute("carrello", carrello);
+	}
+	
+
+
+	@Override
+	public List<Prodotto> getProdottiAll() {
+		
+		return (List<Prodotto>) prodottoDao.findAll();
 	}
 
 }

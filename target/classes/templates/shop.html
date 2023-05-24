@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<table>
+			<tr th:each="prodotto : ${catalogo}">
+				<td th:text="${prodotto.nome}"></td>
+				<td><a th:href="@{aggiungi(id=${prodotto.id})}">Aggiungi al carrello</a></td>
+			</tr>
+		</table>
+	</body>
 </html>

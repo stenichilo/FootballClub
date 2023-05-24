@@ -37,7 +37,7 @@ public class LoginController {
 	
 	
 	@PostMapping("/check")
-	public String loginAdmin(HttpSession session,
+	public String login(HttpSession session,
 			 @RequestParam("username") String username,
 			 @RequestParam("password") String password) {
 		if (adminService.controlloLogin(session, username, password)) {
