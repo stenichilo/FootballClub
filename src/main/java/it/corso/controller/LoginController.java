@@ -54,8 +54,7 @@ public class LoginController {
 	public String registraUtente(@Valid @ModelAttribute("utente") Utente utente, BindingResult result) {
 		
 		if(result.hasErrors()) {
-			System.out.println("Errore!");
-			return "redirect:/login#";
+			return "redirect:/login";
 		}
 		utenteService.registraUtente(utente);
 		return "redirect:/";

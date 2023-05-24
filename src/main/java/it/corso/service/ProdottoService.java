@@ -8,7 +8,7 @@ public interface ProdottoService {
 	
 	void registraProdotto(Object... datiProdotto);
 	Prodotto getProdottoById(int id);
-	List<Prodotto> getProdotti();
+	List<Prodotto> getProdotti(String categoria);
 	void cancellaProdotto(Prodotto prodotto);
 	
 }

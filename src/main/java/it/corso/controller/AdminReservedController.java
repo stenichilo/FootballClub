@@ -30,7 +30,8 @@ public class AdminReservedController {
 	@GetMapping
 	public String getPage(Model model) {
 		model.addAttribute("utenti", utenteService.getUtenti());
-		model.addAttribute("prodotti", prodottoService.getProdotti());
+		model.addAttribute("prodotti", prodottoService.getProdotti("prodotti"));
+		model.addAttribute("biglietti", prodottoService.getProdotti("biglietti"));
 		return "adminReserved";
 	}
 	

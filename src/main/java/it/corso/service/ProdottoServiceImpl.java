@@ -50,9 +50,9 @@ public class ProdottoServiceImpl implements ProdottoService {
 	}
 
 	@Override
-	public List<Prodotto> getProdotti() {
+	public List<Prodotto> getProdotti(String categoria) {
 		
-		return (List<Prodotto>) prodottoDao.findAll();
+		return (List<Prodotto>) prodottoDao.findByCategoria(categoria);
 	}
 
 	@Override
