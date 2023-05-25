@@ -1,12 +1,11 @@
 package it.corso.controller;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -36,9 +35,14 @@ public class UtenteReservedController {
 	@GetMapping("/inviaOrdine")
 	public String inviaOrdine(HttpSession session) {
 		ordineService.registraOrdine(session);
-		List<Prodotto> carrello = (List<Prodotto>) session.getAttribute("carrello");
-		carrello.clear();
-		session.setAttribute("carrello", carrello);
+		session.setAttribute("carrello", new ArrayList<Prodotto>());
 		return "redirect:/utenteReserved?oa";
+	}
+	
+	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
 	}
 }

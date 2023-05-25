@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpSession;
 
 public interface ProdottoService {
 	
-	void registraProdotto(Object... datiProdotto);
+	void registraProdotto(Prodotto prodotto, Object... datiProdotto);
 	Prodotto getProdottoById(int id);
 	List<Prodotto> getProdottiByCategoria(String categoria);
 	void cancellaProdotto(Prodotto prodotto);

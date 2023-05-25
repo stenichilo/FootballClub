@@ -8,9 +8,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
+import it.corso.model.News;
+import it.corso.model.Prodotto;
 import it.corso.service.NewsService;
 import it.corso.service.ProdottoService;
 import it.corso.service.UtenteService;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/adminReserved")
@@ -25,15 +29,25 @@ public class AdminReservedController {
 	@Autowired
 	private UtenteService utenteService;
 	
+	private Prodotto prodotto;
+	
+	private News news;
+	
 	@GetMapping
 	public String getPage(Model model,
-			@RequestParam(name="pi", required = false) String pa,
-			@RequestParam(name="ni", required = false) String ni) {
+			@RequestParam(name="pi", required = false) String pi,
+			@RequestParam(name="ni", required = false) String ni,
+			@RequestParam(name="idProdotto", required = false) Integer idProdotto,
+			@RequestParam(name="idNews", required = false) Integer idNews) {
 		model.addAttribute("utenti", utenteService.getUtenti());
 		model.addAttribute("prodotti", prodottoService.getProdottiByCategoria("prodotti"));
 		model.addAttribute("biglietti", prodottoService.getProdottiByCategoria("biglietti"));
-		model.addAttribute("pa", pa != null);
+		model.addAttribute("pi", pi != null);
 		model.addAttribute("ni", ni != null);
+		prodotto = idProdotto == null ? new Prodotto() : prodottoService.getProdottoById(idProdotto);
+		news = idNews == null ? new News() : newsService.getNewsById(idNews);
+		model.addAttribute("prodotto", prodotto);
+		model.addAttribute("news", news);
 		return "adminReserved";
 	}
 	
@@ -45,7 +59,7 @@ public class AdminReservedController {
 			@RequestParam(name="immagine", required = false)MultipartFile immagine,
 			@RequestParam("prezzo") double prezzo
 			) {
-		prodottoService.registraProdotto(nome, descrizione, categoria, immagine, prezzo);
+		prodottoService.registraProdotto(prodotto, nome, descrizione, categoria, immagine, prezzo);
 		return "redirect:/adminReserved?pi";
 	}
 	
@@ -54,8 +68,28 @@ public class AdminReservedController {
 	public String registraNews(@RequestParam("titolo") String titolo,
 			@RequestParam("descrizione") String descrizione,
 			@RequestParam(name="immagine", required = false) MultipartFile immagine) {
-		newsService.registraNews(titolo, descrizione, immagine);
+		newsService.registraNews(news, titolo, descrizione, immagine);
 		return "redirect:/adminReserved?ni";
 	}
 	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
+	}
+	
+	@GetMapping("/eliminaNews")
+	public String eliminaNews(@RequestParam("id") int id) {
+		News news = newsService.getNewsById(id);
+		newsService.eliminaNews(news);
+		return "redirect:/adminReserved";
+	}
+	
+	
+	@GetMapping("/eliminaProdotto")
+	public String eliminaProdotto(@RequestParam("id") int id) {
+		Prodotto prodotto = prodottoService.getProdottoById(id);
+		prodottoService.cancellaProdotto(prodotto);
+		return "redirect:/adminReserved";
+	}
 }

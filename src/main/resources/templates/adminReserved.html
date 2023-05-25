@@ -6,12 +6,12 @@
 	</head>
 	<body>
 		<h1>BEnvenuto in area Admin!</h1>
-		<form action="adminReserved/registraNews" name="registraNews" method="post" enctype="multipart/form-data">
+		<form action="adminReserved/registraNews" name="registraNews" method="post" enctype="multipart/form-data" th:object="${news}">
 			<label for="titolo">Titolo: </label>
-			<input type="text" name="titolo">
+			<input type="text" name="titolo" th:field=*{titolo}>
 			<br>
 			<label for="descrizione">Descrizione: </label>
-			<input type="text" name="descrizione">
+			<input type="text" name="descrizione" th:field=*{descrizione}>
 			<br>
 			<label for="immagine">Immagine: </label>
 			<input type="file" name="immagine">
@@ -21,15 +21,15 @@
 		</form>
 		<p th:if="${ni}" style="color:green;">News inserita correttamente!</p>
 		
-		<form action="adminReserved/registraProdotto" name="registraProdotto" method="post" enctype="multipart/form-data">
+		<form action="adminReserved/registraProdotto" name="registraProdotto" method="post" enctype="multipart/form-data" th:object="${prodotto}">
 			<label for="nome">Nome: </label>
-			<input type="text" name="nome">
+			<input type="text" name="nome" th:field="*{nome}">
 			<br>
 			<label for="descrizione">Descrizione: </label>
-			<input type="text" name="descrizione">
+			<input type="text" name="descrizione" th:field="*{descrizione}">
 			<br>
 			<label for="categoria">Categoria: </label>
-			<select name="categoria">
+			<select name="categoria" th:field="*{categoria}">
 				<option value="prodotti">1 - Prodotti </option>
 				<option value="biglietti">2 - Biglietti </option>
 			</select>
@@ -38,11 +38,13 @@
 			<input type="file" name="immagine">
 			<br>
 			<label for="prezzo">Prezzo: </label>
-			<input type="number" step="any" name="prezzo">
+			<input type="number" step="any" name="prezzo" th:field="*{prezzo}">
 			<br>
 			<br>
 			<input type="submit" value="Registra il prodotto">
 		</form>
 		<p th:if="${pi}" style="color:green;">Prodotto inserito correttamente!</p>
+		
+		<a th:href="@{adminReserved/logout}"><button>Logout</button></a>
 	</body>
 </html>

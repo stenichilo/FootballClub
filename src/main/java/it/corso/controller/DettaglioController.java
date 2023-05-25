@@ -19,9 +19,12 @@ public class DettaglioController {
 	
 	
 	@GetMapping
-	public String getPage(Model model, @RequestParam("id") int id, @RequestParam(name="pa", required = false) String pa) {
+	public String getPage(Model model,
+			@RequestParam("id") int id, 
+			@RequestParam(name="pa", required = false) String pa, HttpSession session) {
 		model.addAttribute("prodotto", prodottoService.getProdottoById(id));
 		model.addAttribute("pa", pa != null);
+		model.addAttribute("admin", session.getAttribute("admin") != null);
 		return "dettaglio";
 	}
 	

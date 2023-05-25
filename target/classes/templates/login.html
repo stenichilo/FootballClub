@@ -11,6 +11,7 @@
 <title>Document</title>
 </head>
 <body>
+	<a th:href="@{/}">Torna alla Home Page</a>
 	<div>
 		<div class="container form-box">
 			<div class="form-box1">
@@ -22,7 +23,7 @@
 				<a href="#" class="nd-button" id="nd-button">Iscriviti!</a>
 			</div>
 		</div>
-
+			
 		<div class="st-popup">
 			<span class="border-linex"></span> <a th:href="@{/login}"
 				class="esc-button" style="--clr: #ed1c24"><button type="button"
@@ -84,7 +85,8 @@
 			</form>
 		</div>
 	</div>
-
+	<p th:if="${le}" style="color:red;">Credenziali errate!</p>
+	<p th:if="${ur}" style="color:green;">Utente registrato correttamente!</p>
 	<script>
 		document.getElementById("st-button").addEventListener("click",
 				function() {

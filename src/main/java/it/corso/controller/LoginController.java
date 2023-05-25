@@ -29,9 +29,13 @@ public class LoginController {
 	
 	
 	@GetMapping
-	public String getPage(Model model) {
+	public String getPage(Model model, 
+			@RequestParam(name="le", required = false) String le,
+			@RequestParam(name="ur", required = false) String ur) {
 		Utente utente = new Utente();
 		model.addAttribute("utente", utente);
+		model.addAttribute("le", le != null);
+		model.addAttribute("ur", ur != null);
 		return "login";
 	}
 	
@@ -43,9 +47,9 @@ public class LoginController {
 		if (adminService.controlloLogin(session, username, password)) {
 			return "redirect:/adminReserved";
 		} else if (utenteService.controlloLogin(session, username, password)) {
-			return "redirect:/utenteReserved";
+			return "redirect:/utenteReserved?oa";
 		} else {
-			return "redirect:/le";
+			return "redirect:/login?le";
 		}
 		
 	}
@@ -57,6 +61,6 @@ public class LoginController {
 			return "redirect:/login";
 		}
 		utenteService.registraUtente(utente);
-		return "redirect:/";
+		return "redirect:/login";
 	}
 }

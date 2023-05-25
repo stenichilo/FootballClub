@@ -20,6 +20,7 @@ public class CarrelloController {
 	@Autowired
 	private OrdineService ordineService;
 
+	@SuppressWarnings("unchecked")
 	@GetMapping
 	public String getPage(Model model, HttpSession session, @RequestParam(name="oa", required = false) String oa) {
 		List<Prodotto> carrello = session.getAttribute("carrello") == null ? new ArrayList<>()

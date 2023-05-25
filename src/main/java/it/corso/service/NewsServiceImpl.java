@@ -16,8 +16,7 @@ public class NewsServiceImpl implements NewsService {
 	private NewsDao newsDao;
 	
 	@Override
-	public void registraNews(Object... dati) {
-		News news = new News();
+	public void registraNews(News news, Object... dati) {
 		String titolo = (String) dati[0];
 		String descrizione = (String) dati[1];
 		MultipartFile immagine = (MultipartFile) dati[2];
