@@ -20,6 +20,7 @@
 				<td th:text="${p.nome}"></td>
 				<td th:text="${p.descrizione}"></td>
 				<td th:text="${p.categoria}"></td>
+				<td><a th:href="@{utenteReserved/eliminaDaCarrello(id=${p.id})}">Elimina dal carrello</a></td>
 			</tr>
 			<tr th:if="!${oa}">
 				<td><a th:href="@{utenteReserved/inviaOrdine}"><button>Invia Ordine</button></a></td>
