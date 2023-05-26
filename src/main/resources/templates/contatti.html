@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contattaci - Bari Calcio</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+  <!-- Link al CSS di Font Awesome per le icone -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+  <!-- Stili personalizzati -->
+  <style>
+    /* Colore dello sfondo del footer */
+    footer {
+      background-color: #c90c20;
+      color: #fff;
+    }
+
+    /* Colore dei link nella lista */
+    ul.list-unstyled li a {
+      color: #fff;
+    }
+
+    /* Stile dell'hr scenografico */
+    .scenic-hr {
+      border: none;
+      height: 1px;
+      background-image: linear-gradient(to right, #000, #c90c20, #fff, #c90c20, #000);
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    #mappa{
+      width: 80%;
+      margin:auto
+    }
+
+    .bottone_footer {
+      color: white;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .bottone_footer:hover {
+      background-color: white;
+      color: red;
+    }
+
+    .footer-content li a {
+      color: black;
+      text-decoration: none;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 4px;
+    }
+
+    .footer-content li a:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      width: 100%;
+      background-color: white;
+      transform: scaleX(0);
+      transform-origin: bottom left;
+      transition: transform 0.3s;
+    }
+
+    .footer-content li a:hover {
+      color: black;
+    }
+
+    .footer-content li a:hover:before {
+      transform: scaleX(1);
+    }
+
+
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .hero {
+      background-image: url(/path/to/hero-image.jpg);
+      background-size: cover;
+      background-position: center;
+      height: 300px;
+    }
+
+    #form-contatti{
+      width:40%
+    }
+
+    #stemma{
+      text-align: end;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <!-- Includi qui la tua navbar con Bootstrap -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <!-- Contenuto della navbar -->
+    </nav>
+  </header>
+
+  <main>
+    <section id="hero" class="hero">
+      <div class="container">
+        <!-- Contenuto del hero -->
+      </div>
+    </section>
+    <div class="row">
+      <div class="col-lg-6" id="stemma">
+        <img src="stemma.png" alt="stemma Bari" width="35%">
+      </div>
+      <div class="col-lg-6" id="contatti">
+        <h1 >Contatti</h1>
+        <h4 >Indirizzo:</h4>
+          <p >Strada Torrebella Snc c/o Stadio «San Nicola»</p>
+          <h4 >Telefono:</h4>
+            <p >080.4044570</p>
+            <h4 >Segreteria:</h4>
+              <p >segreteria@sscalciobari.it</p>
+              <h4 >Ufficio comunicazione:</h4>
+                <p >comunicazione@sscalciobari.it</p>
+      </div>
+
+      <div class="col-md-12">
+        <section id="contattaci">
+          <div class="container py-5">
+            <h2 class="text-center mb-4">Contattaci</h2>
+            <p class="text-center">Per contattare il Bari Calcio, compila il seguente modulo:</p>
+
+            <div class="row justify-content-center">
+              <div class="col-lg-6">
+                <form>
+                  <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control" id="nome" name="nome" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="messaggio">Messaggio</label>
+                    <textarea class="form-control" id="messaggio" name="messaggio" rows="4" required></textarea>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary">Invia</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <hr>
+
+  <br>
+  <div id="mappa">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3007.279755955444!2d16.837560275329423!3d41.08473381471472!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1347e941b5ef01bd%3A0x5636fa0b217fea36!2sStadio%20San%20Nicola!5e0!3m2!1sit!2sit!4v1685016785361!5m2!1sit!2sit"
+      width="100%" height="350px" style="border:0;" allowfullscreen="" loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+  <footer class="container-fluid text-white py-3 footer">
+    <div class="row justify-content-center" style="background-color: #ca0c1f;">
+      <!-- Sezione 1: Logo del Bari Calcio -->
+      <div class="col-md-2 align-self-center">
+        <img src="SSC_Bari_logo.png" alt="Logo Bari Calcio" class="d-block mx-auto" width="100">
+      </div>
+
+      <!-- Sezione 2: Lista di rimandi ad altre pagine -->
+      <div class="col-md-3 text-center">
+        <h4>Le nostre pagine</h4>
+        <ul class="list-unstyled footer-content">
+          <li><a href="#">Chi siamo</a></li>
+          <li><a href="#">Storia della società</a></li>
+          <li><a href="#">Shop</a></li>
+          <li><a href="#">Biglietteria</a></li>
+          <li><a href="#">Contatti</a></li>
+        </ul>
+      </div>
+
+      <!-- Sezione 3: Newsletter -->
+      <div class="col-md-4 text-center">
+        <h4>Iscriviti alla newsletter:</h4>
+        <br />
+        <input type="email" class="form-control rounded-pill mx-auto" placeholder="Inserisci la tua email"
+          style="width: 190px;">
+        <br />
+        <button class="btn btn-custom btn-hover bottone_footer">Iscriviti</button>
+      </div>
+
+      <!-- Sezione 4: Rimandi ai social media -->
+      <div class="col-md-3 text-center">
+        <ul class="list-inline footer-content">
+          <li class="list-inline-item"><a href="#"><img src="/footer/instagram.png" alt="Instagram" width="40"
+                height="40"></a></li>
+          <li class="list-inline-item"><a href="#"><img src="/footer/facebook.png" alt="Facebook" width="40"
+                height="40"></a></li>
+          <li class="list-inline-item"><a href="#"><img src="/footer/tiktok.png" alt="TikTok" width="40"
+                height="40"></a></li>
+          <li class="list-inline-item"><a href="#"><img src="/footer/youtube.png" alt="YouTube" width="40"
+                height="40"></a></li>
+          <li class="list-inline-item"><a href="#"><img src="/footer/telegram.png" alt="Telegram" width="40"
+                height="40"></a></li>
+          <li class="list-inline-item"><a href="#"><img src="/footer/wechat.png" alt="WeChat" width="40"
+                height="40"></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Sezione 4: Separatore e informazioni di copyright -->
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <hr class="scenic-hr">
+        <p>© 2023 S.S.C. Bari. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Script di Bootstrap -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

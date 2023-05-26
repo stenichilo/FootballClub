@@ -61,11 +61,12 @@ public class AdminReservedController {
 	@PostMapping("/registraProdotto")
 	public String registraProdotto(@RequestParam("nome") String nome,
 			@RequestParam("descrizione")String descrizione,
+			@RequestParam("dettaglio")String dettaglio,
 			@RequestParam("categoria")String categoria,
 			@RequestParam(name="immagine", required = false)MultipartFile immagine,
 			@RequestParam("prezzo") double prezzo
 			) {
-		prodottoService.registraProdotto(prodotto, nome, descrizione, categoria, immagine, prezzo);
+		prodottoService.registraProdotto(prodotto, nome, descrizione, dettaglio, categoria, immagine, prezzo);
 		return "redirect:/adminReserved?pi";
 	}
 	

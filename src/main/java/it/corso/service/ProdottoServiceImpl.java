@@ -21,11 +21,13 @@ public class ProdottoServiceImpl implements ProdottoService {
 	public void registraProdotto(Prodotto prodotto, Object... datiProdotto) {
 		String nome = (String) datiProdotto[0];
 		String descrizione = (String) datiProdotto[1];
-		String categoria = (String) datiProdotto[2];
-		MultipartFile immagine = (MultipartFile) datiProdotto[3];
-		double prezzo = (double) datiProdotto[4];
+		String dettaglio = (String) datiProdotto[2];
+		String categoria = (String) datiProdotto[3];
+		MultipartFile immagine = (MultipartFile) datiProdotto[4];
+		double prezzo = (double) datiProdotto[5];
 		prodotto.setNome(nome);
 		prodotto.setDescrizione(descrizione);
+		prodotto.setDettaglio(dettaglio);
 		prodotto.setCategoria(categoria);
 		if (immagine != null && !immagine.isEmpty()) {
 			try {

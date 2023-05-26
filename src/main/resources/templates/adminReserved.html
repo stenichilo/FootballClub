@@ -23,22 +23,30 @@
 		
 		<form action="adminReserved/registraProdotto" name="registraProdotto" method="post" enctype="multipart/form-data" th:object="${prodotto}">
 			<label for="nome">Nome: </label>
-			<input type="text" name="nome" th:field="*{nome}">
+			<input type="text" name="nome" th:field="*{nome}" required="required">
 			<br>
 			<label for="descrizione">Descrizione: </label>
 			<input type="text" name="descrizione" th:field="*{descrizione}">
 			<br>
+			<label for="dettaglio">Dettaglio: </label>
+			<input type="text" name="dettaglio" th:field="*{dettaglio}">
+			<br>
 			<label for="categoria">Categoria: </label>
-			<select name="categoria" th:field="*{categoria}">
-				<option value="prodotti">1 - Prodotti </option>
-				<option value="biglietti">2 - Biglietti </option>
+			<select name="categoria" th:field="*{categoria}" required="required">
+				<option value="kit ufficiale">1 - Kit ufficiale </option>
+				<option value="magliette">2 - Magliette </option>
+				<option value="pantaloni">3 - Pantaloni </option>
+				<option value="calze">4 - Calze </option>
+				<option value="accessori">5 - Accessori </option>
+				<option value="biglietti">6 - Biglietti </option>
+				<option value="abbonamenti">7 - Abbonamenti </option>
 			</select>
 			<br>
 			<label for="immagine">Immagine: </label>
 			<input type="file" name="immagine">
 			<br>
 			<label for="prezzo">Prezzo: </label>
-			<input type="number" step="any" name="prezzo" th:field="*{prezzo}">
+			<input type="number" step="any" name="prezzo" th:field="*{prezzo}" required="required">
 			<br>
 			<br>
 			<input type="submit" value="Registra il prodotto">

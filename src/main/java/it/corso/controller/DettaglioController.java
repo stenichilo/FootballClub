@@ -25,6 +25,7 @@ public class DettaglioController {
 		model.addAttribute("prodotto", prodottoService.getProdottoById(id));
 		model.addAttribute("pa", pa != null);
 		model.addAttribute("admin", session.getAttribute("admin") != null);
+		model.addAttribute("utente", session.getAttribute("utente") != null);
 		return "dettaglio";
 	}
 	

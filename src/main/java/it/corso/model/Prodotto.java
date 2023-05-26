@@ -29,6 +29,9 @@ public class Prodotto {
 	@Column(name="descrizione")
 	private String descrizione;
 	
+	@Column(name="dettaglio")
+	private String dettaglio;
+	
 	@Column(name="categoria")
 	private String categoria;
 	
@@ -69,6 +72,22 @@ public class Prodotto {
 
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
+	}
+
+	public String getDettaglio() {
+		return dettaglio;
+	}
+
+	public void setDettaglio(String dettaglio) {
+		this.dettaglio = dettaglio;
+	}
+
+	public List<Ordine> getOrdini() {
+		return ordini;
+	}
+
+	public void setOrdini(List<Ordine> ordini) {
+		this.ordini = ordini;
 	}
 
 	public String getCategoria() {

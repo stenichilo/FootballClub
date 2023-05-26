@@ -5,10 +5,19 @@
 		<title>Ticket</title>
 	</head>
 	<body>
+	<h1> Lista Biglietti</h1>
 		<table>
+		
 			<tr th:each="biglietto : ${biglietti}">
 				<td th:text="${biglietto.nome}"></td>
 				<td><a th:href="@{dettaglio(id=${biglietto.id})}">Dettaglio</a></td>
+			</tr>
+		</table>
+		<h1> Lista Abbonamenti</h1>
+		<table>
+			<tr th:each="abbonamento : ${abbonamenti}">
+				<td th:text="${abbonamento.nome}"></td>
+				<td><a th:href="@{dettaglio(id=${abbonamento.id})}">Dettaglio</a></td>
 			</tr>
 		</table>
 		<a th:href="@{index}">Torna alla Home Page</a>

@@ -11,19 +11,25 @@
 <title>Document</title>
 </head>
 <body>
-	<a th:href="@{/}">Torna alla Home Page</a>
+	
 	<div>
 		<div class="container form-box">
 			<div class="form-box1">
 				<h1>Hai già un account?</h1>
 				<a href="#" class="st-button" id="st-button">Accedi</a>
 			</div>
+			<br>
 			<p th:if="${le}" style="color:red;">Credenziali errate!</p>
 			<div class="form-box2">
 				<h1>Non hai un account?</h1>
 				<a href="#" class="nd-button" id="nd-button">Iscriviti!</a>
 			</div>
+			<br>
 			<p th:if="${ur}" style="color:green;">Utente registrato correttamente!</p>
+			<div class="form-box2">
+				<h1>Torna alla Home Page</h1>
+				<a th:href="@{/}" class="st-button" id="st-button">Home Page</a>
+			</div>
 		</div>
 			
 		<div class="st-popup">

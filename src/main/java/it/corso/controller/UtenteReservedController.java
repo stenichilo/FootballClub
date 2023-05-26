@@ -25,6 +25,7 @@ public class UtenteReservedController {
 	@GetMapping
 	public String getPage(Model model, HttpSession session, @RequestParam(name="oa", required = false) String oa) {
 		
+		// condizione per verificare se l'utente è loggato, se non loggato rimanda a pagina di login
 		if(session.getAttribute("utente") == null) {
 			return "redirect:/login";
 		}

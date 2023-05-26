@@ -27,9 +27,10 @@ public class ShopController {
 		List<Prodotto> catalogo = new ArrayList<>();
 		
 		for(Prodotto p:prodottoService.getProdottiAll()) {
-			if (p.getCategoria() != "biglietti")
+			if (!(p.getCategoria().equals("biglietti")) && !(p.getCategoria().equals("abbonamenti"))) {
+				catalogo.add(p);
+			}
 		}
-		
 		
 		model.addAttribute("catalogo", catalogo);
 		

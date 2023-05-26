@@ -1,16 +1,200 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="ISO-8859-1">
-		<title>Insert title here</title>
-	</head>
-	<body>
-		<h1 th:text="${prodotto.descrizione}"></h1>
-		<h2 th:text="${prodotto.prezzo}"></h2>
-		<a th:if="${admin == false}"  th:href="@{dettaglio/aggiungi(id=${prodotto.id})}">Aggiungi al carrello</a>
-		<a th:if="${admin == true}" th:href="@{adminReserved(idProdotto=${prodotto.id})}">Modifica prodotto</a>
-		<div th:if="${prodotto.categoria != 'accessori' OR prodotto.categoria != 'biglietti'}"></div>
-		<p th:if="${pa}" style="color:green;">Prodotto aggiunto al carrello!</p>
-		<a th:href="@{shop}">Torna allo shop</a>
-	</body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dettaglio Prodotto</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/prodottoDet.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- HEADER/NAVBAR -->
+
+
+    <nav>
+        <img src="image/SSC_Bari_logo.png" class="logo">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a th:href="@{utenteReserved}"><img src="image/icons8-carrello-64.png" width="30" height="30"></a></li>
+        </ul>
+    </nav>
+
+
+    <!-- SHOP OFFICIALE -->
+    <div class="container-fluid vh-100">
+        <div class="row" style="margin-right: 0px; margin-left: 0;padding: 0px;">
+            <div class="col-md-12" style="padding-left: 0px;padding-right: 0px;">
+                <h1 id="titolo">S.C.C. BARI OFFICIAL SHOP</h1>
+            </div>
+        </div>
+
+        <!-- RIMANDO ALLA HOME E ALLO SHOP -->
+        <div class="row" style="margin-right: 0px; margin-left: 0;">
+            <div class="col-md-12">
+                <ol class="breadcrumb rimando">
+                    <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+                    <li class="breadcrumb-item"><a th:href="@{shop}">Shop</a></li>
+                    <li class="breadcrumb-item active" aria-current="page" th:text="${prodotto.nome}"></li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- FOTO PRODOTTO -->
+        <div class="row" style="margin-right: 0px; margin-left: 0;">
+            <div class="col-md-5">
+                <img th:src="@{${prodotto.immagine}}" id="left-side" alt="Immagine Prodotto"
+                    class="img-fluid">
+            </div>
+
+            <div class="col-md-5 d-flex align-self-center">
+                <div class="right-side">
+
+                    <h1 th:text="${prodotto.nome}" id="prodotto"></h1>
+                    <h4 th:if="${prodotto.categoria != 'accessori' && prodotto.categoria != 'biglietti'}">Taglia:</h4>
+                    <div class="size-buttons">
+                        <button th:if="${prodotto.categoria != 'accessori' && prodotto.categoria != 'biglietti'}" class="size-button">S</button>
+                        <button th:if="${prodotto.categoria != 'accessori' && prodotto.categoria != 'biglietti'}" class="size-button">M</button>
+                        <button th:if="${prodotto.categoria != 'accessori' && prodotto.categoria != 'biglietti'}" class="size-button">L</button>
+                        <button th:if="${prodotto.categoria != 'accessori' && prodotto.categoria != 'biglietti'}" class="size-button">XL</button>
+                        <br>
+                        <h4 th:text="${#numbers.formatDecimal(prodotto.prezzo,0,'POINT',2,'COMMA')}  + ' Euro'" id="prezzo"></h4>
+                        
+                        <br>
+                        <a th:if="${utente == true}"  th:href="@{dettaglio/aggiungi(id=${prodotto.id})}"><button class="st-button" id="st-button">Aggiungi al Carrello</button></a>
+                    	<a th:if="${admin == true}" th:href="@{adminReserved(idProdotto=${prodotto.id})}"><button class="st-button" id="st-button">Modifica prodotto</button></a>
+                    	<a th:if="${admin == false && utente == false}" th:href="@{login}"><button class="st-button" id="st-button">Loggati per acquistare</button></a>
+                    </div>
+                    <p th:if="${pa}" style="color:green;">Prodotto aggiunto al carrello!</p>
+                </div>
+            </div>
+            <!-- NAV SOTTO FOTO -->
+            <div class="row" style="margin-right: 0px; margin-left: 0;">
+                <div class="col-md-">
+                    <div class="nav-sotto">
+                        <ul class="nav nav-laterale">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#descrizione">Descrizione</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#dettaglio">Dettagli</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <!-- DESCRIZIONE PRODOTTO -->
+            <div class="row" style="margin-right: 0px; margin-left: 0;">
+                <div class="col-md-5">
+                    <div id="descrizione">
+                        <h2>Descrizione</h2>
+                        <p th:text="${prodotto.descrizione}"></p>
+                    </div>
+                    <div id="dettaglio">
+                        <h2>Dettagli</h2>
+                        <p th:text="${prodotto.dettaglio}"></p>
+                    </div>
+                </div>
+                <!-- COLONNA PER SEPARARE GIF CON LA DESCRIZIONE -->
+                <div class="col-md-4"></div>
+                <div class="col-md-3">
+                   <a th:href="@{shop}"><img src="image/BlueSimpleEffectiveCommunicationInfographic(1).gif" id="nuovi-p"
+                        alt="Nuovi prodotti"></a>
+                </div>
+            </div>
+
+
+            <!-- FOOTER -->
+            <footer class="container-fluid text-white py-3 footer">
+                <div class="row justify-content-center"
+                    style="background-color: #ca0c1f;margin-right: 0px; margin-left: 0; margin-top: 25px;">
+                    <!-- Sezione 1: Logo del Bari Calcio -->
+                    <div class="col-md-2 align-self-center">
+                        <img src="./image/SSC_Bari_logo.png" alt="Logo Bari Calcio" class="d-block mx-auto" width="100">
+                    </div>
+
+                    <!-- Sezione 2: Lista di rimandi ad altre pagine -->
+                    <div class="col-md-3 text-center">
+                        <h4>Le nostre pagine</h4>
+                        <ul class="list-unstyled footer-content">
+                            <li><a href="#">Chi siamo</a></li>
+                            <li><a href="#">Storia della società</a></li>
+                            <li><a th:href="@{shop}">Shop</a></li>
+                            <li><a href="#">Biglietteria</a></li>
+                            <li><a href="#">Contatti</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Sezione 3: Newsletter -->
+                    <div class="col-md-4 text-center">
+                        <h4>Iscriviti alla newsletter:</h4>
+                        <br />
+                        <input type="email" class="form-control rounded-pill mx-auto"
+                            placeholder="Inserisci la tua email" style="width: 190px;">
+                        <br />
+                        <button class="btn btn-custom btn-hover bottone_footer">Iscriviti</button>
+                    </div>
+
+                    <!-- Sezione 4: Rimandi ai social media -->
+                    <div class="col-md-3 text-center">
+                        <ul class="list-inline footer-content">
+                            <li class="list-inline-item"><a href="#"><img src="image/footer/instagram.webp"
+                                        alt="Instagram" width="40" height="40"></a></li>
+                            <li class="list-inline-item"><a href="#"><img src="image/footer/facebook.png"
+                                        alt="Facebook" width="40" height="40"></a></li>
+                            <li class="list-inline-item"><a href="#"><img src="image/footer/tiktok.png" alt="TikTok"
+                                        width="40" height="40"></a></li>
+                            <li class="list-inline-item"><a href="#"><img src="image/footer/youtube.png" alt="YouTube"
+                                        width="40" height="40"></a></li>
+                            <li class="list-inline-item"><a href="#"><img src="image/footer/telegram.png"
+                                        alt="Telegram" width="40" height="40"></a></li>
+                            <li class="list-inline-item"><a href="#"><img src="image/footer/wechat.png" alt="WeChat"
+                                        width="40" height="40"></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Sezione 4: Separatore e informazioni di copyright -->
+                <div class="row" style="margin-right: 0px; margin-left: 0;">
+                    <div class="col-md-12 text-center">
+                        <hr class="scenic-hr">
+                        <p>© 2023 S.S.C. Bari. All Rights Reserved.</p>
+                    </div>
+                </div>
+            </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+
+
+
+
+</body>
+
 </html>
