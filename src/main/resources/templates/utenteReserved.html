@@ -1,32 +1,248 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="ISO-8859-1">
-		<title>Area Riservata Utente</title>
-	</head>
-	<body>
-		<table>
-			<tr>
-				<td th:text="'Nome e cognome: ' + ${utente.nome} + ' ' +${utente.cognome}"></td>
-			</tr>
-			<tr th:each="o : ${ordini}">
-				<td th:text="${o.id}"></td>
-				<td th:text="${o.data}"></td>
-				<td th:text="${o.importo}"></td>
-			</tr>
-			</table>
-			<table>
-			<tr th:each="p : ${carrello}">
-				<td th:text="${p.nome}"></td>
-				<td th:text="${p.descrizione}"></td>
-				<td th:text="${p.categoria}"></td>
-				<td><a th:href="@{utenteReserved/eliminaDaCarrello(id=${p.id})}">Elimina dal carrello</a></td>
-			</tr>
-			<tr th:if="!${oa}">
-				<td><a th:href="@{utenteReserved/inviaOrdine}"><button>Invia Ordine</button></a></td>
-			</tr>			
-		</table>
-	
-		<a th:href="@{utenteReserved/logout}"><button>Logout</button></a>
-	</body>
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+<title>Document</title>
+<link href="css/utenteReserved.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+	<div class="sidebari">
+		<div class="sidebari-brand">
+			<img src="image/SSC_Bari_logo.png" width="50" height="60">
+			<h2>SideBARI</h2>
+		</div>
+
+		<div class="sidebari-menu">
+			<div class="d-flex align-items-start">
+				<div class="nav flex-column nav-pills me-3" id="v-pills-tab"
+					role="tablist" aria-orientation="vertical">
+					<button class="nav-link active" id="v-pills-home-tab"
+						data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button"
+						role="tab" aria-controls="v-pills-home" aria-selected="true">Profilo</button>
+					<button class="nav-link" id="v-pills-profile-tab"
+						data-bs-toggle="pill" data-bs-target="#v-pills-profile"
+						type="button" role="tab" aria-controls="v-pills-profile"
+						aria-selected="false">Carrello</button>
+					<button class="nav-link" id="v-pills-disabled-tab"
+						data-bs-toggle="pill" data-bs-target="#v-pills-disabled"
+						type="button" role="tab" aria-controls="v-pills-disabled"
+						aria-selected="false">Ordini</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<header>
+		<h1>
+			Profilo Utente
+			<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+				fill="currentColor" class="bi bi-person-check-fill"
+				viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+					d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                <path
+					d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+            </svg>
+		</h1>
+
+		<div class="boh">
+			<div class="carrello">
+				<!--link carrello-->
+				<a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30"
+						height="30" fill="currentColor" class="bi bi-cart3"
+						viewBox="0 0 16 16">
+                        <path
+							d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                    </svg></a>
+			</div>
+
+			<div class="user-wrapper">
+				<!--link area riservata utente-->
+				<div class="dropdown">
+					<a href="#"
+						class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
+						data-bs-toggle="dropdown" aria-expanded="false"> <img
+						src="image/gpero.jpg" alt="" width="40" height="40"
+						class="rounded-circle me-2"> <strong
+						th:text="${utente.username}"></strong>
+					</a>
+					<ul class="dropdown-menu text-small shadow">
+						<li><a class="dropdown-item" th:href="@{shop}">Nuovi
+								acquisti</a></li>
+						<li><a class="dropdown-item" th:href="@{/}">Vai alla
+								homepage</a></li>
+						<li>
+							<hr class="dropdown-divider">
+						</li>
+						<li><a class="dropdown-item"
+							th:href="@{utenteReserved/logout}">Logout</a></li>
+					</ul>
+				</div>
+				<!--<a href="#"><img src="/images/gpero.jpg" width="30px" height="30px" alt=""> 
+          <div class="nome-utente">
+            <h4>Gaspare Pero</h4>
+        </a>
+        <small>Utente</small>
+      </div>
+    </div>-->
+			</div>
+		</div>
+	</header>
+
+	<main>
+
+		<div class="tab-content" id="v-pills-tabContent">
+			<div class="tab-pane fade show active" id="v-pills-home"
+				role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
+				<!--INIZIO TAB 1-->
+				<div class="container container-shop">
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label for="nome" class="form-label">Nome</label> <input
+								type="text" class="form-control" id="fullName"
+								th:value="${utente.nome}">
+							<!--disabled dopo value?-->
+						</div>
+						<div class="mb-3">
+							<label for="cognome" class="form-label">Cognome</label> <input
+								type="text" class="form-control" id="fullName"
+								th:value="${utente.cognome}">
+							<!--disabled dopo value?-->
+						</div>
+						<div class="mb-3">
+							<label for="email" class="form-label">Email</label> <input
+								type="email" class="form-control" id="email"
+								th:value="${utente.mail}">
+							<!--disabled dopo value?-->
+						</div>
+						<div class="mb-3">
+							<label for="password" class="form-label">Password</label> <input
+								type="password" class="form-control" id="fullName"
+								th:value="${utente.password}">
+							<!--disabled dopo value?-->
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label for="address" class="form-label">Indirizzo</label>
+							<textarea class="form-control" id="address" rows="4"
+								th:text="${utente.via} + ', ' + ${utente.civico} + ', ' +${utente.cap} + ', ' + ${utente.comune} + ', ' + ${utente.provincia}"></textarea>
+							<!--disabled dopo rows?-->
+						</div>
+						<div class="mb-3">
+							<label for="phone" class="form-label">Telefono/cellulare</label>
+							<input type="text" class="form-control" id="phone"
+								th:value="${utente.telefono}">
+							<!--disabled dopo value?-->
+						</div>
+					</div>
+				</div>
+				<!--FINE TAB 1-->
+			</div>
+			<div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
+				aria-labelledby="v-pills-profile-tab" tabindex="0">
+				<!--INIZIO TAB 2 CARRELLO-->
+				<div class="container container-shop">
+
+					<div class="ordina-button" th:if="!${oa}">
+						<a th:href="@{utenteReserved/inviaOrdine}" class="ordina-btn">Invia
+							Ordine</a>
+					</div>
+
+					<div class="row">
+						<div class="col-sm-4" th:each="p : ${carrello}">
+							<!--INIZIO CARD 1 CARRELLO-->
+							<div class="card mb-3" style="max-width: 300px;">
+								<img th:src="${p.immagine}" class="img-fluid rounded-start"
+									alt="...">
+							</div>
+							<div class="col-md-8">
+								<div class="card-body">
+									<div class="trashino">
+										<h5 class="card-title" th:text="${p.nome}"></h5>
+										<a href="#"><svg xmlns="http://www.w3.org/2000/svg"
+												width="30" height="30" fill="currentColor"
+												class="bi bi-trash3" viewBox="0 0 16 16">
+                                                <path
+													d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+                                              </svg></a>
+									</div>
+									<p th:text="${p.prezzo}"></p>
+								</div>
+							</div>
+							<!--FINE CARD 1 CARRELLO-->
+						</div>
+
+
+					</div>
+					<!--FINE TAB 2 CARRELLO-->
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="v-pills-disabled" role="tabpanel"
+				aria-labelledby="v-pills-disabled-tab" tabindex="0">
+				<!--INIZIO TAB 3 ORDINI-->
+				<div class="container container-shop">
+					<div class="accordion accordion-flush" id="accordionFlushExample">
+						<div class="accordion-item" th:each="o : ${ordini}">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button"
+									data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
+									aria-expanded="false" aria-controls="flush-collapseOne"
+									th:text="'ID ordine ' + ${o.id}"></button>
+							</h2>
+							<div id="flush-collapseOne" class="accordion-collapse collapse"
+								data-bs-parent="#accordionFlushExample">
+								<div class="accordion-body">
+
+									<div class="row">
+										<div class="col-sm-6" th:each="p : ${o.prodotti}">
+											<!--INIZIO CARD 1 ACCORDION 1-->
+											<div class="card mb-3" style="max-width: 300px;">
+												<img th:src="@{${p.immagine}}"
+													class="img-fluid rounded-start" alt="...">
+											</div>
+											<div class="col-md-8">
+												<div class="card-body">
+													<h5 class="card-title" th:text="${p.nome}"></h5>
+													<p th:text="${p.prezzo}"></p>
+												</div>
+											</div>
+											<!--FINE CARD 1 ACCORDION 1-->
+										</div>
+
+
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--FINE TAB 3 ORDINI-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+		crossorigin="anonymous"></script>
+</body>
+
 </html>
