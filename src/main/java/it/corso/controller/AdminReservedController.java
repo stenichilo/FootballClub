@@ -44,10 +44,12 @@ public class AdminReservedController {
 		if(session.getAttribute("admin") == null) {
 			return "redirect:/login";
 		}
-		
+		model.addAttribute("admin", session.getAttribute("admin"));
 		model.addAttribute("utenti", utenteService.getUtenti());
 		model.addAttribute("prodotti", prodottoService.getProdottiByCategoria("prodotti"));
 		model.addAttribute("biglietti", prodottoService.getProdottiByCategoria("biglietti"));
+		model.addAttribute("catalogo", prodottoService.getProdottiAll());
+		model.addAttribute("novita", newsService.getNews());
 		model.addAttribute("pi", pi != null);
 		model.addAttribute("ni", ni != null);
 		prodotto = idProdotto == null ? new Prodotto() : prodottoService.getProdottoById(idProdotto);
