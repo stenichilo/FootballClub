@@ -18,10 +18,12 @@
 				<h1>Hai già un account?</h1>
 				<a href="#" class="st-button" id="st-button">Accedi</a>
 			</div>
+			<p th:if="${le}" style="color:red;">Credenziali errate!</p>
 			<div class="form-box2">
 				<h1>Non hai un account?</h1>
 				<a href="#" class="nd-button" id="nd-button">Iscriviti!</a>
 			</div>
+			<p th:if="${ur}" style="color:green;">Utente registrato correttamente!</p>
 		</div>
 			
 		<div class="st-popup">
@@ -84,9 +86,10 @@
 				
 			</form>
 		</div>
+		
+	
 	</div>
-	<p th:if="${le}" style="color:red;">Credenziali errate!</p>
-	<p th:if="${ur}" style="color:green;">Utente registrato correttamente!</p>
+	
 	<script>
 		document.getElementById("st-button").addEventListener("click",
 				function() {

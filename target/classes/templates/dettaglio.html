@@ -9,6 +9,7 @@
 		<h2 th:text="${prodotto.prezzo}"></h2>
 		<a th:if="${admin == false}"  th:href="@{dettaglio/aggiungi(id=${prodotto.id})}">Aggiungi al carrello</a>
 		<a th:if="${admin == true}" th:href="@{adminReserved(idProdotto=${prodotto.id})}">Modifica prodotto</a>
+		<div th:if="${prodotto.categoria != 'accessori' OR prodotto.categoria != 'biglietti'}"></div>
 		<p th:if="${pa}" style="color:green;">Prodotto aggiunto al carrello!</p>
 		<a th:href="@{shop}">Torna allo shop</a>
 	</body>

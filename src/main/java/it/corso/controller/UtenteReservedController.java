@@ -24,6 +24,11 @@ public class UtenteReservedController {
 	
 	@GetMapping
 	public String getPage(Model model, HttpSession session, @RequestParam(name="oa", required = false) String oa) {
+		
+		if(session.getAttribute("utente") == null) {
+			return "redirect:/login";
+		}
+		
 		model.addAttribute("utente", session.getAttribute("utente"));
 		model.addAttribute("ordini", ordineService.getOrdineByUtente((Utente) session.getAttribute("utente")));
 		model.addAttribute("carrello", session.getAttribute("carrello"));

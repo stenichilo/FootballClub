@@ -38,7 +38,13 @@ public class AdminReservedController {
 			@RequestParam(name="pi", required = false) String pi,
 			@RequestParam(name="ni", required = false) String ni,
 			@RequestParam(name="idProdotto", required = false) Integer idProdotto,
-			@RequestParam(name="idNews", required = false) Integer idNews) {
+			@RequestParam(name="idNews", required = false) Integer idNews,
+			HttpSession session) {
+		
+		if(session.getAttribute("admin") == null) {
+			return "redirect:/login";
+		}
+		
 		model.addAttribute("utenti", utenteService.getUtenti());
 		model.addAttribute("prodotti", prodottoService.getProdottiByCategoria("prodotti"));
 		model.addAttribute("biglietti", prodottoService.getProdottiByCategoria("biglietti"));
