@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.corso.service.ProdottoService;
+import jakarta.servlet.http.HttpSession;
 import it.corso.model.Prodotto;
 
 @Controller
@@ -24,7 +25,8 @@ public class ShopController {
 	public String getPage(Model model, 
 			@RequestParam(name = "categoria", required = false) String categoria,
 			@RequestParam(name = "min", required = false) Double min,
-			@RequestParam(name = "max", required = false) Double max) {
+			@RequestParam(name = "max", required = false) Double max,
+			HttpSession session) {
 
 		List<Prodotto> catalogo = categoria == null ? new ArrayList<>()
 				: prodottoService.getProdottiByCategoria(categoria);
@@ -38,24 +40,17 @@ public class ShopController {
 		}
 
 		if (min != null) {
-			for (Prodotto p : catalogo) {
-				if (p.getPrezzo() < min) {
-					catalogo.remove(p);
-				}
-			}
+			catalogo.removeIf(k -> k.getPrezzo() < min);
 		}
 
 		if (max != null) {
-			for (Prodotto p : catalogo) {
-				if (p.getPrezzo() > max) {
-					catalogo.remove(p);
-				}
-			}
-
+			catalogo.removeIf(k -> k.getPrezzo() > max);
 		}
 
 		model.addAttribute("catalogo", catalogo);
-
+		model.addAttribute("utente", session.getAttribute("utente") != null);
+		model.addAttribute("admin", session.getAttribute("admin") != null);
+		
 		return "shop";
 	}
 

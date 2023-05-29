@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+	 href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+	 rel="stylesheet">
+</head>
+<style>* {
+                        /*margin: 0;
+                        padding: 0;*/
+                        box-sizing: border-box;
+                        
+                        font-family: 'Poppins', sans-serif;
+                    }
+
+                    .hero-mio {
+                        width: 100%;
+                        height: 100vh;
+                        background-image: linear-gradient(rgba(12,3,51,0.3), rgba(12,3,51,0.3));
+                        position: relative;
+                        padding: 0 5%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-bottom: 20px;
+                    }
+
+                    nav {
+                        width: 100%;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        padding:  20px 8%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+
+                    }
+
+                    nav .logo {
+                        width: 80px;
+                    }
+
+                    nav ul li {
+                        list-style: none;
+                        display: inline-block;
+                        margin-left: 40px;
+                    }
+
+                    nav ul li a {
+                        text-decoration: none;
+                        color: #ffffff;
+                        font-size: 17px;
+                    }
+
+                    li a::after {
+                        content: '';
+                        width: 0;
+                        height: 3px;
+                        background-color: #ed1c24;
+                        margin: auto;
+                        display: block;
+                    }
+
+                    li a:hover::after {
+                        width: 100%;
+                        transition: width 0.3s linear;
+                    }
+
+                    .bari-testo {
+                        text-align: center;
+                    }
+
+                    .bari-testo h1 {
+                        font-size: 160px;
+                        color: #ffffff;
+                        font-weight: 600;
+                        transition: 0.5s;
+                    }
+
+                    .bari-testo h1:hover {
+                        -webkit-text-stroke: 2px #ffffff; /*marcatura esterna testuale*/
+                        color: transparent;
+                    }
+
+                    .backbro-video {
+                        position: absolute;
+                        right: 0;
+                        bottom: 0;
+                        z-index: -1;
+                    }
+
+                    @media (min-aspect-ratio: 16/9) {
+                        .backbro-video {
+                            width: 100%;
+                            height: auto;
+                        }
+                    }
+
+                    @media (max-aspect-ratio: 16/9) {
+                        .backbro-video {
+                            width: auto;
+                            height: 100%;
+                        }
+                    }
+
+                    /*scroll*/
+                    .scrolla-giu {
+                        position: absolute;
+                        bottom: 20px;
+                        left: 50%;
+                        width: 40px;
+                        height: 40px;
+                        /*background: #ffffff;*/
+                        transform: translateY(-80px) translateX(-50%) rotate(45deg);
+                    }
+
+                    .scrolla-giu span {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        border-bottom: 2px solid #ffffff;
+                        border-right: 2px solid #ffffff;
+                        animation: animate 1.5s linear infinite;
+                        opacity: 0;
+                    }
+
+                    .scrolla-giu span:nth-child(1) {
+                        transform: translate(-15px, -15px);
+                        animation-delay: -0.4s;
+                    }
+
+                    .scrolla-giu span:nth-child(2) {
+                        transform: translate(0, 0);
+                        animation-delay: -0.2s;
+                    }
+
+                    .scrolla-giu span:nth-child(3) {
+                        transform: translate(15px, 15px);
+                        animation-delay: 0s;
+                    }
+
+                    @keyframes animate {
+                        0% {
+                            top: -5px;
+                            left: -5px;
+                            opacity: 0;
+                        }
+
+                        25% {
+                            top: 0px;
+                            left: 0px;
+                            opacity: 1;
+                        }
+
+                        50%,100% {
+                            top: 5px;
+                            left: 5px;
+                            opacity: 0;
+                        }
+                    }
+
+footer {
+      background-color: #c90c20;
+      color: #fff;
+    }
+
+    /*************************************************** Colore dei link nella lista */
+    ul.list-unstyled li a {
+      color: #fff;
+    }
+
+    /* Stile dell'hr scenografico */
+    .scenic-hr {
+      border: none;
+      height: 1px;
+      background-image: linear-gradient(to right, #000, #c90c20, #fff, #c90c20, #000);
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .bottone_footer {
+      color: white;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .bottone_footer:hover {
+      background-color: white;
+      color: red;
+    }
+
+    .footer-content li a {
+      color: black;
+      text-decoration: none;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 4px;
+    }
+
+    .footer-content li a:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      width: 100%;
+      background-color: white;
+      transform: scaleX(0);
+      transform-origin: bottom left;
+      transition: transform 0.3s;
+    }
+
+    .footer-content li a:hover {
+      color: black;
+    }
+
+    .footer-content li a:hover:before {
+      transform: scaleX(1);
+    }
+    
+
+    /*****************************************INIZIO STORY*/ 
+    
+        
+
+    .sfondo{
+    background-image: url(pallone.jpg);
+    
+    }
+
+    .lista
+    {
+    display: inline !important;
+    font-size: 14px !important;  
+    margin-top: 3%; 
+    }
+    
+    .sub
+    {
+    text-decoration: none;
+    color:#c90c20;
+    
+    }
+
+    .espacio{
+    margin: 0%;
+    padding: 10% 5% 10% 10%;
+    font-size: 150px;
+    font-weight: bolder;
+    font-family: 'Poppins' ;
+    }
+
+    .boton
+    {
+    text-align: center;
+    margin: 2%;
+    
+    }
+
+
+
+    .marimg{
+      margin:1%
+
+    }
+    .martext2{
+
+    margin: 3%;
+    margin-top: 5%;
+
+}
+    .martext{
+
+      margin: 3%;
+      margin-top: 15%;
+
+    }
+    .rosso{
+      color: #c90c20;
+    }
+    .margen{
+      margin-bottom: 10px;
+      margin-top: 10px;
+    }
+    
+</style>
+<body>
+    <!--INIZIO NAV E HERO-->
+    
+
+    <nav>
+        <img src="image/SSC_Bari_logo.png" class="logo">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a href="#"><img src="image/icons8-carrello-64.png" width="30" height="30"></a></li>
+        </ul>
+    </nav>
+
+                 <!--INIZIO STORIA-->
+                     <div class="sfondo">
+
+                         <h1 class="espacio">LA NOSTRA STORIA</h1>
+
+                     </div>
+                     <div class="boton">
+                        <button type="button" class="btn btn-outline-light"><a class="sub" href= "#origen">ORIGINI</a></button>
+                    
+                        <button type="button" class="btn btn-outline-light"><a class= "sub" href= "#matarrese">L'ERA MATARRESE</a></button>
+                        
+                        <button type="button" class="btn btn-outline-light"><a class= "sub" href="#leyenda">LA STORIA DI UNA LEGENDA</a></button>
+                    
+                        <button type="button" class="btn btn-outline-light"><a class= "sub" href="#exito">RITORNO AL SUCCESSO</a></button>
+                      </div>
+                      
+                      <div>
+
+                        <a name="origen"></a>
+                        <div class="container text-center margen">
+
+                          <div class="row">
+
+                            <div class="col martext2"> 
+                              <h2>LE ORIGINI</h2>                                 
+                              <p>La prima squadra di calcio fondata a Bari, nonché nell'intera regione Puglia, fu l'effimero Club Foot-Ball Challenge, sorto nel 1901 per iniziativa di un gruppo 
+                                di studenti. Risale, invece, al 15 gennaio 1908 la costituzione del primo sodalizio stabile della città, il Foot-Ball Club Bari. Come nel caso di molte altre 
+                                squadre di calcio italiane, la fondazione del Bari fu caratterizzata, oltre che dall'apporto di sportivi locali (tra cui qualche reduce dell'esperienza del Club 
+                                Football Challenge), dalla partecipazione di alcuni forestieri: Floriano Ludwig, austriaco trapiantato a Bari che fu il principale fondatore, Gustavo Kuhn, svizzero, 
+                                cui si aggiunse Giovanni Tiberini, marchigiano trapiantato a Bari che capeggiava figli di commercianti baresi.
+                              </p>
+                            </div>
+
+                            <div class="col marimg">
+                                <img src="1.jpg" alt="origini">
+                            </div>
+
+                          </div>
+
+                        </div>
+
+                          <a name="matarrese"></a>
+                          <div class="container text-center margen">
+                            <div class="row">
+                              <div class="col marimg">
+                                <img src="3.jpg" alt="matarrese">
+                              </div>
+                              <div class="col martext">
+                                <h3>
+                                <b>I primi quattro anni e la Coppa Italia Primavera</b>
+                                </h3>
+                                <p>Prese il posto di De Palo l'onorevole Antonio Matarrese;con lui iniziava la lunga era della  famiglia Matarrese al timone dell'A.S. Bari. Antonio, pur investendo
+                                  molto per rafforzare l'organico, non ottenne la promozione in A. Negli anni calcistici 1977-1978 e 1978-1979 i galletti cambiarono in tutto cinque allenatori  ottenendo 
+                                  la salvezza nelle ultime giornate di campionato in entrambe le stagioni.
+                                </p>
+                                
+                              </div>
+                            </div>
+                          </div>
+
+
+
+                      
+                          
+
+                      <a name="leyenda"></a>
+                      <div class="container text-center margen">
+
+                        
+                        <div class="row">
+
+                          <div class="col martext">
+
+                            <h2>LA SCALATA DI BOLCHI</h2>
+                              <p>Per la stagione 1983-84 Franco Janich decisero di affidarsi a Bruno Bolchi  per la guida tecnica della squadra:  quella
+                              stagione si rivelòsoddisfacente. Il trequartista brasiliano Sérgio Luís Donizetti. I tifosi baresi lo considerano
+                              uno dei migliori calciatori della storia biancorossa. I successi furono raggiunti anche in Coppa Italia dove la squadra, dopo 
+                              aver concluso il girone da sei  squadre in testa con la Juventus,  con cui pareggiò 2-2, eliminò agli ottavi di finale
+                              proprio i piemontesi  per  effetto dell'ormai celebre 2-1 conquistato a Torino nella partita d'andata e del 2-2  guadagnato  in casa al ritorno.
+                              </p>
+                          </div>
+
+                          <div class="col marimg">
+                            <img src="2.jpg" alt="scalata">
+                          </div>
+
+                          
+                          
+                        </div>
+
+                          
+                      </div>
+
+
+                      <a name="exito"></a>
+                      <div class="container text-center margen">
+                        
+                        <div class="row">
+                          <div class="col marimg">
+                            <img src="0.jpg" alt="ritorno">
+                          </div>
+                          <div class="col martext">
+
+                            <h2>Ritorno e permanenza in massima serie (1996-2001)</h2>
+                            <p>Nella stagione 1996-1997 la squadra, allenata dall'esperto Eugenio Fascetti e rinforzatasi con Gigi Garzya e Diego De Ascentis riconquista subito la 
+                            Serie A nonostante una flessione iniziata a febbraio e protrattasi fino a Pasqua, con molti giornali a dare per certa l'esclusione dalla
+                            zona promozione e una forte contestazione da parte dei tifosi.</p>
+                          </div>
+                          
+                        </div>
+                      </div>
+                          
+                              
+                  
+</div>
+
+    <!--INIZIO FOOTER-->
+
+    <footer class="container-fluid text-white py-3 footer">
+        <div class="row justify-content-center" style="background-color: #ca0c1f;">
+          <!-- Sezione 1: Logo del Bari Calcio -->
+          <div class="col-md-2 align-self-center">
+            <img src="image/SSC_Bari_logo.png" alt="Logo Bari Calcio" class="d-block mx-auto" width="100">
+          </div>
+      
+          <!-- Sezione 2: Lista di rimandi ad altre pagine -->
+          <div class="col-md-3 text-center">
+            <h4>Le nostre pagine</h4>
+            <ul class="list-unstyled footer-content">
+              <li><a th:href="@{/storia}">Chi siamo</a></li>
+              <li><a th:href="@{shop}">Shop</a></li>
+              <li><a th:href="@{ticket}">Biglietteria</a></li>
+              <li><a th:href="@{contatti}">Contatti</a></li>
+            </ul>
+          </div>
+      
+          <!-- Sezione 3: Newsletter -->
+          <div class="col-md-4 text-center">
+            <h4>Iscriviti alla newsletter:</h4>
+            <br />
+            <input type="email" class="form-control rounded-pill mx-auto" placeholder="Inserisci la tua email" style="width: 190px;">
+            <br />
+            <button class="btn btn-custom btn-hover bottone_footer">Iscriviti</button>
+          </div>
+      
+          <!-- Sezione 4: Rimandi ai social media -->
+          <div class="col-md-3 text-center">
+            <ul class="list-inline footer-content">
+              <li class="list-inline-item"><a href="#"><img src="/footer_immagini/instagram.png" alt="Instagram" width="40" height="40"></a></li>
+              <li class="list-inline-item"><a href="#"><img src="/footer_immagini/facebook.png" alt="Facebook" width="40" height="40"></a></li>
+              <li class="list-inline-item"><a href="#"><img src="/footer_immagini/tiktok.png" alt="TikTok" width="40" height="40"></a></li>
+              <li class="list-inline-item"><a href="#"><img src="/footer_immagini/youtube.png" alt="YouTube" width="40" height="40"></a></li>
+              <li class="list-inline-item"><a href="#"><img src="/footer_immagini/telegram.png" alt="Telegram" width="40" height="40"></a></li>
+              <li class="list-inline-item"><a href="#"><img src="/footer_immagini/wechat.png" alt="WeChat" width="40" height="40"></a></li>
+            </ul>
+          </div>
+        </div>
+      
+        <!-- Sezione 4: Separatore e informazioni di copyright -->
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <hr class="scenic-hr">
+            <p>© 2023 S.S.C. Bari. All Rights Reserved.</p>
+          </div>
+        </div>
+      </footer>
+      
+
+  <!-- Script di Bootstrap -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+</body>
+</html>
+

@@ -37,29 +37,13 @@ public class TicketController {
 		}
 		
 		if(min != null) {
-			for(Prodotto p : abbonamenti) {
-				if(p.getPrezzo()<min) {
-					abbonamenti.remove(p);
-				}
-			}
-			for(Prodotto p : biglietti) {
-				if(p.getPrezzo()<min) {
-					biglietti.remove(p);
-				}
-			}
+			abbonamenti.removeIf(k -> k.getPrezzo() < min);
+			biglietti.removeIf(k -> k.getPrezzo() < min);
 		}
 		
 		if(max != null) {
-			for(Prodotto p : abbonamenti) {
-				if(p.getPrezzo()>max) {
-					abbonamenti.remove(p);
-				}
-			}
-			for(Prodotto p : biglietti) {
-				if(p.getPrezzo()>max) {
-					biglietti.remove(p);
-				}
-			}
+			abbonamenti.removeIf(k -> k.getPrezzo() > max);
+			biglietti.removeIf(k -> k.getPrezzo() > max);
 		}
 
 		

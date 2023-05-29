@@ -1,17 +1,607 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="ISO-8859-1">
-		<title>Shop</title>
-	</head>
-	<body>
-		<table>
-			<tr th:each="prodotto : ${catalogo}">
-				<td><img th:src="${prodotto.immagine}"></td>
-				<td th:text="${prodotto.nome}"></td>
-				<td><a th:href="@{dettaglio(id=${prodotto.id})}">Dettaglio</a></td>
-			</tr>
-		</table>
-		<a th:href="@{/}">Torna alla Home Page</a>
-	</body>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<title>Shop Page</title>
+<style>
+* {
+	font-family: 'Poppins', sans-serif;
+}
+
+body {
+	line-height: 2rem;
+	background: #eee;
+}
+
+/* NAVBAR */
+nav {
+	padding: 2px 3%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #c90c20;
+}
+
+nav .logo {
+	width: 50px;
+}
+
+nav ul li {
+	list-style: none;
+	display: inline-block;
+	margin-left: 40px;
+}
+
+nav ul li a {
+	text-decoration: none;
+	color: #ffffff;
+	font-size: 17px;
+}
+
+li a::after {
+	content: '';
+	width: 0;
+	height: 3px;
+	background-color: #ed1c24;
+	margin: auto;
+	display: block;
+}
+
+li a:hover::after {
+	width: 100%;
+	transition: width 0.3s linear;
+}
+
+/* TITOLO */
+#titolo {
+	display: flex;
+	justify-content: center;
+	color: #ffffff;
+	padding: 0px !important;
+}
+
+.container-fluid {
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+/* NAV RIMANDO ALLA HOME E ALLO SHOP */
+.rimando {
+	margin-left: 20px;
+	margin-top: 10px;
+}
+
+.rimando a {
+	text-decoration: none;
+	color: #c90c20;
+}
+
+.rimando a:hover {
+	color: black;
+}
+
+.carrello a {
+	color: #ffffff;
+}
+
+/* Colore dei link nella lista */
+ul.list-unstyled li a {
+	color: #fff;
+}
+
+.row-distanza {
+	margin-top: 2rem;
+}
+
+.card-body-sub {
+	display: flex;
+	justify-content: space-between;
+}
+
+.dettaglio-btn {
+	background: #ffffff;
+	padding: 3px 6px;
+	color: #ed1c24;
+	font-weight: bolder;
+	text-transform: uppercase;
+	font-size: 18px;
+	border-radius: 5px;
+	box-shadow: 6px 6px 20px -4px rgba(0, 0, 0, 0.75);
+	text-decoration: none;
+	transition: 0.4s;
+}
+
+.dettaglio-btn:hover {
+	background: #ed1c24;
+	color: #ffffff;
+}
+
+.boh {
+	display: flex;
+	align-items: center;
+	margin-right: 2rem;
+}
+
+.user-wrapper {
+	display: flex;
+	align-items: center;
+	margin-right: 5rem;
+}
+
+.user-wrapper h4 {
+	color: #000000;
+	font-size: 1.1rem;
+	margin-bottom: -5px;
+}
+
+.user-wrapper strong {
+	color: #ffffff;
+}
+
+.carrello svg {
+	margin-right: 3rem;
+}
+
+.carrello a {
+	color: #ffffff;
+}
+
+#side-nav {
+	background: #c90c20;
+	min-width: 300px;
+	max-width: 300px;
+}
+
+.header-box {
+	display: flex;
+	justify-content: center;
+}
+
+.content {
+	min-height: 100vh;
+	width: 100%;
+}
+
+hr {
+	color: #ffffff !important;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+
+.sidebar li.active {
+	background: #eee;
+	border-radius: 8px;
+}
+
+.sidebar li.active a, .sidebar li.active a:hover {
+	color: #000000;
+}
+
+.sidebar li a {
+	color: #eee;
+}
+
+.content {
+	display: flex;
+	justify-content: center !important;
+}
+
+.sidebari-menu {
+	display: flex;
+	justify-content: center;
+}
+
+.sidebari-menu a {
+	display: block;
+	color: #ffffff;
+	font-size: 1.1rem;
+}
+
+.sidebari-menu {
+	margin-top: 1rem;
+	display: flex;
+	justify-content: center;
+}
+
+.sidebari-menu button {
+	padding: 0 10px 0 10px;
+	display: block;
+	color: #ffffff;
+	font-size: 1.1rem;
+	line-height: 4rem;
+}
+
+.sidebari-menu button:hover {
+	color: #000000 !important;
+}
+
+.sidebari-menu button.active {
+	background: #ffffff !important;
+	color: #000000 !important;
+}
+
+.sidebari-menu a span:first-child {
+	font-size: 1.5rem;
+	padding-right: 1rem;
+}
+
+.filtri {
+	color: #ffffff;
+	margin: 0 2rem 0 2rem;
+}
+
+#customRange3 {
+	color: #ffffff !important;
+}
+
+.min-maxx {
+	display: flex;
+	justify-content: space-between;
+}
+
+.bg-body-tertiary {
+	background-color: #c90c1fda !important;
+}
+
+.bg-body-tertiary h1 {
+	margin-left: 42rem !important;
+	/*no responsive*/
+}
+
+.navbar-toggler {
+	margin-right: 10rem;
+}
+
+.offcanvas {
+	background-color: #c90c20;
+	color: #ffffff;
+}
+
+.navbar-text {
+	color: #ffffff;
+}
+
+.filtro {
+	display: flex;
+	justify-content: center;
+	margin-top: 5rem;
+}
+
+.filtri-btn {
+	background: #ffffff;
+	padding: 3px 6px;
+	color: #ed1c24;
+	font-weight: bolder;
+	text-transform: uppercase;
+	font-size: 18px;
+	border-radius: 5px;
+	box-shadow: 6px 6px 20px -4px rgba(0, 0, 0, 0.75);
+	text-decoration: none;
+	transition: 0.4s;
+}
+
+.filtri-btn:hover {
+	background: #000000;
+	color: #ffffff;
+}
+</style>
+</head>
+<body>
+
+	<!--INIZIO HEADER/NAVBAR-->
+	<nav>
+		<img src="image/SSC_Bari_logo.png" class="logo">
+
+		<div class="user-wrapper">
+			<div class="boh">
+				<div class="carrello">
+					<!--link carrello?-->
+					<a th:if="${admin == true}" th:href="@{adminReserved}"><svg
+							xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+							fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                            <path
+								d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                        </svg></a> <a th:if="${admin == false}"
+						th:href="@{utenteReserved}"><svg
+							xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+							fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                            <path
+								d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                        </svg></a>
+				</div>
+				<div class="dropdown">
+					<a href="#"
+						class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
+						data-bs-toggle="dropdown" aria-expanded="false"
+						style="color: white;"> <!-- <strong th:if="${admin}" th:text="${admin.username}"></strong>
+                        <strong th:if="${utente}" th:text="${utente.username}"></strong>
+                        <strong th:if="${admin == false && utente == false}">Accedi</strong> -->
+						<strong>Accedi</strong>
+					</a>
+					<ul class="dropdown-menu text-small shadow">
+						<!--sistemare spazio li>dropdown-->
+						<li th:if="${admin}"><a class="dropdown-item"
+							th:href="@{adminReserved}">Area personale</a></li>
+						<!--link area riservata utente-->
+						<li th:if="${!admin}"><a class="dropdown-item"
+							th:href="@{utenteReserved}">Area personale</a></li>
+						<!--link area riservata utente-->
+					</ul>
+				</div>
+			</div>
+	</nav>
+
+	<nav class="navbar bg-body-tertiary">
+		<div class="container-fluid">
+			<h1 id="titolo" style="margin: 0;">S.C.C. BARI OFFICIAL SHOP</h1>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+				aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<!--INIZIO HEADER/NAVBAR + FILTRO ICON-->
+			<!--INIZIO CONTENUTO SIDEBAR A SCOMPARSA-->
+			<div class="offcanvas offcanvas-start" tabindex="-1"
+				id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+				<div class="offcanvas-header">
+					<h5 class="offcanvas-title" id="offcanvasNavbarLabel">Filtri</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+						aria-label="Close"></button>
+				</div>
+				<div class="offcanvas-body">
+					<form action="shopController">
+						<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+							<li class="nav-item mt-3">
+
+								<div class="row">
+									<div class="col-6">
+										<label for="min-price" class="form-label">Prezzo
+											minimo:</label> <input type="range" class="form-range" id="min-price"
+											name="min-price" min="0" max="100" step="1" value="0">
+									</div>
+									<div class="col-6">
+										<label for="max-price" class="form-label">Prezzo
+											massimo:</label> <input type="range" class="form-range "
+											id="max-price" name="max-price" min="0" max="100" step="1"
+											value="100">
+									</div>
+								</div>
+								<div class="row mt-4">
+									<div class="col-6">
+
+										<input type="text" class="form-control"
+											id="selected-min-price" name="min">
+									</div>
+									<div class="col-6">
+
+										<input type="text" class="form-control"
+											id="selected-max-price" name="max">
+									</div>
+								</div>
+
+							</li>
+							<li class="nav-item">
+								<div class="navbar-text">Categoria</div> <select
+								name="categoria" class="form-select"
+								aria-label="Default select example">
+									<option hidden="true"></option>
+									<option value="magliette">Magliette</option>
+									<option value="felpe">Felpe</option>
+									<option value="pantaloni">Pantaloni</option>
+									<option value="accessori">Accessori</option>
+							</select>
+							</li>
+						</ul>
+						<div class="filtro">
+							<input type="submit" class="filtri-btn" value="Applica filtri">
+						</div>
+					</form>
+				</div>
+			</div>
+			<!--FINE CONTENUTO SIDEBAR A SCOMPARSA-->
+		</div>
+	</nav>
+
+	<!--INIZIO SIDEBAR FISSA-->
+	<div class="main-container d-flex">
+		<div class="sidebar" id="side-nav">
+			<div class="header-box px-2 pt-3 pb-4">
+				<h1 class="fs-4">
+					<span class="text-white">SideBARI</span>
+				</h1>
+				<button class="btn d-md-none close-btn px-1 py-0 text-white">
+					<i class="fal fa-stream"></i>
+				</button>
+			</div>
+
+			<!--INIZIO TABS SIDEBAR FISSA-->
+			<div class="sidebari-menu">
+
+				<div class="d-flex align-items-start">
+					<div class="nav flex-column nav-pills me-3" id="v-pills-tab"
+						role="tablist" aria-orientation="vertical">
+						<button class="nav-link active" id="v-pills-home-tab"
+							data-bs-toggle="pill" data-bs-target="#v-pills-home"
+							type="button" role="tab" aria-controls="v-pills-home"
+							aria-selected="true">Nuovi arrivi</button>
+						<button class="nav-link" id="v-pills-profile-tab"
+							data-bs-toggle="pill" data-bs-target="#v-pills-profile"
+							type="button" role="tab" aria-controls="v-pills-profile"
+							aria-selected="false">Tutti i prodotti</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<!--INIZIO CONTENITORE CARDS-->
+		<div class="content">
+
+			<div class="col-sm-8 col-md-10">
+
+				<!-- RIMANDO ALLA HOME-->
+				<div class="row" style="margin-right: 0px; margin-left: 0;">
+					<div class="col-md-12">
+						<ol class="breadcrumb rimando">
+							<li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+							<li class="breadcrumb-item active" aria-current="page">Shop</li>
+						</ol>
+					</div>
+				</div>
+
+				<div class="tab-content" id="v-pills-tabContent">
+					<!--INIZIO COLLEGAMENTI TABS-->
+					<div class="tab-pane fade show active" id="v-pills-home"
+						role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
+
+						<div class="container overflow-hidden cards-container">
+							<div class="row gy-5">
+								<div class="col-4" th:each="p : ${catalogo}">
+									<div class="p-3">
+
+										<div class="card" style="width: 20rem; height: 27rem;">
+											<img th:src="@{${p.immagine}}"
+												class="card-img-top" alt="...">
+											<div class="card-body">
+												<h4 th:text="${p.nome}"></h4>
+												<div class="card-body-sub">
+													<h4 th:text="${p.prezzo}"></h4>
+													<a th:href="@{dettaglio(id=${p.id})}" class="dettaglio-btn">Mostra</a>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+
+					<div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
+						aria-labelledby="v-pills-profile-tab" tabindex="0">
+						<!--SECONDO COLLEGAMENTO TABS-->
+
+						<div class="container overflow-hidden">
+							<div class="row gy-5">
+								<div class="col-4">
+									<div class="p-3">
+
+										<div class="card" style="width: 20rem; height: 27rem;">
+											<img src="/shop/ssc-bari-zaino-kappa.jpg"
+												class="card-img-top" alt="...">
+											<div class="card-body">
+												<h4>Prodotto</h4>
+												<div class="card-body-sub">
+													<h4>14,99€</h4>
+													<a href="#" class="dettaglio-btn">Mostra</a>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+								<div class="col-4">
+									<div class="p-3">
+
+										<div class="card" style="width: 20rem; height: 27rem;">
+											<img src="/shop/ssc-bari-felpa-tecnica-kappa.jpg"
+												class="card-img-top" alt="...">
+											<div class="card-body">
+												<h4>Prodotto</h4>
+												<div class="card-body-sub">
+													<h4>14,99€</h4>
+													<a href="#" class="dettaglio-btn">Mostra</a>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+								<div class="col-4">
+									<div class="p-3">
+
+										<div class="card" style="width: 20rem; height: 27rem;">
+											<img src="/shop/ssc-bari-zaino-kappa.jpg"
+												class="card-img-top" alt="...">
+											<div class="card-body">
+												<h4>Prodotto</h4>
+												<div class="card-body-sub">
+													<h4>14,99€</h4>
+													<a href="#" class="dettaglio-btn">Mostra</a>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+								<div class="col-4">
+									<div class="p-3">
+
+										<div class="card" style="width: 20rem; height: 27rem;">
+											<img src="/shop/ssc-bari-t-shirt-kappa.jpg"
+												class="card-img-top" alt="...">
+											<div class="card-body">
+												<h4>Prodotto</h4>
+												<div class="card-body-sub">
+													<h4>14,99€</h4>
+													<a href="#" class="dettaglio-btn">Mostra</a>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+								<div class="col-4">
+									<div class="p-3">
+
+										<div class="card" style="width: 20rem; height: 27rem;">
+											<img src="/shop/ssc-bari-t-shirt-kappa.jpg"
+												class="card-img-top" alt="...">
+											<div class="card-body">
+												<h4>Prodotto</h4>
+												<div class="card-body-sub">
+													<h4>14,99€</h4>
+													<a href="#" class="dettaglio-btn">Mostra</a>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+								<div class="col-4">
+									<div class="p-3">
+
+										<div class="card" style="width: 20rem; height: 27rem;">
+											<img src="/shop/ssc-bari-cappello-visiera.jpg"
+												class="card-img-top" alt="...">
+											<div class="card-body">
+												<h4>Prodotto</h4>
+												<div class="card-body-sub">
+													<h4>14,99€</h4>
+													<a href="#" class="dettaglio-btn">Mostra</a>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
