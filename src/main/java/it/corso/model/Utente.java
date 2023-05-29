@@ -1,10 +1,16 @@
 package it.corso.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Pattern;
 
@@ -64,6 +70,17 @@ public class Utente {
 	@Column(name="password")
 	private String password;
 	
+	@OneToMany(mappedBy = "utente", cascade = CascadeType.REFRESH, fetch = FetchType.EAGER, orphanRemoval = true)
+	private List<Ordine> ordini = new ArrayList<>();
+	
+	
+	public List<Ordine> getOrdini() {
+		return ordini;
+	}
+
+	public void setOrdini(List<Ordine> ordini) {
+		this.ordini = ordini;
+	}
 
 	public int getId() {
 		return id;

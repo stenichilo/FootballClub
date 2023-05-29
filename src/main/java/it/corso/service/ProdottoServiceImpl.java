@@ -76,5 +76,5 @@ public class ProdottoServiceImpl implements ProdottoService {
 
 		return (List<Prodotto>) prodottoDao.findAll();
 	}
-
+	
 }

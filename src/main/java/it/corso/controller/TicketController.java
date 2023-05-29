@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.corso.model.Prodotto;
 import it.corso.service.ProdottoService;
@@ -20,7 +21,9 @@ public class TicketController {
 	private ProdottoService prodottoService;
 
 	@GetMapping
-	public String getPage(Model model) {
+	public String getPage(Model model,
+			@RequestParam(name="min", required = false) Double min,
+			@RequestParam(name="max", required = false) Double max) {
 
 		List<Prodotto> biglietti = new ArrayList<>();
 		List<Prodotto> abbonamenti = new ArrayList<>();
@@ -32,6 +35,34 @@ public class TicketController {
 				abbonamenti.add(p);
 			}
 		}
+		
+		if(min != null) {
+			for(Prodotto p : abbonamenti) {
+				if(p.getPrezzo()<min) {
+					abbonamenti.remove(p);
+				}
+			}
+			for(Prodotto p : biglietti) {
+				if(p.getPrezzo()<min) {
+					biglietti.remove(p);
+				}
+			}
+		}
+		
+		if(max != null) {
+			for(Prodotto p : abbonamenti) {
+				if(p.getPrezzo()>max) {
+					abbonamenti.remove(p);
+				}
+			}
+			for(Prodotto p : biglietti) {
+				if(p.getPrezzo()>max) {
+					biglietti.remove(p);
+				}
+			}
+		}
+
+		
 		model.addAttribute("abbonamenti", abbonamenti);
 		model.addAttribute("biglietti", biglietti);
 

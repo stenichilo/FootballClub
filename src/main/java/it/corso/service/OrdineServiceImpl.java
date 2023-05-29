@@ -58,9 +58,4 @@ public class OrdineServiceImpl implements OrdineService {
 
 	}
 
-	@Override
-	public List<Ordine> getOrdineByUtente(Utente utente) {
-		return ordineDao.findByUtente(utente);
-	}
-
 }

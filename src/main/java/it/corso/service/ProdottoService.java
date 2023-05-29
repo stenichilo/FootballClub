@@ -13,5 +13,4 @@ public interface ProdottoService {
 	void cancellaProdotto(Prodotto prodotto);
 	void aggiungiACarrello(HttpSession session, int id);
 	List<Prodotto> getProdottiAll();
-	
 }

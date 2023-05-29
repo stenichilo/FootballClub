@@ -12,7 +12,6 @@ public interface OrdineService {
 	Ordine getOrdineById(int id);
 	List<Ordine> getOrdini();
 	void eliminaOrdine(Ordine ordine);
-	List<Ordine> getOrdineByUtente(Utente utente);
 	
 	
 }

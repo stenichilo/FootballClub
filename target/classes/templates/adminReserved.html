@@ -29,9 +29,7 @@
 			<div class="d-flex align-items-start">
 				<div class="nav flex-column nav-pills me-3" id="v-pills-tab"
 					role="tablist" aria-orientation="vertical">
-					<button class="nav-link" id="v-pills-home-tab"
-						data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button"
-						role="tab" aria-controls="v-pills-home" aria-selected="true">Profilo</button>
+
 					<button class="nav-link" id="v-pills-profile-tab"
 						data-bs-toggle="pill" data-bs-target="#v-pills-profile"
 						type="button" role="tab" aria-controls="v-pills-profile"
@@ -72,9 +70,7 @@
 			<div class="dropdown">
 				<a href="#"
 					class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
-					data-bs-toggle="dropdown" aria-expanded="false"> <img
-					src="images/gpero.jpg" alt="" width="40" height="40"
-					class="rounded-circle me-2"> <strong
+					data-bs-toggle="dropdown" aria-expanded="false"> <strong
 					th:text="${admin.username}"></strong>
 				</a>
 				<ul class="dropdown-menu text-small shadow">
@@ -92,52 +88,9 @@
 	<main>
 
 		<div class="tab-content" id="v-pills-tabContent">
-			<div class="tab-pane fade show active" id="v-pills-home"
-				role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="1">
-				<!--INIZIO TAB 1-->
-				<div class="container container-shop">
-					<div class="col-md-6">
-						<div class="mb-3">
-							<label for="cognome" class="form-label">Nome</label> <input
-								type="text" class="form-control" id="fullName" value="Gaspare">
-							<!--disabled dopo value?-->
-						</div>
-						<div class="mb-3">
-							<label for="cognome" class="form-label">Cognome</label> <input
-								type="text" class="form-control" id="fullName" value="Pero">
-							<!--disabled dopo value?-->
-						</div>
-						<div class="mb-3">
-							<label for="email" class="form-label">Email</label> <input
-								type="email" class="form-control" id="email"
-								value="g.pero@accademiadellevante.org">
-							<!--disabled dopo value?-->
-						</div>
-						<div class="mb-3">
-							<label for="password" class="form-label">Password</label> <input
-								type="password" class="form-control" id="fullName"
-								value="**********">
-							<!--disabled dopo value?-->
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="mb-3">
-							<label for="address" class="form-label">Indirizzo</label>
-							<textarea class="form-control" id="address" rows="4">Accademia del Levante</textarea>
-							<!--disabled dopo rows?-->
-						</div>
-						<div class="mb-3">
-							<label for="phone" class="form-label">Telefono/cellulare</label>
-							<input type="text" class="form-control" id="phone"
-								value="123-456-7890">
-							<!--disabled dopo value?-->
-						</div>
-					</div>
-				</div>
-				<!--FINE TAB 1-->
-			</div>
-			<div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
-				aria-labelledby="v-pills-profile-tab" tabindex="2">
+
+			<div class="tab-pane fade show active" id="v-pills-profile"
+				role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="2">
 				<!--INIZIO TAB 2-->
 				<div class="container container-shop">
 					<div class="col-md-6">
@@ -280,179 +233,59 @@
 						<div class="accordion-item" th:each="utente : ${utenti}">
 							<h2 class="accordion-header">
 								<button class="accordion-button collapsed" type="button"
-									data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
-									aria-expanded="false" aria-controls="flush-collapseOne" th:text="'ID utente: ' + ${utente.id} + ' - ' + ${utente.nome} + ' ' + ${utente.cognome}"></button>
+									data-bs-toggle="collapse"
+									th:data-bs-target="'#flush-collapseOne'+${utente.id}"
+									aria-expanded="false" aria-controls="flush-collapseOne"
+									th:text="'ID utente: ' + ${utente.id} + ' - ' + ${utente.nome} + ' ' + ${utente.cognome}"></button>
 							</h2>
-							<div id="flush-collapseOne" class="accordion-collapse collapse"
+							<div th:id="'flush-collapseOne' + ${utente.id}"
+								class="accordion-collapse collapse"
 								data-bs-parent="#accordionFlushExample">
 								<div class="accordion-body">
 									<!--INIZIO ACCORDION 1 IN ACCORDION 1-->
 									<div class="accordion" id="accordionExample">
-										<div class="accordion-item" th:each="ord : ${utente.ordini}">
+										<div class="accordion-item"
+											th:each="ordine : ${utente.ordini}">
 											<h2 class="accordion-header">
 												<button class="accordion-button" type="button"
-													data-bs-toggle="collapse" data-bs-target="#collapseOne"
-													aria-expanded="true" aria-controls="collapseOne" th:text="'ID ordine: ' + ${ord.id}"></button>
+													data-bs-toggle="collapse"
+													th:data-bs-target="'#collapseOne' + ${ordine.id}"
+													aria-expanded="true" aria-controls="collapseOne"
+													th:text="'ID ordine: ' + ${ordine.id} + ' - Importo ordine: ' + ${ordine.importo} + ' euro'"></button>
 											</h2>
-											<div id="collapseOne"
-												class="accordion-collapse collapse show"
+											<div th:id="'collapseOne' + ${ordine.id}"
+												class="accordion-collapse collapse"
 												data-bs-parent="#accordionExample">
 												<div class="accordion-body">
 
 													<div class="row">
-														<div class="col-sm-6" th:each="prod : ${ord.prodotti}">
+														<div class="col-sm-6"
+															th:each="prodotto : ${ordine.prodotti}">
 															<!--CARD 1 ACCORDION 2 DI ACCORDION 1-->
 															<div class="card mb-3" style="max-width: 540px;">
 																<div class="row g-0">
 																	<div class="col-md-4">
-																		<img th:src="@{${prod.immagine}}"
-																			class="img-fluid rounded-start" alt="Immagine del prodotto">
+																		<img th:src="@{${prodotto.immagine}}"
+																			class="img-fluid rounded-start"
+																			alt="Immagine del prodotto">
 																	</div>
 																	<div class="col-md-8">
 																		<div class="card-body">
-																			<h5 class="card-title" th:text="${prod.nome}"></h5>
-																			<p class="card-text" th:text="${prod.prezzo}"></p>
+																			<h5 class="card-title" th:text="${prodotto.nome}"></h5>
+																			<p class="card-text" th:text="${prodotto.prezzo}"></p>
 																		</div>
 																	</div>
 																</div>
 															</div>
 														</div>
-														
+
 													</div>
 
 												</div>
 											</div>
 										</div>
-										<div class="accordion-item">
-											<h2 class="accordion-header">
-												<button class="accordion-button collapsed" type="button"
-													data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-													aria-expanded="false" aria-controls="collapseTwo">
-													Ordine #2</button>
-											</h2>
-											<div id="collapseTwo" class="accordion-collapse collapse"
-												data-bs-parent="#accordionExample">
-												<div class="accordion-body">
 
-													<div class="row">
-														<div class="col-sm-6">
-															<!--CARD 1 ACCORDION 2 DI ACCORDION 1-->
-															<div class="card mb-3" style="max-width: 540px;">
-																<div class="row g-0">
-																	<div class="col-md-4">
-																		<img src="/shop/ssc-bari-cappello-visiera.jpg"
-																			class="img-fluid rounded-start" alt="...">
-																	</div>
-																	<div class="col-md-8">
-																		<div class="card-body">
-																			<h5 class="card-title">Card title</h5>
-																			<p class="card-text">This is a wider card with
-																				supporting text below as a natural lead-in to
-																				additional content. This content is a little bit
-																				longer.</p>
-																			<p class="card-text">
-																				<small class="text-body-secondary">Last
-																					updated 3 mins ago</small>
-																			</p>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-														<div class="col-sm-6">
-															<!--CARD 2 ACCORDION 2 DI ACCORDION 1-->
-															<div class="card mb-3" style="max-width: 540px;">
-																<div class="row g-0">
-																	<div class="col-md-4">
-																		<img src="/shop/ssc-bari-t-shirt-kappa.jpg"
-																			class="img-fluid rounded-start" alt="...">
-																	</div>
-																	<div class="col-md-8">
-																		<div class="card-body">
-																			<h5 class="card-title">Card title</h5>
-																			<p class="card-text">This is a wider card with
-																				supporting text below as a natural lead-in to
-																				additional content. This content is a little bit
-																				longer.</p>
-																			<p class="card-text">
-																				<small class="text-body-secondary">Last
-																					updated 3 mins ago</small>
-																			</p>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
 
-												</div>
-											</div>
-										</div>
-										<div class="accordion-item">
-											<h2 class="accordion-header">
-												<button class="accordion-button collapsed" type="button"
-													data-bs-toggle="collapse" data-bs-target="#collapseThree"
-													aria-expanded="false" aria-controls="collapseThree">
-													Ordine #3</button>
-											</h2>
-											<div id="collapseThree" class="accordion-collapse collapse"
-												data-bs-parent="#accordionExample">
-												<div class="accordion-body">
-
-													<div class="row">
-														<div class="col-sm-6">
-															<!--CARD 1 ACCORDION 3 DI ACCORDION 1-->
-															<div class="card mb-3" style="max-width: 540px;">
-																<div class="row g-0">
-																	<div class="col-md-4">
-																		<img src="/shop/ssc-bari-cappello-visiera.jpg"
-																			class="img-fluid rounded-start" alt="...">
-																	</div>
-																	<div class="col-md-8">
-																		<div class="card-body">
-																			<h5 class="card-title">Card title</h5>
-																			<p class="card-text">This is a wider card with
-																				supporting text below as a natural lead-in to
-																				additional content. This content is a little bit
-																				longer.</p>
-																			<p class="card-text">
-																				<small class="text-body-secondary">Last
-																					updated 3 mins ago</small>
-																			</p>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-														<div class="col-sm-6">
-															<!--CARD 2 ACCORDION 3 DI ACCORDION 1-->
-															<div class="card mb-3" style="max-width: 540px;">
-																<div class="row g-0">
-																	<div class="col-md-4">
-																		<img src="/shop/ssc-bari-t-shirt-kappa.jpg"
-																			class="img-fluid rounded-start" alt="...">
-																	</div>
-																	<div class="col-md-8">
-																		<div class="card-body">
-																			<h5 class="card-title">Card title</h5>
-																			<p class="card-text">This is a wider card with
-																				supporting text below as a natural lead-in to
-																				additional content. This content is a little bit
-																				longer.</p>
-																			<p class="card-text">
-																				<small class="text-body-secondary">Last
-																					updated 3 mins ago</small>
-																			</p>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-
-												</div>
-											</div>
-										</div>
 									</div>
 									<!--FINE ACCORDION 1 IN ACCORDION 1-->
 								</div>
@@ -460,95 +293,12 @@
 						</div>
 						<!--FINE ACCORDION 1-->
 
-						<!--INIZIO ACCORDION 2-->
-						<div class="accordion-item">
-							<h2 class="accordion-header">
-								<button class="accordion-button collapsed" type="button"
-									data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
-									aria-expanded="false" aria-controls="flush-collapseOne">
-									Utente #2</button>
-							</h2>
-							<div id="flush-collapseOne" class="accordion-collapse collapse"
-								data-bs-parent="#accordionFlushExample">
-								<div class="accordion-body">
-									Placeholder content for this accordion, which is intended to
-									demonstrate the
-									<code>.accordion-flush</code>
-									class. This is the first item's accordion body.
-								</div>
-							</div>
-						</div>
-						<!--FINE ACCORDION 2-->
-
-						<!--INIZIO ACCORDION 3-->
-						<div class="accordion-item">
-							<h2 class="accordion-header">
-								<button class="accordion-button collapsed" type="button"
-									data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
-									aria-expanded="false" aria-controls="flush-collapseOne">
-									Utente #3</button>
-							</h2>
-							<div id="flush-collapseOne" class="accordion-collapse collapse"
-								data-bs-parent="#accordionFlushExample">
-								<div class="accordion-body">
-									Placeholder content for this accordion, which is intended to
-									demonstrate the
-									<code>.accordion-flush</code>
-									class. This is the first item's accordion body.
-								</div>
-							</div>
-						</div>
-						<!--FINE ACCORDION 3-->
-
-						<!--INIZIO ACCORDION 4-->
-						<div class="accordion-item">
-							<h2 class="accordion-header">
-								<button class="accordion-button collapsed" type="button"
-									data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
-									aria-expanded="false" aria-controls="flush-collapseTwo">
-									Utente #4</button>
-							</h2>
-							<div id="flush-collapseTwo" class="accordion-collapse collapse"
-								data-bs-parent="#accordionFlushExample">
-								<div class="accordion-body">
-									Placeholder content for this accordion, which is intended to
-									demonstrate the
-									<code>.accordion-flush</code>
-									class. This is the second item's accordion body. Let's imagine
-									this being filled with some actual content.
-								</div>
-							</div>
-						</div>
-						<!--FINE ACCORDION 4-->
-
-						<!--INIZIO ACCORDION 5-->
-						<div class="accordion-item">
-							<h2 class="accordion-header">
-								<button class="accordion-button collapsed" type="button"
-									data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
-									aria-expanded="false" aria-controls="flush-collapseThree">Utente
-									#5</button>
-							</h2>
-							<div id="flush-collapseThree" class="accordion-collapse collapse"
-								data-bs-parent="#accordionFlushExample">
-								<div class="accordion-body">
-									Placeholder content for this accordion, which is intended to
-									demonstrate the
-									<code>.accordion-flush</code>
-									class. This is the third item's accordion body. Nothing more
-									exciting happening here in terms of content, but just filling
-									up the space to make it look, at least at first glance, a bit
-									more representative of how this would look in a real-world
-									application.
-								</div>
-							</div>
-						</div>
-						<!--FINE ACCORDION 5-->
 					</div>
 				</div>
 			</div>
-			<!--FINE TAB 6 CLIENTI-->
 		</div>
+		<!--FINE TAB 6 CLIENTI-->
+
 	</main>
 
 	<script

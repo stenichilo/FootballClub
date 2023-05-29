@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.corso.model.Prodotto;
-import it.corso.model.Utente;
 import it.corso.service.OrdineService;
-import it.corso.service.ProdottoService;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -23,8 +21,6 @@ public class UtenteReservedController {
 	@Autowired
 	private OrdineService ordineService;
 	
-	@Autowired
-	private ProdottoService prodottoService;
 	
 	
 	@GetMapping
@@ -39,7 +35,6 @@ public class UtenteReservedController {
 		}
 		
 		model.addAttribute("utente", session.getAttribute("utente"));
-		model.addAttribute("ordini", ordineService.getOrdineByUtente((Utente) session.getAttribute("utente")));
 		model.addAttribute("carrello", session.getAttribute("carrello"));
 		model.addAttribute("oa", oa != null);
 	return "utenteReserved";
@@ -65,9 +60,13 @@ public class UtenteReservedController {
 	@GetMapping("/eliminaDaCarrello")
 	public String eliminaDaCarrello(@RequestParam("id") int id,
 			HttpSession session) {
-		Prodotto prodotto = prodottoService.getProdottoById(id);
 		List<Prodotto> carrello = (List<Prodotto>) session.getAttribute("carrello");
-		carrello.remove(prodotto);
+		for(Prodotto p:carrello) {
+			if(p.getId()==id) {
+				carrello.remove(p);
+				break;
+			}
+		}
 		session.setAttribute("carrello", carrello);
 		return "redirect:/utenteReserved";
 	}

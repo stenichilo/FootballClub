@@ -56,6 +56,7 @@ public class AdminReservedController {
 		news = idNews == null ? new News() : newsService.getNewsById(idNews);
 		model.addAttribute("prodotto", prodotto);
 		model.addAttribute("news", news);
+		
 		return "adminReserved";
 	}
 	
