@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +8,10 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
 	rel="stylesheet">
-<title>Shop Page</title>
+<title>Document</title>
+<script type="text/javascript"
+	src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=3A7qirMe_W3kHfkBucyOhFOIil_EVT7tIb7JTfpmlVpruQkVa5WEfK2wOPy8zCBaPvkpVV_ekKeCu-focZgTgNM3I7Q8b2QrhCZgX15a6hLHEIc1hMucx63FCBvp5fREc3o0eLVz52wTIDlnwwmh9g"
+	charset="UTF-8"></script>
 <style>
 * {
 	font-family: 'Poppins', sans-serif;
@@ -15,7 +19,7 @@
 
 body {
 	line-height: 2rem;
-	background: #eee;
+	;
 }
 
 /* NAVBAR */
@@ -61,6 +65,7 @@ li a:hover::after {
 #titolo {
 	display: flex;
 	justify-content: center;
+	background-color: #c90c1fda;
 	color: #ffffff;
 	padding: 0px !important;
 }
@@ -85,13 +90,38 @@ li a:hover::after {
 	color: black;
 }
 
-.carrello a {
-	color: #ffffff;
+/* BOTTONE AGGIUNGI AL CARELLO */
+.st-button, .nd-button {
+	background: #c90c20;
+	padding: 10px 15px;
+	color: white;
+	font-weight: bolder;
+	text-transform: uppercase;
+	font-size: 18px;
+	border-radius: 5px;
+	box-shadow: 6px 6px 20px -4px rgba(0, 0, 0, 0.75);
+	text-decoration: none;
+	transition: 0.4s;
 }
 
-/* Colore dei link nella lista */
-ul.list-unstyled li a {
-	color: #fff;
+.st-button:hover, .nd-button:hover {
+	background: white;
+	color: #c90c20;
+}
+
+/* NAV SOTTO FOTO */
+.nav-sotto a {
+	color: #c90c20;
+	margin-left: 100px;
+	padding: 0;
+}
+
+.nav-sotto a:hover {
+	color: black;
+}
+
+.carrello a {
+	color: #ffffff;
 }
 
 .row-distanza {
@@ -151,6 +181,10 @@ ul.list-unstyled li a {
 	color: #ffffff;
 }
 
+body {
+	background: #eee;
+}
+
 #side-nav {
 	background: #c90c20;
 	min-width: 300px;
@@ -165,12 +199,6 @@ ul.list-unstyled li a {
 .content {
 	min-height: 100vh;
 	width: 100%;
-}
-
-hr {
-	color: #ffffff !important;
-	margin-top: 2rem;
-	margin-bottom: 2rem;
 }
 
 .sidebar li.active {
@@ -191,45 +219,6 @@ hr {
 	justify-content: center !important;
 }
 
-.sidebari-menu {
-	display: flex;
-	justify-content: center;
-}
-
-.sidebari-menu a {
-	display: block;
-	color: #ffffff;
-	font-size: 1.1rem;
-}
-
-.sidebari-menu {
-	margin-top: 1rem;
-	display: flex;
-	justify-content: center;
-}
-
-.sidebari-menu button {
-	padding: 0 10px 0 10px;
-	display: block;
-	color: #ffffff;
-	font-size: 1.1rem;
-	line-height: 4rem;
-}
-
-.sidebari-menu button:hover {
-	color: #000000 !important;
-}
-
-.sidebari-menu button.active {
-	background: #ffffff !important;
-	color: #000000 !important;
-}
-
-.sidebari-menu a span:first-child {
-	font-size: 1.5rem;
-	padding-right: 1rem;
-}
-
 .filtri {
 	color: #ffffff;
 	margin: 0 2rem 0 2rem;
@@ -244,25 +233,8 @@ hr {
 	justify-content: space-between;
 }
 
-.bg-body-tertiary {
-	background-color: #c90c1fda !important;
-}
-
-.bg-body-tertiary h1 {
-	margin-left: 42rem !important;
-	/*no responsive*/
-}
-
-.navbar-toggler {
-	margin-right: 10rem;
-}
-
-.offcanvas {
-	background-color: #c90c20;
-	color: #ffffff;
-}
-
 .navbar-text {
+	margin-top: 3rem;
 	color: #ffffff;
 }
 
@@ -289,19 +261,57 @@ hr {
 	background: #000000;
 	color: #ffffff;
 }
+
+form {
+	margin: 3rem 1rem 0 1rem;
+}
+
+form label {
+	color: #ffffff;
+}
+
+input[type=range] {
+	-webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+	width: 300px;
+	height: 5px;
+	background: #ffffff;
+	border: none;
+	border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	border: none;
+	height: 16px;
+	width: 16px;
+	border-radius: 50%;
+	background: rgb(0, 0, 0);
+	margin-top: -4px;
+}
+
+input[type=range]:focus {
+	outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+	background: #ffffff;
+}
 </style>
 </head>
+
 <body>
 
-	<!--INIZIO HEADER/NAVBAR-->
+	<!-- HEADER/NAVBAR -->
 	<nav>
 		<img src="image/SSC_Bari_logo.png" class="logo">
-
 		<div class="user-wrapper">
 			<div class="boh">
 				<div class="carrello">
-					<!--link carrello?-->
-					<a th:if="${admin != null}" th:href="@{adminReserved}"><svg
+					<!--link carrello-->
+					<a th:if="${admin !=null}" th:href="@{adminReserved}"><svg
 							xmlns="http://www.w3.org/2000/svg" width="30" height="30"
 							fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
                             <path
@@ -314,13 +324,16 @@ hr {
 								d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
                         </svg></a>
 				</div>
+
+				<!-- Dropdown con username o con 'Accedi' -->
 				<div class="dropdown">
 					<a href="#"
 						class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
 						data-bs-toggle="dropdown" aria-expanded="false"
-						style="color: white;"> <strong th:if="${admin}" th:text="${admin.username}"></strong>
-                        <strong th:if="${utente}" th:text="${utente.username}"></strong>
-                        <strong th:if="${admin == null && utente == null}">Accedi</strong>
+						style="color: white;"> <strong th:if="${admin}"
+						th:text="${admin.username}"></strong> <strong th:if="${utente}"
+						th:text="${utente.username}"></strong> <strong
+						th:if="${admin == null && utente == null}">Accedi</strong>
 					</a>
 					<ul class="dropdown-menu text-small shadow">
 						<!--sistemare spazio li>dropdown-->
@@ -333,112 +346,72 @@ hr {
 					</ul>
 				</div>
 			</div>
-	</nav>
-
-	<nav class="navbar bg-body-tertiary">
-		<div class="container-fluid">
-			<h1 id="titolo" style="margin: 0;">S.C.C. BARI OFFICIAL SHOP</h1>
-			<button class="navbar-toggler" type="button"
-				data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-				aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<!--INIZIO HEADER/NAVBAR + FILTRO ICON-->
-			<!--INIZIO CONTENUTO SIDEBAR A SCOMPARSA-->
-			<div class="offcanvas offcanvas-start" tabindex="-1"
-				id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-				<div class="offcanvas-header">
-					<h5 class="offcanvas-title" id="offcanvasNavbarLabel">Filtri</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="offcanvas"
-						aria-label="Close"></button>
-				</div>
-				<div class="offcanvas-body">
-					<form action="/shop" method="get">
-						<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-							<li class="nav-item mt-3">
-
-								<div class="row">
-									<div class="col-6">
-										<label for="min-price" class="form-label">Prezzo
-											minimo:</label> <input type="range" class="form-range" id="min-price"
-											name="min" min="0" max="500" step="10" value="0" oninput="changeMin(event)">
-									</div>
-									<div class="col-6">
-										<label for="max-price" class="form-label">Prezzo
-											massimo:</label> <input type="range" class="form-range "
-											id="max-price" name="max" min="0" max="500" step="10"
-											value="500" oninput="changeMax(event)">
-									</div>
-								</div>
-								<div class="row mt-4">
-									<div class="col-6">
-
-										<input type="text" class="form-control text-center"
-											id="selected-min-price" readonly="readonly">
-									</div>
-									<div class="col-6">
-
-										<input type="text" class="form-control text-center"
-											id="selected-max-price" readonly="readonly">
-									</div>
-								</div>
-
-							</li>
-							<li class="nav-item">
-								<div class="navbar-text">Categoria</div> <select
-								name="categoria" class="form-select"
-								aria-label="Default select example">
-									<option hidden="true"></option>
-									<option value="magliette">Magliette</option>
-									<option value="felpe">Felpe</option>
-									<option value="pantaloni">Pantaloni</option>
-									<option value="accessori">Accessori</option>
-							</select>
-							</li>
-						</ul>
-						<div class="filtro">
-							<input type="submit" class="filtri-btn" value="Applica filtri">
-						</div>
-					</form>
-				</div>
-			</div>
-			<!--FINE CONTENUTO SIDEBAR A SCOMPARSA-->
 		</div>
 	</nav>
 
-	<!--INIZIO SIDEBAR FISSA-->
+	<div class="row"
+		style="margin-right: 0px; margin-left: 0; padding: 0px;">
+		<div class="col-md-12" style="padding-left: 0px; padding-right: 0px;">
+			<h1 id="titolo" style="margin: 0;">S.C.C. BARI OFFICIAL SHOP</h1>
+		</div>
+	</div>
+
 	<div class="main-container d-flex">
 		<div class="sidebar" id="side-nav">
-			<div class="header-box px-2 pt-3 pb-4">
-				<h1 class="fs-4">
-					<span class="text-white">SideBARI</span>
-				</h1>
-				<button class="btn d-md-none close-btn px-1 py-0 text-white">
-					<i class="fal fa-stream"></i>
-				</button>
-			</div>
 
-			<!--INIZIO TABS SIDEBAR FISSA-->
-			<div class="sidebari-menu">
+			<div class="sidebari-menu"></div>
 
-				<div class="d-flex align-items-start">
-					<div class="nav flex-column nav-pills me-3" id="v-pills-tab"
-						role="tablist" aria-orientation="vertical">
-						<button class="nav-link active" id="v-pills-home-tab"
-							data-bs-toggle="pill" data-bs-target="#v-pills-home"
-							type="button" role="tab" aria-controls="v-pills-home"
-							aria-selected="true">Nuovi arrivi</button>
-						<button class="nav-link" id="v-pills-profile-tab"
-							data-bs-toggle="pill" data-bs-target="#v-pills-profile"
-							type="button" role="tab" aria-controls="v-pills-profile"
-							aria-selected="false">Tutti i prodotti</button>
-					</div>
+			<form action="/shop" method="get">
+				<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+					<li class="nav-item mt-3">
 
+						<div class="row">
+							<div class="col-6">
+								<label for="min-price" class="form-label">Prezzo min:</label><input
+									type="range" class="form-range" id="min-price" name="min"
+									min="0" max="500" step="10" value="0"
+									oninput="changeMin(event)">
+							</div>
+							<div class="col-6">
+								<label for="max-price" class="form-label">Prezzo max:</label><input
+									type="range" class="form-range " id="max-price" name="max"
+									min="0" max="500" step="10" value="500"
+									oninput="changeMax(event)">
+							</div>
+						</div>
+						<div class="row mt-4">
+							<div class="col-6">
+
+								<input type="text" class="form-control text-center"
+									id="selected-min-price" readonly="readonly">
+							</div>
+							<div class="col-6">
+
+								<input type="text" class="form-control text-center"
+									id="selected-max-price" readonly="readonly">
+							</div>
+						</div>
+
+					</li>
+					<li class="nav-item">
+						<div class="navbar-text">Categoria</div> <select name="categoria"
+						class="form-select" aria-label="Default select example">
+							<option hidden="true"></option>
+							<option value="magliette">Magliette</option>
+							<option value="felpe">Felpe</option>
+							<option value="pantaloni">Pantaloni</option>
+							<option value="accessori">Accessori</option>
+					</select>
+					</li>
+				</ul>
+				<div class="filtro">
+					<input type="submit" class="filtri-btn" value="Applica filtri">
 				</div>
-			</div>
+			</form>
+
 		</div>
 
-		<!--INIZIO CONTENITORE CARDS-->
+		<!--INIZIO DIV CONTENT-->
 		<div class="content">
 
 			<div class="col-sm-8 col-md-10">
@@ -453,167 +426,96 @@ hr {
 					</div>
 				</div>
 
-				<div class="tab-content" id="v-pills-tabContent">
-					<!--INIZIO COLLEGAMENTI TABS-->
-					<div class="tab-pane fade show active" id="v-pills-home"
-						role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
+				<div class="container overflow-hidden text-center">
+					<div class="row gy-5">
+						<div class="col-4" th:each="p : ${catalogo}">
+							<div class="p-3">
 
-						<div class="container overflow-hidden cards-container">
-							<div class="row gy-5">
-								<div class="col-4" th:each="p : ${catalogo}">
-									<div class="p-3">
-
-										<div class="card" style="width: 20rem; height: 27rem;">
-											<img th:src="@{${p.immagine}}"
-												class="card-img-top" alt="...">
-											<div class="card-body">
-												<h4 th:text="${p.nome}"></h4>
-												<div class="card-body-sub">
-													<h4 th:text="${p.prezzo}"></h4>
-													<a th:href="@{dettaglio(id=${p.id})}" class="dettaglio-btn">Mostra</a>
-												</div>
-											</div>
+								<!--INIZIO CARD-->
+								<div class="card" style="width: 20rem; height: 27rem;">
+									<img th:if="${p.immagine == null}"
+										src="image/SSC_Bari_logo.png" class="card-img-top"
+										alt="Immagine del prodotto"> 
+									<img
+										th:if="${p.immagine != null}"
+										th:src="@{${p.immagine}}" class="card-img-top"
+										alt="Immagine del prodotto">
+									<div class="card-body">
+										<h4 th:text="${p.nome}"></h4>
+										<div class="card-body-sub">
+											<h4 th:text="${#numbers.formatDecimal(p.prezzo,0,'POINT',2,'COMMA')} + ' €'"></h4>
+											<a th:href="@{dettaglio(id=${p.id})}" class="dettaglio-btn">Mostra</a>
 										</div>
-
 									</div>
 								</div>
+								<!--FINE CARD-->
 							</div>
+							<!--FINE P-3-->
 						</div>
-
+						<!--FINE COL-4-->
 					</div>
-
-
-					<div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
-						aria-labelledby="v-pills-profile-tab" tabindex="0">
-						<!--SECONDO COLLEGAMENTO TABS-->
-
-						<div class="container overflow-hidden">
-							<div class="row gy-5">
-								<div class="col-4">
-									<div class="p-3">
-
-										<div class="card" style="width: 20rem; height: 27rem;">
-											<img src="/shop/ssc-bari-zaino-kappa.jpg"
-												class="card-img-top" alt="...">
-											<div class="card-body">
-												<h4>Prodotto</h4>
-												<div class="card-body-sub">
-													<h4>14,99€</h4>
-													<a href="#" class="dettaglio-btn">Mostra</a>
-												</div>
-											</div>
-										</div>
-
-									</div>
-								</div>
-								<div class="col-4">
-									<div class="p-3">
-
-										<div class="card" style="width: 20rem; height: 27rem;">
-											<img src="/shop/ssc-bari-felpa-tecnica-kappa.jpg"
-												class="card-img-top" alt="...">
-											<div class="card-body">
-												<h4>Prodotto</h4>
-												<div class="card-body-sub">
-													<h4>14,99€</h4>
-													<a href="#" class="dettaglio-btn">Mostra</a>
-												</div>
-											</div>
-										</div>
-
-									</div>
-								</div>
-								<div class="col-4">
-									<div class="p-3">
-
-										<div class="card" style="width: 20rem; height: 27rem;">
-											<img src="/shop/ssc-bari-zaino-kappa.jpg"
-												class="card-img-top" alt="...">
-											<div class="card-body">
-												<h4>Prodotto</h4>
-												<div class="card-body-sub">
-													<h4>14,99€</h4>
-													<a href="#" class="dettaglio-btn">Mostra</a>
-												</div>
-											</div>
-										</div>
-
-									</div>
-								</div>
-								<div class="col-4">
-									<div class="p-3">
-
-										<div class="card" style="width: 20rem; height: 27rem;">
-											<img src="/shop/ssc-bari-t-shirt-kappa.jpg"
-												class="card-img-top" alt="...">
-											<div class="card-body">
-												<h4>Prodotto</h4>
-												<div class="card-body-sub">
-													<h4>14,99€</h4>
-													<a href="#" class="dettaglio-btn">Mostra</a>
-												</div>
-											</div>
-										</div>
-
-									</div>
-								</div>
-								<div class="col-4">
-									<div class="p-3">
-
-										<div class="card" style="width: 20rem; height: 27rem;">
-											<img src="/shop/ssc-bari-t-shirt-kappa.jpg"
-												class="card-img-top" alt="...">
-											<div class="card-body">
-												<h4>Prodotto</h4>
-												<div class="card-body-sub">
-													<h4>14,99€</h4>
-													<a href="#" class="dettaglio-btn">Mostra</a>
-												</div>
-											</div>
-										</div>
-
-									</div>
-								</div>
-								<div class="col-4">
-									<div class="p-3">
-
-										<div class="card" style="width: 20rem; height: 27rem;">
-											<img src="/shop/ssc-bari-cappello-visiera.jpg"
-												class="card-img-top" alt="...">
-											<div class="card-body">
-												<h4>Prodotto</h4>
-												<div class="card-body-sub">
-													<h4>14,99€</h4>
-													<a href="#" class="dettaglio-btn">Mostra</a>
-												</div>
-											</div>
-										</div>
-
-									</div>
-								</div>
-							</div>
-						</div>
-
-					</div>
+					<!--FINE ROW GY-5-->
 				</div>
-
+				<!--FINE CONTAINER-->
 			</div>
 		</div>
 
+		<script>
+            // slider prezzo
+            const minPriceSlider = document.getElementById('min-price');
+            const maxPriceSlider = document.getElementById('max-price');
+            const selectedMinPrice = document.getElementById('selected-min-price');
+            const selectedMaxPrice = document.getElementById('selected-max-price');
+
+            // imposta i valori iniziali dei campi di input
+            selectedMinPrice.value = minPriceSlider.value + " €";
+            selectedMaxPrice.value = maxPriceSlider.value + " €";
+
+            // aggiorna i campi di input man mano che i dispositivi di scorrimento vengono spostati
+            minPriceSlider.addEventListener('input', (event) => {
+            selectedMinPrice.value = event.target.value + " €";
+            if (parseInt(event.target.value) > parseInt(selectedMaxPrice.value)) {
+                selectedMaxPrice.value = event.target.value + " €";
+                maxPriceSlider.value = event.target.value;
+            }
+            });
+
+            maxPriceSlider.addEventListener('input', (event) => {
+            selectedMaxPrice.value = event.target.value + " €";
+            if (parseInt(event.target.value) < parseInt(selectedMinPrice.value)) {
+                selectedMinPrice.value = event.target.value + " €";
+                minPriceSlider.value = event.target.value;
+            }
+            });
+
+            // aggiorna i valori del campo di input quando cambiano i campi di input
+            selectedMinPrice.addEventListener('input', (event) => {
+            const minValue = parseInt(minPriceSlider.min);
+            const maxValue = parseInt(maxPriceSlider.max);
+            const value = Math.min(parseInt(event.target.value), parseInt(selectedMaxPrice.value));
+            selectedMinPrice.value = value + " €";
+            minPriceSlider.value = value;
+            if (value > maxValue) {
+                selectedMaxPrice.value = value + " €";
+                maxPriceSlider.value = value;
+            }
+            });
+
+            selectedMaxPrice.addEventListener('input', (event) => {
+            const minValue = parseInt(minPriceSlider.min);
+            const maxValue = parseInt(maxPriceSlider.max);
+            const value = Math.max(parseInt(event.target.value), parseInt(selectedMinPrice.value));
+            selectedMaxPrice.value = value + " €";
+            maxPriceSlider.value = value;
+            if (value < minValue) {
+                selectedMinPrice.value = value + " €";
+                minPriceSlider.value = value;
+            }
+            });
+        </script>
+
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-			
-		<script>
-		let selectedMinPrice = document.getElementById('selected-min-price')
-		let selectedMaxPrice = document.getElementById('selected-max-price')
-		
-		function changeMin(event){
-			selectedMinPrice.value = event.target.value + " euro"
-		}
-		
-		function changeMax(event){
-			selectedMaxPrice.value = event.target.value + " euro"
-		}
-		</script>
 </body>
+
 </html>

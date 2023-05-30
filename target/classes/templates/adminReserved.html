@@ -174,7 +174,9 @@
 					<div class="row row-cols-1 row-cols-md-3 g-4">
 						<div th:each="n : ${novita}" class="col">
 							<div class="card h-100">
-								<img th:src="@{${n.immagine}}" class="card-img-top"
+								<img th:if="${n.immagine == null}" src="image/immagini_bari_esempioDAVEDERE/giocatori_bari.png" class="card-img-top"
+									alt="Immagine news">
+								<img th:if="${n.immagine != null}"  th:src="@{${n.immagine}}" class="card-img-top"
 									alt="Immagine news">
 								<div class="card-body">
 									<h5 class="card-title" th:text="${n.titolo}"></h5>
@@ -204,11 +206,13 @@
 					<div class="row row-cols-1 row-cols-md-3 g-4">
 						<div class="col-sm-4" th:each="prodotto : ${catalogo}">
 							<div class="card h-100">
-								<img th:src="@{${prodotto.immagine}}" class="card-img-top"
+								<img th:if="${prodotto.immagine == null}" src="image/SSC_Bari_logo.png" class="card-img-top"
+									alt="Immagine del prodotto">
+								<img th:if="${prodotto.immagine != null}"  th:src="@{${prodotto.immagine}}" class="card-img-top"
 									alt="Immagine del prodotto">
 								<div class="card-body">
 									<h5 class="card-title" th:text="${prodotto.nome}"></h5>
-									<p class="card-text" th:text="${prodotto.prezzo}"></p>
+									<p class="card-text" th:text="${#numbers.formatDecimal(prodotto.prezzo,0,'POINT',2,'COMMA')} + ' euro'"></p>
 									<div class="mod-canc">
 										<a th:href="@{/adminReserved?scheda=2(idProdotto=${prodotto.id})}" class="mod-button">Modifica</a> <a
 											th:href="@{/adminReserved/eliminaProdotto(id=${prodotto.id})}"><svg
