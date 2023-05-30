@@ -20,7 +20,7 @@
 	<nav>
 		<img src="image/SSC_Bari_logo.png" class="logo">
 		<ul class="navbar-nav ms-auto">
-			<li class="nav-item"><a th:href="@{utenteReserved}"><img
+			<li class="nav-item"><a href="#"><img
 					src="image/icons8-carrello-64.png" width="30" height="30"></a></li>
 		</ul>
 	</nav>
@@ -41,23 +41,24 @@
 				<ol class="breadcrumb rimando">
 					<li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
 					<li class="breadcrumb-item"><a th:href="@{shop}">Shop</a></li>
-					<li class="breadcrumb-item active" aria-current="page"
-						th:text="${prodotto.nome}"></li>
+					<li class="breadcrumb-item active" aria-current="page">Dettaglio</li>
 				</ol>
 			</div>
 		</div>
 
 		<!-- FOTO PRODOTTO -->
 		<div class="row" style="margin-right: 0px; margin-left: 0;">
-			<div class="col-md-5">
+			<div class="col-md-1"></div>
+			<div class="col-md-6">
 				<img th:src="@{${prodotto.immagine}}" id="left-side"
-					alt="Immagine Prodotto" class="img-fluid">
+					alt="Immagine Prodotto">
 			</div>
 
-			<div class="col-md-5 d-flex align-self-center">
+
+			<div class="col-md-5">
 				<div class="right-side">
 
-					<h1 th:text="${prodotto.nome}" id="prodotto"></h1>
+					<h1 id="prodotto" th:text="${prodotto.nome}"></h1>
 					<h4
 						th:if="${prodotto.categoria != 'accessori' && prodotto.categoria != 'biglietti'}">Taglia:</h4>
 					<div class="size-buttons">
@@ -77,7 +78,6 @@
 						<h4
 							th:text="${#numbers.formatDecimal(prodotto.prezzo,0,'POINT',2,'COMMA')}  + ' Euro'"
 							id="prezzo"></h4>
-
 						<br> <a th:if="${utente == true}"
 							th:href="@{dettaglio/aggiungi(id=${prodotto.id})}"><button
 								class="st-button" id="st-button">Aggiungi al Carrello</button></a> <a
@@ -93,7 +93,7 @@
 			</div>
 			<!-- NAV SOTTO FOTO -->
 			<div class="row" style="margin-right: 0px; margin-left: 0;">
-				<div class="col-md-">
+				<div class="col-md-12">
 					<div class="nav-sotto">
 						<ul class="nav nav-laterale">
 							<li class="nav-item"><a class="nav-link active"
@@ -125,15 +125,16 @@
 						id="nuovi-p" alt="Nuovi prodotti"></a>
 				</div>
 			</div>
-
+			<br>
 
 			<!-- FOOTER -->
-			<footer class="container-fluid text-white py-3 footer">
+			<footer class="container-fluid text-white py-3 footer"
+				style="margin-top: 25px !important;">
 				<div class="row justify-content-center"
 					style="background-color: #ca0c1f; margin-right: 0px; margin-left: 0; margin-top: 25px;">
 					<!-- Sezione 1: Logo del Bari Calcio -->
 					<div class="col-md-2 align-self-center">
-						<img src="./image/SSC_Bari_logo.png" alt="Logo Bari Calcio"
+						<img src="image/SSC_Bari_logo.png" alt="Logo Bari Calcio"
 							class="d-block mx-auto" width="100">
 					</div>
 
@@ -141,6 +142,7 @@
 					<div class="col-md-3 text-center">
 						<h4>Le nostre pagine</h4>
 						<ul class="list-unstyled footer-content">
+							<li><a th:href="@{/}">Home page</a></li>
 							<li><a th:href="@{storia}">Chi siamo</a></li>
 							<li><a th:href="@{shop}">Shop</a></li>
 							<li><a th:href="@{ticket}">Biglietteria</a></li>
@@ -182,6 +184,7 @@
 						</ul>
 					</div>
 				</div>
+
 				<!-- Sezione 4: Separatore e informazioni di copyright -->
 				<div class="row" style="margin-right: 0px; margin-left: 0;">
 					<div class="col-md-12 text-center">
@@ -190,7 +193,39 @@
 					</div>
 				</div>
 			</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		</div>
+
 	</div>
+
+	<script src="JS/prodottoDEt.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"></script>
+
 </body>
+
 </html>

@@ -180,7 +180,7 @@
 									<h5 class="card-title" th:text="${n.titolo}"></h5>
 									<p class="card-text" th:text="${n.descrizione}"></p>
 									<div class="mod-canc">
-										<a th:href="@{/adminReserved(id=${n.id})}" class="mod-button">Modifica</a>
+										<a th:href="@{/adminReserved(idNews=${n.id})}" class="mod-button">Modifica</a>
 										<a th:href="@{/adminReserved/eliminaNews(id=${n.id})}"><svg
 												xmlns="http://www.w3.org/2000/svg" width="30" height="30"
 												fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
@@ -210,7 +210,7 @@
 									<h5 class="card-title" th:text="${prodotto.nome}"></h5>
 									<p class="card-text" th:text="${prodotto.prezzo}"></p>
 									<div class="mod-canc">
-										<a th:href="@{/adminReserved(id=${prodotto.id})}" class="mod-button">Modifica</a> <a
+										<a th:href="@{/adminReserved(idProdotto=${prodotto.id})}" class="mod-button">Modifica</a> <a
 											th:href="@{/adminReserved/eliminaProdotto(id=${prodotto.id})}"><svg
 												xmlns="http://www.w3.org/2000/svg" width="30" height="30"
 												fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">

@@ -43,46 +43,35 @@ li a:hover::after {
   width: 100%;
   transition: width 0.3s linear;
 }
-footer {
-  background-color: #c90c20;
-  color: #fff;
-}
-
-/* Colore dei link nella lista */
-ul.list-unstyled li a {
-  color: #fff;
-}
-
-/* Stile dell'hr scenografico */
-.scenic-hr {
-  border: none;
-  height: 1px;
-  background-image: linear-gradient(to right, #000, #c90c20, #fff, #c90c20, #000);
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.bottone_footer {
-  color: white;
-  transition: background-color 0.3s, color 0.3s;
-  border: 2px solid #c90c20;
-}
-
-.bottone_footer:hover {
-  background-color: white;
-  color: #c90c20;
-  border-color: #c90c20;
-}
-
 .footer-content li a {
-  color: black;
+  color: white;
   text-decoration: none;
   position: relative;
   display: inline-block;
   padding-bottom: 4px;
 }
 
-.footer-content li a:before {
+.footer-content a {
+  color: white;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+.footer-content li:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background-color: white;
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  transition: transform 0.3s;
+}
+.footer-content a:before{
   content: '';
   position: absolute;
   left: 0;
@@ -95,11 +84,17 @@ ul.list-unstyled li a {
   transition: transform 0.3s;
 }
 
-.footer-content li a:hover {
+.footer-content li:hover {
+  color: black;
+}
+.footer-content a:hover {
   color: black;
 }
 
 .footer-content li a:hover:before {
+  transform: scaleX(1);
+} 
+.footer-content a:hover:before {
   transform: scaleX(1);
 }
 /* TITOLO */
@@ -113,7 +108,8 @@ ul.list-unstyled li a {
 
 .container-fluid{
   padding: 0 !important;
-  margin: 0!important;
+  margin: 0!important
+  ;
 }
 /* NAV RIMANDO ALLA HOME E ALLO SHOP */
 .rimando{
@@ -183,27 +179,12 @@ ul.list-unstyled li a {
   box-shadow: 6px 6px 20px -4px rgba(0, 0, 0, 0.75);
   text-decoration: none;
   transition: 0.4s;
-
-}
-.size-button.selected {
-  background-color:#c90c20 ;
-  color: white;
 }
 .size-button:hover{
     background:grey;
     color:white;
 }
-/* Style the buttons */
-
-
-
-
-
-
 /* NAV SOTTO FOTO */
-.nav-sotto{
-  margin-top:50px;
-}
 .nav-sotto a{
   color:#c90c20;
   margin-left: 100px;
@@ -250,5 +231,4 @@ ul.list-unstyled li a {
     color: #fff;
   }
 
- 
 
