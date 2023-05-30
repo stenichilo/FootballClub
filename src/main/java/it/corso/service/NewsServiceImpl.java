@@ -44,13 +44,18 @@ public class NewsServiceImpl implements NewsService {
 	@Override
 	public List<News> getNews() {
 		
-		return (List<News>) newsDao.findAll();
+		return (List<News>) newsDao.getNews();
 	}
 
 	@Override
 	public void eliminaNews(News news) {
 		newsDao.delete(news);
 
+	}
+
+	@Override
+	public List<News> getAllNews() {
+		return (List<News>) newsDao.findAll();
 	}
 
 }

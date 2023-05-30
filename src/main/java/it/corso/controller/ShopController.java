@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import it.corso.service.ProdottoService;
 import jakarta.servlet.http.HttpSession;
+import it.corso.model.Admin;
 import it.corso.model.Prodotto;
+import it.corso.model.Utente;
 
 @Controller
 @RequestMapping("/shop")
@@ -28,10 +30,10 @@ public class ShopController {
 			@RequestParam(name = "max", required = false) Double max,
 			HttpSession session) {
 
-		List<Prodotto> catalogo = categoria == null ? new ArrayList<>()
+		List<Prodotto> catalogo = categoria== null || categoria.isEmpty() ? new ArrayList<>()
 				: prodottoService.getProdottiByCategoria(categoria);
 
-		if (categoria == null) {
+		if (categoria== null || categoria.isEmpty()) {
 			for (Prodotto p : prodottoService.getProdottiAll()) {
 				if (!(p.getCategoria().equals("biglietti")) && !(p.getCategoria().equals("abbonamenti"))) {
 					catalogo.add(p);
@@ -46,10 +48,16 @@ public class ShopController {
 		if (max != null) {
 			catalogo.removeIf(k -> k.getPrezzo() > max);
 		}
-
+		if(session.getAttribute("utente") != null) {
+			Utente utente = (Utente) session.getAttribute("utente");
+			model.addAttribute("utente", utente);
+		}
+		
+		if(session.getAttribute("admin") != null) {
+			Admin admin = (Admin) session.getAttribute("admin");
+			model.addAttribute("admin", admin);
+		}
 		model.addAttribute("catalogo", catalogo);
-		model.addAttribute("utente", session.getAttribute("utente") != null);
-		model.addAttribute("admin", session.getAttribute("admin") != null);
 		
 		return "shop";
 	}

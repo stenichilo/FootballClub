@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.corso.model.Prodotto;
+import it.corso.model.Utente;
 import it.corso.service.OrdineService;
+import it.corso.service.UtenteService;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -20,6 +22,9 @@ public class UtenteReservedController {
 
 	@Autowired
 	private OrdineService ordineService;
+	
+	@Autowired
+	private UtenteService utenteService;
 	
 	
 	
@@ -33,8 +38,8 @@ public class UtenteReservedController {
 		if(session.getAttribute("utente") == null) {
 			return "redirect:/login";
 		}
-		
-		model.addAttribute("utente", session.getAttribute("utente"));
+		Utente utente = utenteService.getUtenteById(((Utente) session.getAttribute("utente")).getId());
+		model.addAttribute("utente", utente);
 		model.addAttribute("carrello", session.getAttribute("carrello"));
 		model.addAttribute("oa", oa != null);
 	return "utenteReserved";

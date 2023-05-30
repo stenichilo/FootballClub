@@ -318,17 +318,16 @@ hr {
 					<a href="#"
 						class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
 						data-bs-toggle="dropdown" aria-expanded="false"
-						style="color: white;"> <!-- <strong th:if="${admin}" th:text="${admin.username}"></strong>
+						style="color: white;"> <strong th:if="${admin}" th:text="${admin.username}"></strong>
                         <strong th:if="${utente}" th:text="${utente.username}"></strong>
-                        <strong th:if="${admin == false && utente == false}">Accedi</strong> -->
-						<strong>Accedi</strong>
+                        <strong th:if="${admin == null && utente == null}">Accedi</strong>
 					</a>
 					<ul class="dropdown-menu text-small shadow">
 						<!--sistemare spazio li>dropdown-->
-						<li th:if="${admin}"><a class="dropdown-item"
+						<li th:if="${admin != null}"><a class="dropdown-item"
 							th:href="@{adminReserved}">Area personale</a></li>
 						<!--link area riservata utente-->
-						<li th:if="${!admin}"><a class="dropdown-item"
+						<li th:if="${admin == null}"><a class="dropdown-item"
 							th:href="@{utenteReserved}">Area personale</a></li>
 						<!--link area riservata utente-->
 					</ul>
@@ -354,7 +353,7 @@ hr {
 						aria-label="Close"></button>
 				</div>
 				<div class="offcanvas-body">
-					<form action="shopController">
+					<form action="/shop" method="get">
 						<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 							<li class="nav-item mt-3">
 
@@ -362,25 +361,25 @@ hr {
 									<div class="col-6">
 										<label for="min-price" class="form-label">Prezzo
 											minimo:</label> <input type="range" class="form-range" id="min-price"
-											name="min-price" min="0" max="100" step="1" value="0">
+											name="min" min="0" max="500" step="10" value="0" oninput="changeMin(event)">
 									</div>
 									<div class="col-6">
 										<label for="max-price" class="form-label">Prezzo
 											massimo:</label> <input type="range" class="form-range "
-											id="max-price" name="max-price" min="0" max="100" step="1"
-											value="100">
+											id="max-price" name="max" min="0" max="500" step="10"
+											value="500" oninput="changeMax(event)">
 									</div>
 								</div>
 								<div class="row mt-4">
 									<div class="col-6">
 
-										<input type="text" class="form-control"
-											id="selected-min-price" name="min">
+										<input type="text" class="form-control text-center"
+											id="selected-min-price" readonly="readonly">
 									</div>
 									<div class="col-6">
 
-										<input type="text" class="form-control"
-											id="selected-max-price" name="max">
+										<input type="text" class="form-control text-center"
+											id="selected-max-price" readonly="readonly">
 									</div>
 								</div>
 
@@ -603,5 +602,18 @@ hr {
 
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+			
+		<script>
+		let selectedMinPrice = document.getElementById('selected-min-price')
+		let selectedMaxPrice = document.getElementById('selected-max-price')
+		
+		function changeMin(event){
+			selectedMinPrice.value = event.target.value + " euro"
+		}
+		
+		function changeMax(event){
+			selectedMaxPrice.value = event.target.value + " euro"
+		}
+		</script>
 </body>
 </html>

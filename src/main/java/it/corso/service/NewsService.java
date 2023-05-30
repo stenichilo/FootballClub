@@ -10,4 +10,5 @@ public interface NewsService {
 	News getNewsById(int id);
 	List<News> getNews();
 	void eliminaNews(News news);
+	List<News> getAllNews();
 }

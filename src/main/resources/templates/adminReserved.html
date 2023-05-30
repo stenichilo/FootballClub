@@ -137,6 +137,7 @@
 								th:field="*{dettaglio}"> <br> <label
 								for="categoria" class="mb-3">Categoria: </label> <select
 								name="categoria" th:field="*{categoria}" required="required">
+								<option value="" hidden="true"></option>
 								<option value="kit ufficiale">1 - Kit ufficiale</option>
 								<option value="magliette">2 - Magliette</option>
 								<option value="pantaloni">3 - Pantaloni</option>
@@ -144,7 +145,7 @@
 								<option value="accessori">5 - Accessori</option>
 								<option value="biglietti">6 - Biglietti</option>
 								<option value="abbonamenti">7 - Abbonamenti</option>
-							</select> <br> <label for="immagine" class="mb-3">Immagine: </label>
+							</select> <br> <label for="immagine" class="mb-3">Immagine (max 1 MB): </label>
 							<input type="file" name="immagine"> <br> <label
 								for="prezzo" class="mb-3">Prezzo: </label> <input type="number"
 								step="any" name="prezzo" th:field="*{prezzo}"
@@ -179,8 +180,8 @@
 									<h5 class="card-title" th:text="${n.titolo}"></h5>
 									<p class="card-text" th:text="${n.descrizione}"></p>
 									<div class="mod-canc">
-										<a th:href="@{adminReserved}" class="mod-button">Modifica</a>
-										<a th:href="@{adminReserved/eliminaNews(id=${n.id})}"><svg
+										<a th:href="@{/adminReserved(id=${n.id})}" class="mod-button">Modifica</a>
+										<a th:href="@{/adminReserved/eliminaNews(id=${n.id})}"><svg
 												xmlns="http://www.w3.org/2000/svg" width="30" height="30"
 												fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
                                                 <path
@@ -209,8 +210,8 @@
 									<h5 class="card-title" th:text="${prodotto.nome}"></h5>
 									<p class="card-text" th:text="${prodotto.prezzo}"></p>
 									<div class="mod-canc">
-										<a href="@{adminReserved}" class="mod-button">Modifica</a> <a
-											href="@{adminReserved/eliminaProdotto(id=${prodotto.id})}"><svg
+										<a th:href="@{/adminReserved(id=${prodotto.id})}" class="mod-button">Modifica</a> <a
+											th:href="@{/adminReserved/eliminaProdotto(id=${prodotto.id})}"><svg
 												xmlns="http://www.w3.org/2000/svg" width="30" height="30"
 												fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
                                                 <path
@@ -251,7 +252,7 @@
 													data-bs-toggle="collapse"
 													th:data-bs-target="'#collapseOne' + ${ordine.id}"
 													aria-expanded="true" aria-controls="collapseOne"
-													th:text="'ID ordine: ' + ${ordine.id} + ' - Importo ordine: ' + ${ordine.importo} + ' euro'"></button>
+													th:text="'ID ordine: ' + ${ordine.id} + ' - Importo ordine: ' + ${#numbers.formatDecimal(ordine.importo,0,'POINT',2,'COMMA')} + ' euro'"></button>
 											</h2>
 											<div th:id="'collapseOne' + ${ordine.id}"
 												class="accordion-collapse collapse"
