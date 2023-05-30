@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 import it.corso.service.NewsService;
+import jakarta.servlet.http.HttpSession;
 
 
 @Controller
@@ -20,8 +21,11 @@ public class IndexController {
 	private NewsService newsService;
 	
 	@GetMapping
-	public String getPage(Model model) {
+	public String getPage(Model model,
+			HttpSession session) {
 		model.addAttribute("news", newsService.getNews());
+		model.addAttribute("utente", session.getAttribute("utente") != null);
+		model.addAttribute("admin", session.getAttribute("admin") != null);
 		return "index";
 	}
 	
