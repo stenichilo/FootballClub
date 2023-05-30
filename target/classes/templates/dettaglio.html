@@ -63,16 +63,25 @@
 						th:if="${prodotto.categoria != 'accessori' && prodotto.categoria != 'biglietti'}">Taglia:</h4>
 					<div class="size-buttons">
 						<button
-							th:if="${prodotto.categoria != 'accessori' && prodotto.categoria != 'biglietti'}"
+							th:if="${prodotto.categoria != 'accessori' && prodotto.categoria != 'biglietti' && prodotto.categoria != 'calze'}"
 							class="size-button">S</button>
 						<button
-							th:if="${prodotto.categoria != 'accessori' && prodotto.categoria != 'biglietti'}"
+							th:if="${prodotto.categoria == 'calze'}"
+							class="size-button">36-39</button>
+						<button
+							th:if="${prodotto.categoria != 'accessori' && prodotto.categoria != 'biglietti' && prodotto.categoria != 'calze'}"
 							class="size-button">M</button>
 						<button
-							th:if="${prodotto.categoria != 'accessori' && prodotto.categoria != 'biglietti'}"
+							th:if="${prodotto.categoria == 'calze'}"
+							class="size-button">40-43</button>
+						<button
+							th:if="${prodotto.categoria != 'accessori' && prodotto.categoria != 'biglietti' && prodotto.categoria != 'calze'}"
 							class="size-button">L</button>
 						<button
-							th:if="${prodotto.categoria != 'accessori' && prodotto.categoria != 'biglietti'}"
+							th:if="${prodotto.categoria == 'calze'}"
+							class="size-button">43-46</button>
+						<button
+							th:if="${prodotto.categoria != 'accessori' && prodotto.categoria != 'biglietti' && prodotto.categoria != 'calze'}"
 							class="size-button">XL</button>
 						<br>
 						<h4
@@ -82,7 +91,7 @@
 							th:href="@{dettaglio/aggiungi(id=${prodotto.id})}"><button
 								class="st-button" id="st-button">Aggiungi al Carrello</button></a> <a
 							th:if="${admin == true}"
-							th:href="@{adminReserved(idProdotto=${prodotto.id})}"><button
+							th:href="@{adminReserved?scheda=2(idProdotto=${prodotto.id})}"><button
 								class="st-button" id="st-button">Modifica prodotto</button></a> <a
 							th:if="${admin == false && utente == false}" th:href="@{login}"><button
 								class="st-button" id="st-button">Loggati per acquistare</button></a>
