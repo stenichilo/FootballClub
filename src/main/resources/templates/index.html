@@ -168,7 +168,7 @@ svg {
                     <li><a th:href="@{shop}">SHOP</a></li>
                     <li><a th:href="@{storia}">LA NOSTRA STORIA</a></li>
                     <li><a th:href="@{contatti}">CONTATTACI</a></li>
-                    <li><a th:href="@{login}"><img src="image/icona_login/login.png" alt="icona_login" width="30px" height="30px"></a></li>
+                    <li><a th:href="@{login}">ACCEDI <img src="image/icona_login/login.png" alt="icona_login" width="30px" height="30px"></a></li>
                   </ul>
                 </nav>
                 <div class="bari-testo" id="bari-testo">
@@ -189,13 +189,13 @@ svg {
                 </div>
                 <div class="carousel-inner" style="padding-top:30px">
                   <div class="carousel-item active">
-                    <img src="image/prossime_partite_immagini/fiorentina_bari.PNG" class="d-block w-100" alt="...">
+                    <img src="image/prossime_partite_immagini/atalanta-bari.png" class="d-block w-100" alt="...">
                   </div>
                   <div class="carousel-item">
-                    <img src="image/prossime_partite_immagini/bari_barcellona.PNG" class="d-block w-100" alt="...">
+                    <img src="image/prossime_partite_immagini/fiorentina-bari.png" class="d-block w-100" alt="...">
                   </div>
                   <div class="carousel-item">
-                    <img src="image/prossime_partite_immagini/bari_atalanta.PNG" class="d-block w-100" alt="...">
+                    <img src="image/prossime_partite_immagini/bari-barcellona.png" class="d-block w-100" alt="...">
                   </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -537,25 +537,25 @@ svg {
 
   <div class="col-md-2"style="padding:0;">
     <div class="banner2">
-      <a href="shop.html"><img src="image/banner_shop/felpa_bianca.png" alt="BANNER SHOP"></a>
+      <a th:href="@{shop}"><img src="image/banner_shop/felpa_bianca.png" alt="BANNER SHOP"></a>
     </div>     
   </div>
 
   <div class="col-md-2"style="padding:0;">
     <div class="banner2">
-      <a href="shop.html"><img src="image/banner_shop/borsone.png" alt="BANNER SHOP"></a>
+      <a th:href="@{shop}"><img src="image/banner_shop/borsone.png" alt="BANNER SHOP"></a>
     </div>     
   </div>
 
   <div class="col-md-2"style="padding:0;">
     <div class="banner2">
-      <a href="shop.html"><img src="image/banner_shop/felpa_nera.png" alt="BANNER SHOP"></a>
+      <a th:href="@{shop}"><img src="image/banner_shop/felpa_nera.png" alt="BANNER SHOP"></a>
     </div>     
   </div>
 
   <div class="col-md-2"style="padding:0;">
     <div class="banner2">
-      <a href="shop.html"><img src="image/logo_bari/logo_bari.png" alt="BANNER SHOP" width="194px" height="315px" style="padding: 30px"></a>
+      <a th:href="@{shop}"><img src="image/logo_bari/logo_bari.png" alt="BANNER SHOP" width="194px" height="315px" style="padding: 30px"></a>
     </div>     
   </div>
 
@@ -576,37 +576,37 @@ svg {
                 <!-- SPONSOR -->
                 <div class="col-md-1">
                   <div class="sponsor">
-                    <img src="image/sponsor/kappa.gif" width="150px" alt="sponsor">
+                    <img src="image/sponsor/kappa.PNG" width="150px" alt="sponsor">
                   </div>
                 </div>
 
                 <div class="col-md-1">
                   <div class="sponsor">
-                    <img src="image/sponsor/casillo.gif" width="150px" alt="sponsor">
+                    <img src="image/sponsor/casillo.PNG" width="150px" alt="sponsor">
                   </div>
                 </div>
 
                 <div class="col-md-1">
                   <div class="sponsor">
-                    <img src="image/sponsor/generation.gif" width="150px" alt="sponsor">
+                    <img src="image/sponsor/generation.PNG" width="150px" alt="sponsor">
                   </div>
                 </div>
 
                 <div class="col-md-1">
                   <div class="sponsor">
-                    <img src="image/sponsor/granarolo.gif" width="150px" alt="sponsor">
+                    <img src="image/sponsor/granarolo.PNG" width="150px" alt="sponsor">
                   </div>
                 </div>
 
                 <div class="col-md-1">
                   <div class="sponsor">
-                    <img src="image/sponsor/swaroski.gif" width="150px" alt="sponsor">
+                    <img src="image/sponsor/swarovski.PNG" width="150px" alt="sponsor">
                   </div>
                 </div>
 
                 <div class="col-md-1">
                   <div class="sponsor">
-                    <img src="image/sponsor/GiochiPreziosi.gif" width="150px" alt="sponsor">
+                    <img src="image/sponsor/GiochiPreziosi.PNG" width="150px" alt="sponsor">
                   </div>
                 </div>
 
@@ -615,12 +615,7 @@ svg {
             </div>
 
             <!-- SEZIONE FOOTER -->
-            <!-- <div class="row">
-                <div class="col-md-12">
-
-
-                </div>
-            </div> -->
+            
             <footer class="container-fluid text-white py-3 footer">
               <div class="row justify-content-center" style="background-color: #ca0c1f; margin-left: 0; margin-right: 0; padding-top: 25px;">
                 <!-- Sezione 1: Logo del Bari Calcio -->
