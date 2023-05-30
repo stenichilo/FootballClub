@@ -35,6 +35,7 @@ public class AdminReservedController {
 	
 	@GetMapping
 	public String getPage(Model model,
+			@RequestParam(name="scheda", required = false) Integer scheda,
 			@RequestParam(name="pi", required = false) String pi,
 			@RequestParam(name="ni", required = false) String ni,
 			@RequestParam(name="idProdotto", required = false) Integer idProdotto,
@@ -56,7 +57,7 @@ public class AdminReservedController {
 		news = idNews == null ? new News() : newsService.getNewsById(idNews);
 		model.addAttribute("prodotto", prodotto);
 		model.addAttribute("news", news);
-		
+		model.addAttribute("scheda", scheda);
 		return "adminReserved";
 	}
 	
@@ -70,7 +71,7 @@ public class AdminReservedController {
 			@RequestParam("prezzo") double prezzo
 			) {
 		prodottoService.registraProdotto(prodotto, nome, descrizione, dettaglio, categoria, immagine, prezzo);
-		return "redirect:/adminReserved?pi";
+		return "redirect:/adminReserved?scheda=2&pi";
 	}
 	
 	
@@ -79,7 +80,7 @@ public class AdminReservedController {
 			@RequestParam("descrizione") String descrizione,
 			@RequestParam(name="immagine", required = false) MultipartFile immagine) {
 		newsService.registraNews(news, titolo, descrizione, immagine);
-		return "redirect:/adminReserved?ni";
+		return "redirect:/adminReserved?scheda=1&ni";
 	}
 	
 	@GetMapping("/logout")
