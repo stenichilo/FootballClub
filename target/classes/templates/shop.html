@@ -330,10 +330,10 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 					</a>
 					<ul class="dropdown-menu text-small shadow">
 						<!--sistemare spazio li>dropdown-->
-						<li th:if="${admin != null}"><a class="dropdown-item"
+						<li th:if="${admin != null}" style="margin-left: 4%"><a class="dropdown-item"
 							th:href="@{adminReserved}">Area personale</a></li>
 						<!--link area riservata utente-->
-						<li th:if="${admin == null}"><a class="dropdown-item"
+						<li th:if="${admin == null}" style="margin-left: 4%"><a class="dropdown-item"
 							th:href="@{utenteReserved}">Area personale</a></li>
 						<!--link area riservata utente-->
 					</ul>
