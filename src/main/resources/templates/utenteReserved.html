@@ -215,7 +215,7 @@
 											<div class="col-md-8">
 												<div class="card-body">
 													<h5 class="card-title" th:text="${p.nome}"></h5>
-													<p th:text="${p.prezzo}"></p>
+													<p th:text="${#numbers.formatDecimal(p.prezzo,0,'POINT',2,'COMMA')} + ' euro'"></p>
 												</div>
 											</div>
 											<!--FINE CARD 1 ACCORDION 1-->

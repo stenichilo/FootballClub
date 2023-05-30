@@ -276,7 +276,7 @@
 																	<div class="col-md-8">
 																		<div class="card-body">
 																			<h5 class="card-title" th:text="${prodotto.nome}"></h5>
-																			<p class="card-text" th:text="${prodotto.prezzo}"></p>
+																			<p class="card-text" th:text="${#numbers.formatDecimal(prodotto.prezzo,0,'POINT',2,'COMMA')} + ' euro'"></p>
 																		</div>
 																	</div>
 																</div>
