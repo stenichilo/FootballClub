@@ -31,8 +31,8 @@ public class UtenteReservedController {
 	@GetMapping
 	public String getPage(Model model, 
 			HttpSession session, 
-			@RequestParam(name="oa", required = false) String oa
-			) {
+			@RequestParam(name="oa", required = false) String oa,
+			@RequestParam(name="scheda", required = false) Integer scheda) {
 		
 		// condizione per verificare se l'utente è loggato, se non loggato rimanda a pagina di login
 		if(session.getAttribute("utente") == null) {
@@ -42,6 +42,7 @@ public class UtenteReservedController {
 		model.addAttribute("utente", utente);
 		model.addAttribute("carrello", session.getAttribute("carrello"));
 		model.addAttribute("oa", oa != null);
+		model.addAttribute("scheda", scheda);
 	return "utenteReserved";
 	}
 	
