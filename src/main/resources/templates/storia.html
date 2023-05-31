@@ -19,10 +19,10 @@
             <img th:src="@{image/SSC_Bari_logo.png}" class="logo">
             <ul style="color:white;">
                 <li><a th:href="@{/}">HOME</a></li>
-                <li><a th:href="@{shop}">SHOP</a></li>
-                <li><a th:href="@{storia}">LA NOSTRA STORIA</a></li>
-                <li><a th:href="@{contatti}">CONTATTACI</a></li>
-                <li><a th:href="@{ticket}">TICKET</a></li>
+                    <li><a th:href="@{storia}">LA NOSTRA STORIA</a></li>
+                    <li><a th:href="@{shop}">SHOP</a></li>
+                    <li><a th:href="@{ticket}">TICKET</a></li>
+                    <li><a th:href="@{contatti}">CONTATTACI</a></li>
                 <li th:if="${admin == false AND utente == false}"><a th:href="@{login}">ACCEDI <img src="image/icona_login/login.png" alt="icona_login" width="30px" height="30px"></a></li>
                 <li th:if="${admin}"><a th:href="@{adminReserved}">AREA RISERVATA <img src="image/icona_login/login.png" alt="icona_login" width="30px" height="30px"></a></li>
                 <li th:if="${utente}"><a th:href="@{utenteReserved}">AREA RISERVATA <img src="image/icona_login/login.png" alt="icona_login" width="30px" height="30px"></a></li>
