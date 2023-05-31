@@ -138,13 +138,13 @@
 						<h4
 							th:text="${#numbers.formatDecimal(prodotto.prezzo,0,'POINT',2,'COMMA')}  + ' Euro'"
 							id="prezzo"></h4>
-						<br> <a th:if="${utente == true}"
+						<br> <a th:if="${utente != null}"
 							th:href="@{dettaglio/aggiungi(id=${prodotto.id})}"><button
 								class="st-button" id="st-button">Aggiungi al Carrello</button></a> <a
-							th:if="${admin == true}"
+							th:if="${admin != null}"
 							th:href="@{adminReserved?scheda=2(idProdotto=${prodotto.id})}"><button
 								class="st-button" id="st-button">Modifica prodotto</button></a> <a
-							th:if="${admin == false && utente == false}" th:href="@{login}"><button
+							th:if="${admin == null && utente == null}" th:href="@{login}"><button
 								class="st-button" id="st-button">Loggati per acquistare</button></a>
 					</div>
 					<p th:if="${pa}" style="color: green;">Prodotto aggiunto al
