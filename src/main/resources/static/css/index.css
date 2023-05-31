@@ -75,6 +75,23 @@ li a:hover::after {
     color: transparent;
 }
 
+.bari-testo h2 {
+    text-decoration: none;
+    display: inline-block;
+    color: #ffffff;
+    font-size: 24px;
+    border: 2px solid #ffffff;
+    padding: 20px 40px;
+    border-radius: 50px;
+    margin-top: 10px;
+    transition: 0.5s ease-in-out;
+}
+
+.bari-testo h2:hover {
+    transition: 0.5s ease-in-out;
+    scale: 1.05;
+}
+
 .backbro-video {
     position: absolute;
     right: 0;
