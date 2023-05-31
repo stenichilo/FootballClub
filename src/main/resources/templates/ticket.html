@@ -25,13 +25,12 @@ body {
 nav {
 	padding: 2px 3%;
 	display: flex;
-
-	justify-content: space-between;
+	justify-content: space-between; background-color : #c90c20; width :
+	100%; top : 0;
+	left: 0;
 	background-color: #c90c20;
 	width: 100%;
-
-    top: 0;
-    left: 0;
+	top: 0;
 }
 
 nav .logo {
@@ -345,25 +344,28 @@ input[type=range]:focus::-webkit-slider-runnable-track {
                         </svg></a>
 				</div>
 				<div class="dropdown">
-                    <a href="#"
-                        class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
-                        data-bs-toggle="dropdown" aria-expanded="false"
-                        style="color: white;"> <strong th:if="${admin}"
-                        th:text="${admin.username}"></strong> <strong th:if="${utente}"
-                        th:text="${utente.username}"></strong> <strong
-                        th:if="${admin == null && utente == null}">Accedi</strong>
-                    </a>
-                    <ul class="dropdown-menu text-small shadow">
-                        <!--sistemare spazio li>dropdown-->
-                        <li th:if="${admin != null}" style="margin-left: 4%"><a class="dropdown-item"
-                            th:href="@{adminReserved}">Area personale</a></li>
-                        <!--link area riservata utente-->
-                        <li th:if="${admin == null}" style="margin-left: 4%"><a class="dropdown-item"
-                            th:href="@{utenteReserved}">Area personale</a></li>
-                        <!--link area riservata utente-->
-                    </ul>
-                </div>				
+					<a href="#"
+						class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
+						data-bs-toggle="dropdown" aria-expanded="false"
+						style="color: white;"> <strong th:if="${admin}"
+						th:text="${admin.username}"></strong> <strong th:if="${utente}"
+						th:text="${utente.username}"></strong> <strong
+						th:if="${admin == null && utente == null}">Accedi</strong>
+					</a>
+					<ul class="dropdown-menu text-small shadow">
+						<!--sistemare spazio li>dropdown-->
+						<li th:if="${admin != null}" style="margin-left: 4%"><a
+							class="dropdown-item" th:href="@{adminReserved}">Area
+								personale</a></li>
+						<!--link area riservata utente-->
+						<li th:if="${admin == null}" style="margin-left: 4%"><a
+							class="dropdown-item" th:href="@{utenteReserved}">Area
+								personale</a></li>
+						<!--link area riservata utente-->
+					</ul>
+				</div>
 			</div>
+		</div>
 	</nav>
 
 	<div class="row"
@@ -382,26 +384,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 
 
 				<div class="sidebar" id="side-nav">
-					<!-- BOTTONI BIGLIETTI / ABBONAMENTI -->
-					<!-- <div class="sidebari-menu">
-                <div class="d-flex align-items-start">
-                    <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist"
-                        aria-orientation="vertical">
-                        <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill"
-                            data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
-                            aria-selected="true">Biglietti</button>
 
-                        <hr >
-
-                        <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill"
-                            data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile"
-                            aria-selected="false">Abbonamenti</button>
-                    </div>
-
-                </div>
-
-
-            </div> -->
 
 					<div class="sidebar-menu" style="padding-top: 35px">
 						<div class="d-flex align-items-start justify-content-center">
@@ -423,7 +406,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 
 
 
-					<form action="/shop" method="get">
+					<form action="/ticket" method="get">
 						<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 							<li class="nav-item mt-3">
 
@@ -580,8 +563,10 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 
 				</div>
 			</div>
+		</div>
+	</div>
 
-			<script>
+	<script>
             // slider prezzo
             const minPriceSlider = document.getElementById('min-price');
             const maxPriceSlider = document.getElementById('max-price');
@@ -635,10 +620,10 @@ input[type=range]:focus::-webkit-slider-runnable-track {
             });
         </script>
 
-			<script
-				src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-				integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-				crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+		crossorigin="anonymous"></script>
 </body>
 
 </html>

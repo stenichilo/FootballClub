@@ -93,7 +93,7 @@ public class AdminReservedController {
 	public String eliminaNews(@RequestParam("id") int id) {
 		News news = newsService.getNewsById(id);
 		newsService.eliminaNews(news);
-		return "redirect:/adminReserved";
+		return "redirect:/adminReserved?scheda=3";
 	}
 	
 	
@@ -101,6 +101,6 @@ public class AdminReservedController {
 	public String eliminaProdotto(@RequestParam("id") int id) {
 		Prodotto prodotto = prodottoService.getProdottoById(id);
 		prodottoService.cancellaProdotto(prodotto);
-		return "redirect:/adminReserved";
+		return "redirect:/adminReserved?scheda=4";
 	}
 }
