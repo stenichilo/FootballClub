@@ -51,7 +51,7 @@ li a::after {
 	content: '';
 	width: 0;
 	height: 3px;
-	background-color: #ed1c24;
+	background-color: white;
 	margin: auto;
 	display: block;
 }
@@ -320,12 +320,13 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 						<a th:href="@{/}"><img src="image/SSC_Bari_logo.png"
 							class="logo"></a>
 					</div>
-					<div class="col-md-4"></div>
-					<div class="col-md-4">
-						<ul style="padding-top:19px; padding-left: 83px;">
+					<div class="col-md-3"></div>
+					<div class="col-md-5">
+						<ul style="padding-top:19px; padding-left: 150px;">
 							<li style="margin-right:2%;"><a th:href="@{/}">HOME</a></li>
-							<li style="margin-right:2%;"><a th:href="@{shop}">SHOP</a></li>
 							<li style="margin-right:2%;"><a th:href="@{storia}">LA NOSTRA STORIA</a></li>
+								<li style="margin-right:2%;"><a th:href="@{shop}">SHOP</a></li>
+									<li style="margin-right:2%;"><a th:href="@{ticket}">TICKET</a></li>
 							<li style="margin-right:4%;"><a th:href="@{contatti}">CONTATTACI</a></li>
 							<li th:if="${admin == null}">
 								 <a	th:href="@{utenteReserved?scheda=2}"><svg 
