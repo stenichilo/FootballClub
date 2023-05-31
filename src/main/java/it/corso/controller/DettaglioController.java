@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import it.corso.model.Admin;
+import it.corso.model.Utente;
 import it.corso.service.ProdottoService;
 import jakarta.servlet.http.HttpSession;
 
@@ -24,8 +26,15 @@ public class DettaglioController {
 			@RequestParam(name="pa", required = false) String pa, HttpSession session) {
 		model.addAttribute("prodotto", prodottoService.getProdottoById(id));
 		model.addAttribute("pa", pa != null);
-		model.addAttribute("admin", session.getAttribute("admin") != null);
-		model.addAttribute("utente", session.getAttribute("utente") != null);
+		if(session.getAttribute("utente") != null) {
+			Utente utente = (Utente) session.getAttribute("utente");
+			model.addAttribute("utente", utente);
+		}
+		
+		if(session.getAttribute("admin") != null) {
+			Admin admin = (Admin) session.getAttribute("admin");
+			model.addAttribute("admin", admin);
+		}
 		return "dettaglio";
 	}
 	

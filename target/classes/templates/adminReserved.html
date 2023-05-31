@@ -134,8 +134,8 @@
 								for="dettaglio" class="form-label mb-3">Dettaglio: </label> <input
 								type="text" name="dettaglio" class="form-control"
 								th:field="*{dettaglio}"> <br> <label
-								for="categoria" class="mb-3">Categoria: </label> <select
-								name="categoria" th:field="*{categoria}" required="required">
+								for="categoria" class="mb-3" style="display:inline-block;">Categoria: </label> <select class="form-select"
+								name="categoria" th:field="*{categoria}" required="required" style="width:50%; display: inline-block;">
 								<option value="" hidden="true"></option>
 								<option value="kit ufficiale">1 - Kit ufficiale</option>
 								<option value="magliette">2 - Magliette</option>
