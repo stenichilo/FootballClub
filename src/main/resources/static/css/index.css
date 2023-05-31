@@ -45,7 +45,7 @@ nav ul li a {
     font-size: 17px;
 }
 
-li a::after {
+nav li a::after {
     content: '';
     width: 0;
     height: 3px;
@@ -54,7 +54,7 @@ li a::after {
     display: block;
 }
 
-li a:hover::after {
+nav li a:hover::after {
     width: 100%;
     transition: width 0.3s linear;
 }
