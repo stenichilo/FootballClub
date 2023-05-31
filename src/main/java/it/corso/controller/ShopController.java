@@ -58,6 +58,7 @@ public class ShopController {
 			model.addAttribute("admin", admin);
 		}
 		model.addAttribute("catalogo", catalogo);
+		model.addAttribute("noResult", catalogo.isEmpty());
 		
 		return "shop";
 	}

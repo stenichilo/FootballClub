@@ -373,9 +373,9 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 								class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
 								data-bs-toggle="dropdown" aria-expanded="false"
 								style="color: white;"> <strong th:if="${admin != null}"
-								th:text="${admin.username}"></strong> <strong th:if="${utente != null}"
-								th:text="${utente.username}"></strong> <strong
-								th:if="${admin == null && utente == null}">ACCEDI</strong>
+								th:text="${admin.username}"></strong> <strong
+								th:if="${utente != null}" th:text="${utente.username}"></strong>
+								<strong th:if="${admin == null && utente == null}">ACCEDI</strong>
 							</a>
 							<ul class="dropdown-menu text-small shadow">
 								<!--sistemare spazio li>dropdown-->
@@ -496,9 +496,11 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 					<div class="tab-pane fade show active" id="v-pills-home"
 						role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
 
+
 						<div class="row"
 							style="margin-right: 0px !important; margin-left: 0; padding: 0px;">
-
+							<h1 th:if=${noResult} class="text-center">La ricerca non ha prodotto nessun
+								risultato!</h1>
 							<div th:each="biglietto : ${biglietti}"
 								class="col-md-5 d-flex align-items-stretch"
 								style="padding: 0px;">
@@ -527,12 +529,10 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 													<a th:if="${utente != null}"
 														th:href="@{ticket/aggiungi(id=${biglietto.id})}"><button
 															class="st-button" id="st-button">Aggiungi al
-															Carrello</button></a>
-													<a th:if="${admin != null}"
+															Carrello</button></a> <a th:if="${admin != null}"
 														th:href="@{adminReserved?scheda=2(idProdotto=${biglietto.id})}"><button
 															class="st-button" id="st-button">Modifica
-															prodotto</button></a>
-													<a th:if="${admin == null && utente == null}"
+															prodotto</button></a> <a th:if="${admin == null && utente == null}"
 														th:href="@{login}"><button class="st-button"
 															id="st-button">Loggati per acquistare</button></a>
 												</div>
@@ -586,12 +586,10 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 													<a th:if="${utente != null}"
 														th:href="@{ticket/aggiungi(id=${abbonamento.id})}"><button
 															class="st-button" id="st-button">Aggiungi al
-															Carrello</button></a>
-													<a th:if="${admin != null}"
+															Carrello</button></a> <a th:if="${admin != null}"
 														th:href="@{adminReserved?scheda=2(idProdotto=${abbonamento.id})}"><button
 															class="st-button" id="st-button">Modifica
-															prodotto</button></a>
-													<a th:if="${admin == null && utente == null}"
+															prodotto</button></a> <a th:if="${admin == null && utente == null}"
 														th:href="@{login}"><button class="st-button"
 															id="st-button">Loggati per acquistare</button></a>
 												</div>

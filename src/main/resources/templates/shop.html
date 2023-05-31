@@ -9,7 +9,8 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 <title>Shop</title>
-<link rel="Website Icon" type="png" href="https://upload.wikimedia.org/wikipedia/it/thumb/a/a7/SSC_Bari_logo.png/358px-SSC_Bari_logo.png?20210216191910">
+<link rel="Website Icon" type="png"
+	href="https://upload.wikimedia.org/wikipedia/it/thumb/a/a7/SSC_Bari_logo.png/358px-SSC_Bari_logo.png?20210216191910">
 <script type="text/javascript"
 	src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=3A7qirMe_W3kHfkBucyOhFOIil_EVT7tIb7JTfpmlVpruQkVa5WEfK2wOPy8zCBaPvkpVV_ekKeCu-focZgTgNM3I7Q8b2QrhCZgX15a6hLHEIc1hMucx63FCBvp5fREc3o0eLVz52wTIDlnwwmh9g"
 	charset="UTF-8"></script>
@@ -310,83 +311,84 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 
 	<!-- HEADER/NAVBAR -->
 
-	
 
 
-				<!-- Dropdown con username o con 'Accedi' -->
-		<div class="row"
+
+	<!-- Dropdown con username o con 'Accedi' -->
+	<div class="row"
+		style="margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0;">
+		<div class="col-md-12"
 			style="margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0;">
-			<div class="col-md-12"
-				style="margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0;">
-				<nav>
-					<div class="col-md-1"></div>
-					<div class="col-md-2">
-						<a th:href="@{/}"><img src="image/SSC_Bari_logo.png"
-							class="logo"></a>
-					</div>
-					<div class="col-md-3"></div>
-					<div class="col-md-5">
-						<ul style="padding-top:19px; padding-left: 150px;">
-							<li style="margin-right:2%;"><a th:href="@{/}">HOME</a></li>
-							<li style="margin-right:2%;"><a th:href="@{storia}">LA NOSTRA STORIA</a></li>
-								<li style="margin-right:2%;"><a th:href="@{shop}">SHOP</a></li>
-									<li style="margin-right:2%;"><a th:href="@{ticket}">TICKET</a></li>
-							<li style="margin-right:4%;"><a th:href="@{contatti}">CONTATTACI</a></li>
-							<li th:if="${admin == null}">
-								 <a	th:href="@{utenteReserved?scheda=2}"><svg 
-						xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-							fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">                           
-						<path 
-						d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" /> -->
-                         </svg></a>
-							
-							</li>
-						</ul>
-					</div>
-					<div class="col-md-1">
+			<nav>
+				<div class="col-md-1"></div>
+				<div class="col-md-2">
+					<a th:href="@{/}"><img src="image/SSC_Bari_logo.png"
+						class="logo"></a>
+				</div>
+				<div class="col-md-3"></div>
+				<div class="col-md-5">
+					<ul style="padding-top: 19px; padding-left: 150px;">
+						<li style="margin-right: 2%;"><a th:href="@{/}">HOME</a></li>
+						<li style="margin-right: 2%;"><a th:href="@{storia}">LA
+								NOSTRA STORIA</a></li>
+						<li style="margin-right: 2%;"><a th:href="@{shop}">SHOP</a></li>
+						<li style="margin-right: 2%;"><a th:href="@{ticket}">TICKET</a></li>
+						<li style="margin-right: 4%;"><a th:href="@{contatti}">CONTATTACI</a></li>
+						<li th:if="${admin == null}"><a
+							th:href="@{utenteReserved?scheda=2}"><svg
+									xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+									fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">                           
+						<path
+										d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" /> -->
+                         </svg></a></li>
+					</ul>
+				</div>
+				<div class="col-md-1">
 					<!--DROPDOWN ACCEDI -->
-						<div class="boh">
-							<div class="carrello">
-								<!--link carrello-->
-								<a th:if="${admin == true}" th:href="@{adminReserved}"><svg
-										xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-										fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+					<div class="boh">
+						<div class="carrello">
+							<!--link carrello-->
+							<a th:if="${admin == true}" th:href="@{adminReserved}"><svg
+									xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+									fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
                             <path
-											d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+										d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
                         </svg></a> <a th:if="${admin == false}"
-									th:href="@{utenteReserved}"><svg
-										xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-										fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+								th:href="@{utenteReserved}"><svg
+									xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+									fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
                             <path
-											d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+										d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
                         </svg></a>
-							</div>
-							<div class="dropdown">
-								<a href="#"
-									class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
-									data-bs-toggle="dropdown" aria-expanded="false"
-									style="color: white;"> <strong th:if="${admin}"
-									th:text="${admin.username}"></strong> <strong th:if="${utente}"
-									th:text="${utente.username}"></strong> <strong
-									th:if="${admin == null && utente == null}">ACCEDI</strong>
-								</a>
-								<ul class="dropdown-menu text-small shadow">
-									<!--sistemare spazio li>dropdown-->
-									<li th:if="${admin != null}" style="margin-left: 4%"><a
-										class="dropdown-item" th:href="@{adminReserved}">Area personale</a></li>
-									<!--link area riservata utente-->
-									<li th:if="${admin == null}" style="margin-left: 4%"><a
-										class="dropdown-item" th:href="@{utenteReserved}">Area personale</a></li>
-									<!--link area riservata utente-->
-								</ul>
-							</div>
+						</div>
+						<div class="dropdown">
+							<a href="#"
+								class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
+								data-bs-toggle="dropdown" aria-expanded="false"
+								style="color: white;"> <strong th:if="${admin}"
+								th:text="${admin.username}"></strong> <strong th:if="${utente}"
+								th:text="${utente.username}"></strong> <strong
+								th:if="${admin == null && utente == null}">ACCEDI</strong>
+							</a>
+							<ul class="dropdown-menu text-small shadow">
+								<!--sistemare spazio li>dropdown-->
+								<li th:if="${admin != null}" style="margin-left: 4%"><a
+									class="dropdown-item" th:href="@{adminReserved}">Area
+										personale</a></li>
+								<!--link area riservata utente-->
+								<li th:if="${admin == null}" style="margin-left: 4%"><a
+									class="dropdown-item" th:href="@{utenteReserved}">Area
+										personale</a></li>
+								<!--link area riservata utente-->
+							</ul>
 						</div>
 					</div>
-					<!-- FINE DROPDOWN ACCEDI -->
+				</div>
+				<!-- FINE DROPDOWN ACCEDI -->
 
-				</nav>
-			</div>
+			</nav>
 		</div>
+	</div>
 	<div class="row"
 		style="margin-right: 0px; margin-left: 0; padding: 0px;">
 		<div class="col-md-12" style="padding-left: 0px; padding-right: 0px;">
@@ -467,7 +469,11 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 				</div>
 
 				<div class="container overflow-hidden text-center">
+
+
 					<div class="row gy-5">
+						<h1 th:if=${noResult}>La ricerca non ha prodotto nessun
+							risultato!</h1>
 						<div class="col-4" th:each="p : ${catalogo}">
 							<div class="p-3">
 
@@ -475,17 +481,16 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 								<div class="card" style="width: 20rem; height: 30rem;">
 									<img th:if="${p.immagine == null}"
 										src="image/SSC_Bari_logo.png" class="card-img-top"
-										alt="Immagine del prodotto"> 
-									<img
-										th:if="${p.immagine != null}"
-										th:src="@{${p.immagine}}" class="card-img-top"
-										alt="Immagine del prodotto">
+										alt="Immagine del prodotto"> <img
+										th:if="${p.immagine != null}" th:src="@{${p.immagine}}"
+										class="card-img-top" alt="Immagine del prodotto">
 									<div class="card-body">
-									<div class="card-body-top">
-										<h4 th:text="${p.nome}"></h4>
+										<div class="card-body-top">
+											<h4 th:text="${p.nome}"></h4>
 										</div>
 										<div class="card-body-sub">
-											<h4 th:text="${#numbers.formatDecimal(p.prezzo,0,'POINT',2,'COMMA')} + ' €'"></h4>
+											<h4
+												th:text="${#numbers.formatDecimal(p.prezzo,0,'POINT',2,'COMMA')} + ' €'"></h4>
 											<a th:href="@{dettaglio(id=${p.id})}" class="dettaglio-btn">Mostra</a>
 										</div>
 									</div>
@@ -501,10 +506,10 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 				<!--FINE CONTAINER-->
 			</div>
 		</div>
-		</div>
-	
+	</div>
 
-		<script>
+
+	<script>
             // slider prezzo
             const minPriceSlider = document.getElementById('min-price');
             const maxPriceSlider = document.getElementById('max-price');
@@ -558,8 +563,8 @@ input[type=range]:focus::-webkit-slider-runnable-track {
             });
         </script>
 
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

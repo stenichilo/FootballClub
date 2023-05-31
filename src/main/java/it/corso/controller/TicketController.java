@@ -62,6 +62,7 @@ public class TicketController {
 			Admin admin = (Admin) session.getAttribute("admin");
 			model.addAttribute("admin", admin);
 		}
+		model.addAttribute("noResult", abbonamenti.isEmpty() && biglietti.isEmpty());
 
 		return "ticket";
 	}
