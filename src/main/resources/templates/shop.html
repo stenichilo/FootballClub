@@ -305,44 +305,93 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 <body>
 
 	<!-- HEADER/NAVBAR -->
-	<nav>
-		<a th:href="@{/}"><img src="image/SSC_Bari_logo.png" class="logo"></a>
-		<div class="user-wrapper">
-			<div class="boh">
-				<div th:if="${admin == null}" class="carrello">
-					<!--link carrello-->
-					 <a	th:href="@{utenteReserved?scheda=2}"><svg
-							xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-							fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
-                            <path
-								d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-                        </svg></a>
-				</div>
+
+	
+<!-- 				<div th:if="${admin == null}" class="carrello"> -->
+<!-- 					link carrello -->
+<!-- 					 <a	th:href="@{utenteReserved?scheda=2}"><svg -->
+<!-- 							xmlns="http://www.w3.org/2000/svg" width="30" height="30" -->
+<!-- 							fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16"> -->
+<!--                             <path -->
+<!-- 								d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" /> -->
+<!--                         </svg></a> -->
+<!-- 				</div> -->
 
 				<!-- Dropdown con username o con 'Accedi' -->
-				<div class="dropdown">
-					<a href="#"
-						class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
-						data-bs-toggle="dropdown" aria-expanded="false"
-						style="color: white;"> <strong th:if="${admin}"
-						th:text="${admin.username}"></strong> <strong th:if="${utente}"
-						th:text="${utente.username}"></strong> <strong
-						th:if="${admin == null && utente == null}">Accedi</strong>
-					</a>
-					<ul class="dropdown-menu text-small shadow">
-						<!--sistemare spazio li>dropdown-->
-						<li th:if="${admin != null}" style="margin-left: 4%"><a class="dropdown-item"
-							th:href="@{adminReserved}">Area personale</a></li>
-						<!--link area riservata utente-->
-						<li th:if="${admin == null}" style="margin-left: 4%"><a class="dropdown-item"
-							th:href="@{utenteReserved}">Area personale</a></li>
-						<!--link area riservata utente-->
-					</ul>
-				</div>
+					<div class="row"
+			style="margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0;">
+			<div class="col-md-12"
+				style="margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0;">
+				<nav>
+					<div class="col-md-1"></div>
+					<div class="col-md-2">
+						<a th:href="@{/}"><img src="image/SSC_Bari_logo.png"
+							class="logo"></a>
+					</div>
+					<div class="col-md-4"></div>
+					<div class="col-md-4">
+						<ul style="padding-top:19px; padding-left: 83px;">
+							<li style="margin-right:2%;"><a th:href="@{/}">HOME</a></li>
+							<li style="margin-right:2%;"><a th:href="@{shop}">SHOP</a></li>
+							<li style="margin-right:2%;"><a th:href="@{storia}">LA NOSTRA STORIA</a></li>
+							<li style="margin-right:4%;"><a th:href="@{contatti}">CONTATTACI</a></li>
+							<li th:if="${admin == null}">
+								 <a	th:href="@{utenteReserved?scheda=2}"><svg 
+						xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+							fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">                           
+						<path 
+						d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" /> -->
+                         </svg></a>
+							
+							</li>
+						</ul>
+					</div>
+					<div class="col-md-1">
+					<!--DROPDOWN ACCEDI -->
+						<div class="boh">
+							<div class="carrello">
+								<!--link carrello-->
+								<a th:if="${admin == true}" th:href="@{adminReserved}"><svg
+										xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+										fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                            <path
+											d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                        </svg></a> <a th:if="${admin == false}"
+									th:href="@{utenteReserved}"><svg
+										xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+										fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                            <path
+											d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                        </svg></a>
+							</div>
+							<div class="dropdown">
+								<a href="#"
+									class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
+									data-bs-toggle="dropdown" aria-expanded="false"
+									style="color: white;"> <strong th:if="${admin}"
+									th:text="${admin.username}"></strong> <strong th:if="${utente}"
+									th:text="${utente.username}"></strong> <strong
+									th:if="${admin == null && utente == null}">Accedi</strong>
+								</a>
+								<ul class="dropdown-menu text-small shadow">
+									<!--sistemare spazio li>dropdown-->
+									<li th:if="${admin != null}" style="margin-left: 4%"><a
+										class="dropdown-item" th:href="@{adminReserved}">Area
+											personale</a></li>
+									<!--link area riservata utente-->
+									<li th:if="${admin == null}" style="margin-left: 4%"><a
+										class="dropdown-item" th:href="@{utenteReserved}">Area
+											personale</a></li>
+									<!--link area riservata utente-->
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- FINE DROPDOWN ACCEDI -->
+
+				</nav>
 			</div>
 		</div>
-	</nav>
-
 	<div class="row"
 		style="margin-right: 0px; margin-left: 0; padding: 0px;">
 		<div class="col-md-12" style="padding-left: 0px; padding-right: 0px;">
@@ -453,6 +502,8 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 				<!--FINE CONTAINER-->
 			</div>
 		</div>
+		</div>
+	
 
 		<script>
             // slider prezzo
