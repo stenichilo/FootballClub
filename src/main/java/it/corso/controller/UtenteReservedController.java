@@ -51,7 +51,7 @@ public class UtenteReservedController {
 	public String inviaOrdine(HttpSession session) {
 		ordineService.registraOrdine(session);
 		session.setAttribute("carrello", new ArrayList<Prodotto>());
-		return "redirect:/utenteReserved?oa";
+		return "redirect:/utenteReserved?oa&scheda=3";
 	}
 	
 	
@@ -74,7 +74,10 @@ public class UtenteReservedController {
 			}
 		}
 		session.setAttribute("carrello", carrello);
-		return "redirect:/utenteReserved";
+		if (carrello.isEmpty()) {
+			return "redirect:/utenteReserved?oa&scheda=2";
+		} 
+		return "redirect:/utenteReserved?scheda=2";
 	}
 	
 }
