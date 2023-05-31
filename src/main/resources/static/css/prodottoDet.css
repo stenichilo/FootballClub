@@ -34,7 +34,7 @@ li a::after {
   content: '';
   width: 0;
   height: 3px;
-  background-color: #ed1c24;
+  background-color: white;
   margin: auto;
   display: block;
 }
