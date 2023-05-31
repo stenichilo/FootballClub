@@ -2,242 +2,571 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-<link rel="stylesheet"
-	href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-<title>Utente Reserved</title>
-<link rel="Website Icon" type="png" href="https://upload.wikimedia.org/wikipedia/it/thumb/a/a7/SSC_Bari_logo.png/358px-SSC_Bari_logo.png?20210216191910">
-<link href="css/utenteReserved.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="Website Icon" type="png"
+        href="https://upload.wikimedia.org/wikipedia/it/thumb/a/a7/SSC_Bari_logo.png/358px-SSC_Bari_logo.png?20210216191910">
+    <title>Utente Reserved</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            list-style-type: none;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            text-decoration: none !important;
+        }
 
+        .nav-link {
+            color: #000000;
+        }
+
+        .nav-link:hover {
+            color: #ffffff;
+        }
+
+        .nav-link.active {
+            color: #000000 !important;
+            background-color: #e8e8e8 !important;
+        }
+
+        .sidebari {
+            width: 344px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100%;
+            background: #c90c20;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+        }
+
+        .sidebari-brand {
+            height: 90px;
+            padding: 2rem 0rem 1rem 2rem;
+            color: #ffffff;
+            display: inline-block;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .sidebari-brand h2 {
+            margin: 30px 0 0 10px;
+            color: #000000;
+        }
+
+        .sidebari-brand img {
+            margin: 30px 0 0 10px;
+        }
+
+        .sidebari-menu {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .sidebari-menu li {
+            width: 100%;
+            margin-bottom: 1.3rem;
+            padding-left: 2rem;
+        }
+
+        .sidebari-menu a {
+            padding-left: 1rem;
+            color: #ffffff;
+            font-size: 1.1rem;
+        }
+
+        .sidebari-menu a.active {
+            background: #ffffff;
+            color: #ffffff;
+            border-radius: 30px 0px 0px 30px;
+        }
+
+        .sidebari-menu a span:first-child {
+            font-size: 1.5rem;
+            padding-right: 1rem;
+        }
+
+        .d-flex {
+            margin-top: 40px;
+            line-height: 50px !important;
+        }
+
+        .nd-list {
+            margin-top: 80px;
+        }
+
+        /*.main-content {
+    margin-left: 345px;
+}*/
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 1.5rem;
+            /*box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);*/
+            position: fixed;
+            left: 345px;
+            width: calc(100% - 345px);
+            top: 0;
+            z-index: 100;
+            background: #e8e8e8;
+            border-bottom: 1px solid rgb(183, 183, 183);
+        }
+
+        header h2 {
+            color: #222;
+        }
+
+        header label span {
+            font-size: 1.7rem;
+            padding-right: 1rem;
+        }
+
+        .boh {
+            display: flex;
+            align-items: center;
+            margin-right: 2rem;
+        }
+
+        .boh img {
+            margin-right: 3rem;
+            transition: 0.3s ease-in-out;
+        }
+
+        .boh img:hover {
+            transition: 0.3s ease-in-out;
+            scale: 1.1;
+        }
+
+        .user-wrapper {
+            display: flex;
+            align-items: center;
+            margin-right: 5rem;
+        }
+
+        /*.user-wrapper img {
+            border-radius: 50%;
+            margin-right: 1rem;
+        }*/
+
+        .user-wrapper h4 {
+            color: #000000;
+            font-size: 1.1rem;
+            margin-bottom: -5px;
+        }
+
+        .user-wrapper strong {
+            color: #000000;
+        }
+
+        .dropdown a {
+            color: #000000 !important;
+        }
+
+        /*.shop {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+        }*/
+
+        .shop svg {
+            margin-right: 3rem;
+            transition: 0.3s ease-in-out;
+            margin-bottom: 3px;
+        }
+
+        .shop svg:hover {
+            transition: 0.3s ease-in-out;
+            scale: 1.1;
+        }
+
+        .shop a {
+            color: #000000;
+        }
+
+        /*.shop strong {
+            margin-right: .5rem;
+        }*/
+
+        main {
+            margin-top: 85px;
+            padding: 2rem 2rem;
+            background: rgb(230, 230, 230);
+            min-height: calc(100vh - 85px);
+            background-image: url("image/stadio2.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        .container-form {
+            margin: 5% 0 0 30%;
+            width: 60%;
+            border: 1px solid #a7a7a7;
+            border-radius: 10px;
+            padding: 50px;
+            background: #e8e8e8;
+        }
+
+        .container-form input {
+            background-color: #ffffff !important;
+        }
+
+        .card-square {
+            position: relative;
+            padding-bottom: 100%;
+            overflow: hidden;
+        }
+
+        .card-square img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .container-shop {
+            margin: 3% 0 0 25%;
+        }
+
+        .container-accordion {
+            margin: 1% 0 0 15%;
+        }
+
+        .row-distanza {
+            margin-top: 20px;
+        }
+
+        .container-acc {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .trashino {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .trashino a {
+            color: #ed1c24;
+        }
+
+        .ordina-btn {
+            background: #ffffff;
+            padding: 10px 15px;
+            color: #ed1c24;
+            font-weight: bolder;
+            text-transform: uppercase;
+            font-size: 18px;
+            border-radius: 5px;
+            box-shadow: 6px 6px 20px -4px rgba(0, 0, 0, 0.75);
+            text-decoration: none;
+            transition: 0.4s;
+        }
+
+        .ordina-btn:hover {
+            background: #ed1c24;
+            color: #ffffff;
+        }
+
+        .ordina-button {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            margin-right: 3rem;
+        }
+
+        .card-body h4 {
+            margin-top: 2%;
+        }
+
+        .logout-btn {
+            background: #ffffff;
+            padding: 10px 15px;
+            color: #c90c20;
+            font-weight: bolder;
+            text-transform: uppercase;
+            font-size: 18px;
+            border-radius: 5px;
+            box-shadow: 6px 6px 20px -4px rgba(0, 0, 0, 0.75);
+            text-decoration: none;
+            transition: 0.4s;
+        }
+
+        .logout-btn:hover {
+            background: #e8e8e8;
+            color: #000000;
+        }
+
+        .logout-button {
+            display: flex;
+            justify-content: center;
+            margin-right: 1rem;
+            position: relative;
+            top: 45%;
+        }
+
+        /*ACCORDION*/
+        .accordion-button:not(.collapsed) {
+            color: #000000 !important;
+            background-color: #e8e8e8 !important;
+            box-shadow: none !important;
+        }
+
+        .accordion {
+            --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+            --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(149, 149, 149, 0.25);
+            ;
+        }
+
+        .accordion {
+            border: 1px solid black !important;
+        }
+
+        .accordion-body {
+            border-bottom: 1px solid black !important;
+        }
+    </style>
 
 </head>
 
 <body>
 
-	<div class="sidebari">
-		<div class="sidebari-brand">
-			<img src="image/SSC_Bari_logo.png" width="50" height="60">
-			<h2>SideBARI</h2>
-		</div>
+    <div class="sidebari">
+        <div class="sidebari-brand">
+            <img src="image_navbar/logo.png" width="50" height="60">
+            <h2>SideBARI</h2>
+        </div>
 
-		<div class="sidebari-menu">
-			<div class="d-flex align-items-start">
-				<div class="nav flex-column nav-pills me-3" id="v-pills-tab"
-					role="tablist" aria-orientation="vertical">
-					<button th:class="'nav-link ' + ${scheda==1 || scheda == null ? 'active' : ''}" id="v-pills-home-tab"
-						data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button"
-						role="tab" aria-controls="v-pills-home" aria-selected="true">Profilo</button>
-					<button th:class="'nav-link ' + ${scheda==2 ? 'active' : ''}" id="v-pills-profile-tab"
-						data-bs-toggle="pill" data-bs-target="#v-pills-profile"
-						type="button" role="tab" aria-controls="v-pills-profile"
-						aria-selected="false">Carrello</button>
-					<button th:class="'nav-link ' + ${scheda==3 ? 'active' : ''}" id="v-pills-disabled-tab"
-						data-bs-toggle="pill" data-bs-target="#v-pills-disabled"
-						type="button" role="tab" aria-controls="v-pills-disabled"
-						aria-selected="false">Ordini</button>
-				</div>
-			</div>
-		</div>
-	</div>
+        <div class="sidebari-menu">
+            <div class="d-flex align-items-start">
+                <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <button th:class="'nav-link ' + ${scheda==1 || scheda == null ? 'active' : ''}"
+                        id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button"
+                        role="tab" aria-controls="v-pills-home" aria-selected="true">Profilo</button>
+                    <button th:class="'nav-link ' + ${scheda==2 ? 'active' : ''}" id="v-pills-profile-tab"
+                        data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab"
+                        aria-controls="v-pills-profile" aria-selected="false">Carrello</button>
+                    <button th:class="'nav-link ' + ${scheda==3 ? 'active' : ''}" id="v-pills-disabled-tab"
+                        data-bs-toggle="pill" data-bs-target="#v-pills-disabled" type="button" role="tab"
+                        aria-controls="v-pills-disabled" aria-selected="false">Ordini</button>
+                </div>
+            </div>
+        </div>
 
-	<header>
-		<h1>
-			Profilo Utente
-			<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-				fill="currentColor" class="bi bi-person-check-fill"
-				viewBox="0 0 16 16">
+        <div class="logout-button">
+            <a th:href="@{utenteReserved/logout}" class="logout-btn">Logout</a>
+        </div>
+
+    </div>
+
+    <header>
+        <h1>
+            Profilo Utente <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                class="bi bi-person-check-fill" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
-					d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
-                <path
-					d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                    d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
             </svg>
-		</h1>
+        </h1>
 
-		<div class="boh">
-			<div class="carrello">
-				<!--link carrello-->
-				<a th:href="@{utenteReserved(scheda=2)}"><svg xmlns="http://www.w3.org/2000/svg" width="30"
-						height="30" fill="currentColor" class="bi bi-cart3"
-						viewBox="0 0 16 16">
+        <div class="boh">
+            <a th:href="@{/}"><img src="image/logo_home2.png" width="38" height="38"></a>
+
+            <div class="shop">
+                <a th:href="@{shop}"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
+                        class="bi bi-basket" viewBox="0 0 16 16">
                         <path
-							d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                            d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z" />
                     </svg></a>
-			</div>
+            </div>
 
-			<div class="user-wrapper">
-				<!--link area riservata utente-->
-				<div class="dropdown">
-					<a href="#"
-						class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
-						data-bs-toggle="dropdown" aria-expanded="false"> <strong
-						th:text="${utente.username}"></strong>
-					</a>
-					<ul class="dropdown-menu text-small shadow">
-						<li><a class="dropdown-item" th:href="@{shop}">Nuovi
-								acquisti</a></li>
-						<li><a class="dropdown-item" th:href="@{/}">Vai alla
-								homepage</a></li>
-						<li>
-							<hr class="dropdown-divider">
-						</li>
-						<li><a class="dropdown-item"
-							th:href="@{utenteReserved/logout}">Logout</a></li>
-					</ul>
-				</div>
-				<!--<a href="#"><img src="/images/gpero.jpg" width="30px" height="30px" alt=""> 
-          <div class="nome-utente">
-            <h4>Gaspare Pero</h4>
-        </a>
-        <small>Utente</small>
-      </div>
-    </div>-->
-			</div>
-		</div>
-	</header>
+            <div class="user-wrapper">
+                <strong th:text="${utente.username}"></strong>
+            </div>
+        </div>
 
-	<main>
+    </header>
 
-		<div class="tab-content" id="v-pills-tabContent">
-			<div th:class="'tab-pane fade ' + ${scheda==1 || scheda == null? 'show active' : ''}" id="v-pills-home"
-				role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
-				<!--INIZIO TAB 1-->
-				<div class="container container-shop">
-					<div class="col-md-6">
-						<div class="mb-3">
-							<label for="nome" class="form-label">Nome</label> <input
-								type="text" class="form-control" id="fullName"
-								th:value="${utente.nome}">
-							<!--disabled dopo value?-->
-						</div>
-						<div class="mb-3">
-							<label for="cognome" class="form-label">Cognome</label> <input
-								type="text" class="form-control" id="fullName"
-								th:value="${utente.cognome}">
-							<!--disabled dopo value?-->
-						</div>
-						<div class="mb-3">
-							<label for="email" class="form-label">Email</label> <input
-								type="email" class="form-control" id="email"
-								th:value="${utente.mail}">
-							<!--disabled dopo value?-->
-						</div>
-						<div class="mb-3">
-							<label for="password" class="form-label">Password</label> <input
-								type="password" class="form-control" id="fullName"
-								th:value="${utente.password}">
-							<!--disabled dopo value?-->
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="mb-3">
-							<label for="address" class="form-label">Indirizzo</label>
-							<textarea class="form-control" id="address" rows="4"
-								th:text="${utente.via} + ', ' + ${utente.civico} + ', ' +${utente.cap} + ', ' + ${utente.comune} + ', ' + ${utente.provincia}"></textarea>
-							<!--disabled dopo rows?-->
-						</div>
-						<div class="mb-3">
-							<label for="phone" class="form-label">Telefono/cellulare</label>
-							<input type="text" class="form-control" id="phone"
-								th:value="${utente.telefono}">
-							<!--disabled dopo value?-->
-						</div>
-					</div>
-				</div>
-				<!--FINE TAB 1-->
-			</div>
-			<div th:class="'tab-pane fade ' + ${scheda==2 ? 'show active' : ''}" id="v-pills-profile" role="tabpanel"
-				aria-labelledby="v-pills-profile-tab" tabindex="0">
-				<!--INIZIO TAB 2 CARRELLO-->
-				<div class="container container-shop">
+    <main>
 
-					<div class="ordina-button" th:if="!${oa}">
-						<a th:href="@{utenteReserved/inviaOrdine}" class="ordina-btn">Invia
-							Ordine</a>
-					</div>
+        <div class="tab-content" id="v-pills-tabContent">
+            <div th:class="'tab-pane fade ' + ${scheda==1 || scheda == null? 'show active' : ''}" id="v-pills-home"
+                role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
+                <!--INIZIO TAB 1-->
+                <div class="container-form">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="nome" class="form-label">Nome</label>
+                                <input type="text" class="form-control" id="nome" th:value="${utente.nome}" disabled>
+                            </div>
+                            <div class="mb-3">
+                                <label for="via" class="form-label">Via/Piazza</label>
+                                <input type="text" class="form-control" id="via" th:value="${utente.via}" disabled>
+                            </div>
+                            <div class="mb-3">
+                                <label for="comune" class="form-label">Comune</label>
+                                <input type="text" class="form-control" id="comune" th:value="${utente.comune}" disabled>
+                            </div>
+                            <div class="mb-3">
+                                <label for="telefono" class="form-label">Telefono</label>
+                                <input type="text" class="form-control" id="phone" th:value="${utente.telefono}"
+                                    disabled>
+                            </div>
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="username" th:value="${utente.username}"
+                                    disabled>
+                            </div>
+                            <!--<div class="mb-3">
+                                <label for="cap" class="form-label">Cap</label>
+                                <input type="text" class="form-control" id="cap" th:text="${utente.cap}" disabled>
+                            </div>-->
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="cognome" class="form-label">Cognome</label>
+                                <input type="text" class="form-control" id="cognome" th:value="${utente.cognome}"
+                                    disabled>
+                            </div>
+                            <div class="mb-3">
+                                <label for="civico" class="form-label">Numero civico</label>
+                                <input type="text" class="form-control" id="civico" th:value="${utente.civico}" disabled>
+                            </div>
+                            <div class="mb-3">
+                                <label for="provincia" class="form-label">Provincia</label>
+                                <input type="text" class="form-control" id="provincia" th:value="${utente.provincia}"
+                                    disabled>
+                            </div>
+                            <div class="mb-3">
+                                <label for="mail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" th:value="${utente.mail}" disabled>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" th:value="${utente.password}"
+                                    disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-					<div class="row">
-						<div class="col-sm-4" th:each="p : ${carrello}">
-							<!--INIZIO CARD 1 CARRELLO-->
-							<div class="card mb-3" style="max-width: 300px;">
-								<img th:src="${p.immagine}" class="img-fluid rounded-start"
-									alt="...">
-							</div>
-							<div class="col-md-8">
-								<div class="card-body">
-									<div class="trashino">
-										<h5 class="card-title" th:text="${p.nome}"></h5>
-										<a th:href="@{utenteReserved/eliminaDaCarrello(id=${p.id})}"><svg xmlns="http://www.w3.org/2000/svg"
-												width="30" height="30" fill="currentColor"
-												class="bi bi-trash3" viewBox="0 0 16 16">
-                                                <path
-													d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
-                                              </svg></a>
-									</div>
-									<p th:text="${p.prezzo}"></p>
-								</div>
-							</div>
-							<!--FINE CARD 1 CARRELLO-->
-						</div>
+            </div>
+            <!--INIZIO TAB 2 CARRELLO-->
+            <div th:class="'tab-pane fade ' + ${scheda==2 ? 'show active' : ''}" id="v-pills-profile" role="tabpanel"
+                aria-labelledby="v-pills-profile-tab" tabindex="0">
+                <!--INIZIO CONTAINER-->
+                <div class="container container-shop overflow-hidden text-center">
 
+                    <div class="ordina-button" th:if="!${oa}">
+                        <a th:href="@{utenteReserved/inviaOrdine}" class="ordina-btn">Invia Ordine</a>
+                    </div>
 
-					</div>
-					<!--FINE TAB 2 CARRELLO-->
-				</div>
-			</div>
+                    <div class="row">
+                        <div class="col-4" th:each="p : ${carrello}">
+                            <div class="p-3">
+                                <!--INIZIO CARD-->
+                                <div class="card" style="width: 20rem; height: 27rem;">
+                                    <img th:src="@{${p.immagine}}" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <div class="trashino">
+                                            <h3 class="card-title" th:text="${p.nome}"></h3>
+                                            <a th:href="@{utenteReserved/eliminaDaCarrello(id=${p.id})}"><svg
+                                                    xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                                    fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+                                                </svg></a>
+                                        </div>
+                                        <h4 th:text="${#numbers.formatDecimal(p.prezzo,0,'POINT',2,'COMMA')} + ' €'">
+                                        </h4>
+                                    </div>
+                                </div>
+                                <!--FINE CARD-->
+                            </div>
+                            <!--FINE P-3-->
+                        </div>
+                        <!--FINE COL-4-->
+                    </div>
+                    <!--FINE ROW GY-5-->
+                </div>
+                <!--FINE CONTAINER-->
+            </div>
+            <!--FINE TAB 2 CARRELLO-->
 
-			<div th:class="'tab-pane fade ' + ${scheda==3 ? 'show active' : ''}" id="v-pills-disabled" role="tabpanel"
-				aria-labelledby="v-pills-disabled-tab" tabindex="0">
-				<!--INIZIO TAB 3 ORDINI-->
-				<div class="container container-shop">
-					<div class="accordion accordion-flush" id="accordionFlushExample">
-						<div class="accordion-item" th:each="o : ${utente.ordini}">
-							<h2 class="accordion-header">
-								<button class="accordion-button collapsed" type="button"
-									data-bs-toggle="collapse" th:data-bs-target="'#flush-collapseOne' + ${o.id}"
-									aria-expanded="false" aria-controls="flush-collapseOne"
-									th:text="'ID ordine ' + ${o.id} + ' - Importo: ' + ${#numbers.formatDecimal(o.importo,0,'POINT',2,'COMMA')} + ' euro'" ></button>
-							</h2>
-							<div th:id="'flush-collapseOne' + ${o.id}" class="accordion-collapse collapse"
-								data-bs-parent="#accordionFlushExample">
-								<div class="accordion-body">
+            <div th:class="'tab-pane fade ' + ${scheda==3 ? 'show active' : ''}" id="v-pills-disabled" role="tabpanel"
+                aria-labelledby="v-pills-disabled-tab" tabindex="0">
+                <!--INIZIO TAB 3 ORDINI-->
+                <div class="container container-shop">
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                        <div class="accordion-item" th:each="o : ${utente.ordini}">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    th:data-bs-target="'#flush-collapseOne' + ${o.id}" aria-expanded="false"
+                                    aria-controls="flush-collapseOne"
+                                    th:text="'ID ordine ' + ${o.id} + ' - Importo: ' + ${#numbers.formatDecimal(o.importo,0,'POINT',2,'COMMA')} + ' euro'">
+                                </button>
+                            </h2>
+                            <div th:id="'flush-collapseOne' + ${o.id}" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
 
-									<div class="row">
-										<div class="col-sm-6" th:each="p : ${o.prodotti}">
-											<!--INIZIO CARD 1 ACCORDION 1-->
-											<div class="card mb-3" style="max-width: 300px;">
-												<img th:src="@{${p.immagine}}"
-													class="img-fluid rounded-start" alt="...">
-											</div>
-											<div class="col-md-8">
-												<div class="card-body">
-													<h5 class="card-title" th:text="${p.nome}"></h5>
-													<p th:text="${#numbers.formatDecimal(p.prezzo,0,'POINT',2,'COMMA')} + ' euro'"></p>
-												</div>
-											</div>
-											<!--FINE CARD 1 ACCORDION 1-->
-										</div>
+                                    <div class="container-accordion">
+                                        <div class="row gy-5">
+                                            <div class="col-6" th:each="p : ${o.prodotti}">
+                                                <div class="p-3">
+                                                    <!--INIZIO CARD-->
+                                                    <div class="card" style="width: 20rem; height: 27rem;">
+                                                        <img th:src="@{${p.immagine}}" class="card-img-top" alt="...">
+                                                        <div class="card-body">
+                                                            <h3 class="card-title text-center" th:text="${p.nome}"></h3>
+                                                            <h4 class="text-center"
+                                                                th:text="${#numbers.formatDecimal(p.prezzo,0,'POINT',2,'COMMA')} + ' euro'">
+                                                            </h4>
+                                                        </div>
+                                                    </div>
+                                                    <!--FINE CARD-->
+                                                </div>
+                                                <!--FINE P-3-->
+                                            </div>
+                                            <!--FINE COL-4-->
+                                        </div>
+                                        <!--FINE ROW GY-5-->
+                                    </div>
+                                    <!--FINE CONTAINER ACCORDION-->
+                                </div>
+                                <!--FINE ACCORDION BODY-->
+                            </div>
+                            <!--FINE FLUSH-->
+                        </div>
+                        <!--FINE ACCORDION ITEM-->
+                    </div>
+                    <!--FINE FLUSHX2-->
+                </div>
+                <!--FINE CONTAINER SHOP-->
+            </div>
+            <!--FINE TAB 3 ORDINI-->
+        </div>
+        <!--FINE TABS-->
 
+    </main>
 
-
-
-									</div>
-								</div>
-							</div>
-						</div>
-						<!--FINE TAB 3 ORDINI-->
-					</div>
-				</div>
-			</div>
-		</div>
-	</main>
-
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
