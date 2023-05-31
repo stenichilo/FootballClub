@@ -51,7 +51,7 @@
 									style="color: white;"> <strong th:if="${admin != null}"
 									th:text="${admin.username}"></strong> <strong th:if="${utente != null}"
 									th:text="${utente.username}"></strong> <strong
-									th:if="${admin == null && utente == null}">Accedi</strong>
+									th:if="${admin == null && utente == null}">ACCEDI</strong>
 								</a>
 								<ul class="dropdown-menu text-small shadow">
 									<!--sistemare spazio li>dropdown-->
@@ -203,9 +203,9 @@
 						<h4>Le nostre pagine</h4>
 						<ul class="list-unstyled footer-content">
 							<li><a th:href="@{/}">Home page</a></li>
-							<li><a th:href="@{storia}">Chi siamo</a></li>
+							<li><a th:href="@{storia}">La nostra storia</a></li>
 							<li><a th:href="@{shop}">Shop</a></li>
-							<li><a th:href="@{ticket}">Biglietteria</a></li>
+							<li><a th:href="@{ticket}">Ticket</a></li>
 							<li><a th:href="@{contatti}">Contatti</a></li>
 						</ul>
 					</div>

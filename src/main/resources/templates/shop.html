@@ -364,17 +364,15 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 									style="color: white;"> <strong th:if="${admin}"
 									th:text="${admin.username}"></strong> <strong th:if="${utente}"
 									th:text="${utente.username}"></strong> <strong
-									th:if="${admin == null && utente == null}">Accedi</strong>
+									th:if="${admin == null && utente == null}">ACCEDI</strong>
 								</a>
 								<ul class="dropdown-menu text-small shadow">
 									<!--sistemare spazio li>dropdown-->
 									<li th:if="${admin != null}" style="margin-left: 4%"><a
-										class="dropdown-item" th:href="@{adminReserved}">Area
-											personale</a></li>
+										class="dropdown-item" th:href="@{adminReserved}">Area personale</a></li>
 									<!--link area riservata utente-->
 									<li th:if="${admin == null}" style="margin-left: 4%"><a
-										class="dropdown-item" th:href="@{utenteReserved}">Area
-											personale</a></li>
+										class="dropdown-item" th:href="@{utenteReserved}">Area personale</a></li>
 									<!--link area riservata utente-->
 								</ul>
 							</div>

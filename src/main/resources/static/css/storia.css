@@ -51,7 +51,7 @@ nav ul li a {
     font-family: 'Poppins', sans-serif;
 }
 
-li a::after {
+nav li a::after {
     content: '';
     width: 0;
     height: 3px;
@@ -60,7 +60,7 @@ li a::after {
     display: block;
 }
 
-li a:hover::after {
+nav li a:hover::after {
     width: 100%;
     transition: width 0.3s linear;
 }
@@ -189,6 +189,32 @@ li a:hover::after {
     color: white;
 }
 
+.date ul li {
+    list-style: none;
+    display: inline-block;
+    margin-left: 40px;
+}
+
+.date ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 25px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.date li a::after {
+    content: '';
+    width: 0;
+    height: 3px;
+    background-color: white;
+    margin: auto;
+    display: block;
+}
+
+.date li a:hover::after {
+    width: 100%;
+    transition: width 0.3s linear;
+}
 
 
 

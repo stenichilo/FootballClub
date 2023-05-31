@@ -23,11 +23,8 @@
 	font-family: 'Poppins', sans-serif;
 }
 
-/* Colore dello sfondo del footer */
-footer {
-	background-color: #c90c20;
-	color: #fff;
-}
+
+
 
 /* Colore dei link nella lista */
 ul.list-unstyled li a {
@@ -45,7 +42,13 @@ ul.list-unstyled li a {
 
 #mappa {
 	width: 80%;
-	margin: auto
+	margin: auto;
+	
+}
+/* Colore dello sfondo del footer */
+footer {
+	background-color: #c90c20;
+	color: #fff;
 }
 
 .bottone_footer {
@@ -91,6 +94,7 @@ ul.list-unstyled li a {
 
 body {
 	background-color: #f8f9fa;
+  
 }
 
 #form-contatti {
@@ -186,6 +190,12 @@ ul {
 .form-group {
     line-height: 3rem;
 }
+.background{
+   background-image: url("image/stadio2.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+
+}
 </style>
 </head>
 
@@ -231,6 +241,7 @@ ul {
 
 	<main>
 
+<div class="background">
 		<div class="row"
 			style="margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0;">
 			<div class="col-md-3"></div>
@@ -297,19 +308,20 @@ ul {
 				</section>
 			</div>
 		</div>
+	</div>
 	</main>
 
-	<hr>
+	
 
 	<br>
 	<div class="row"
 		style="margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0;">
-		<div class="col-md-12">
+		<div class="col-md-12" style="padding-bottom:20px;">
 			<div id="mappa">
 				<iframe
 					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3007.279755955444!2d16.837560275329423!3d41.08473381471472!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1347e941b5ef01bd%3A0x5636fa0b217fea36!2sStadio%20San%20Nicola!5e0!3m2!1sit!2sit!4v1685016785361!5m2!1sit!2sit"
 					width="100%" height="350px"
-					style="border: 0; padding-bottom: 20px;" allowfullscreen=""
+					style="border: 0; box-shadow:2px 2px 4px 4px #8080803b; " allowfullscreen=""
 					loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 			</div>
 		</div>
@@ -327,9 +339,10 @@ ul {
 			<div class="col-md-3 text-center">
 				<h4>Le nostre pagine</h4>
 				<ul class="list-unstyled footer-content">
-					<li><a th:href="@{storia}">Chi siamo</a></li>
+					<li><a th:href="@{/}">Home page</a></li>
+					<li><a th:href="@{storia}">La nostra storia</a></li>
 					<li><a th:href="@{shop}">Shop</a></li>
-					<li><a th:href="@{ticket}">Biglietteria</a></li>
+					<li><a th:href="@{ticket}">Ticket</a></li>
 					<li><a th:href="@{contatti}">Contatti</a></li>
 				</ul>
 			</div>

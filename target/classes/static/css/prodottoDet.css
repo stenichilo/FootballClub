@@ -30,7 +30,7 @@ nav ul li a {
   font-size: 17px;
 }
 
-li a::after {
+nav li a::after {
   content: '';
   width: 0;
   height: 3px;
@@ -39,68 +39,55 @@ li a::after {
   display: block;
 }
 
-li a:hover::after {
+nav li a:hover::after {
   width: 100%;
   transition: width 0.3s linear;
 }
+/* Colore dello sfondo del footer */
 footer {
-  background-color: #c90c20;
-  color: #fff;
-}
-
-/* Colore dei link nella lista */
-ul.list-unstyled li a {
-  color: #fff;
-}
-
-/* Stile dell'hr scenografico */
-.scenic-hr {
-  border: none;
-  height: 1px;
-  background-image: linear-gradient(to right, #000, #c90c20, #fff, #c90c20, #000);
-  margin-top: 20px;
-  margin-bottom: 20px;
+	background-color: #c90c20;
+	color: #fff;
 }
 
 .bottone_footer {
-  color: white;
-  transition: background-color 0.3s, color 0.3s;
-  border: 2px solid #c90c20;
+	color: white;
+	transition: background-color 0.3s, color 0.3s;
+	border: 2px solid #c90c20;
 }
 
 .bottone_footer:hover {
-  background-color: white;
-  color: #c90c20;
-  border-color: #c90c20;
+	background-color: white;
+	color: #c90c20;
+	border-color: #c90c20;
 }
 
 .footer-content li a {
-  color: black;
-  text-decoration: none;
-  position: relative;
-  display: inline-block;
-  padding-bottom: 4px;
+	color: black;
+	text-decoration: none;
+	position: relative;
+	display: inline-block;
+	padding-bottom: 4px;
 }
 
 .footer-content li a:before {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 2px;
-  width: 100%;
-  background-color: white;
-  transform: scaleX(0);
-  transform-origin: bottom left;
-  transition: transform 0.3s;
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	height: 2px;
+	width: 100%;
+	background-color: white;
+	transform: scaleX(0);
+	transform-origin: bottom left;
+	transition: transform 0.3s;
 }
 
 .footer-content li a:hover {
-  color: black;
+	color: black;
 }
 
 .footer-content li a:hover:before {
-  transform: scaleX(1);
+	transform: scaleX(1);
 }
 /* TITOLO */
 #titolo{
