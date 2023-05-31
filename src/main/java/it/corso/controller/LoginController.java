@@ -47,7 +47,7 @@ public class LoginController {
 		if (adminService.controlloLogin(session, username, password)) {
 			return "redirect:/adminReserved";
 		} else if (utenteService.controlloLogin(session, username, password)) {
-			return "redirect:/utenteReserved?oa";
+			return "redirect:/utenteReserved";
 		} else {
 			return "redirect:/login?le";
 		}
