@@ -363,8 +363,8 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 							<a href="#"
 								class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
 								data-bs-toggle="dropdown" aria-expanded="false"
-								style="color: white;"> <strong th:if="${admin}"
-								th:text="${admin.username}"></strong> <strong th:if="${utente}"
+								style="color: white;"> <strong th:if="${admin != null}"
+								th:text="${admin.username}"></strong> <strong th:if="${utente != null}"
 								th:text="${utente.username}"></strong> <strong
 								th:if="${admin == null && utente == null}">Accedi</strong>
 							</a>
