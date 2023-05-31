@@ -168,7 +168,6 @@ ul.list-unstyled li a {
 }
 /* TAGLIA SIMILI*/
 .size-buttons {
-  display: flex;
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 20px;
