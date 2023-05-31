@@ -12,7 +12,7 @@
 	href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 <title>Admin Reserved</title>
 <link rel="Website Icon" type="png" href="https://upload.wikimedia.org/wikipedia/it/thumb/a/a7/SSC_Bari_logo.png/358px-SSC_Bari_logo.png?20210216191910">
-<link href="css/adminReserved.css" rel="stylesheet">
+<link href="css/admin-reserved.css" rel="stylesheet">
 <style>
 </style>
 
@@ -22,7 +22,7 @@
 
 	<div class="sidebari">
 		<div class="sidebari-brand">
-			<img src="image/SSC_Bari_logo.png" width="50" height="60">
+			<a th:href="@{/}"><img src="image/SSC_Bari_logo.png"  width="50" height="60"></a>
 			<h2>SideBARI</h2>
 		</div>
 
@@ -54,36 +54,35 @@
 				</div>
 			</div>
 		</div>
+		<div class="logout-button">
+            <a th:href="@{adminReserved/logout}" class="logout-btn">Logout</a>
+        </div>
 	</div>
 
 	<header>
-		<h1>
-			Profilo Admin
-			<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-				fill="currentColor" class="bi bi-person-heart" viewBox="0 0 16 16">
+        <h1>
+            Profilo Admin <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                class="bi bi-person-heart" viewBox="0 0 16 16">
                 <path
-					d="M9 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-9 8c0 1 1 1 1 1h10s1 0 1-1-1-4-6-4-6 3-6 4Zm13.5-8.09c1.387-1.425 4.855 1.07 0 4.277-4.854-3.207-1.387-5.702 0-4.276Z" />
+                    d="M9 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-9 8c0 1 1 1 1 1h10s1 0 1-1-1-4-6-4-6 3-6 4Zm13.5-8.09c1.387-1.425 4.855 1.07 0 4.277-4.854-3.207-1.387-5.702 0-4.276Z" />
             </svg>
-		</h1>
+        </h1>
 
-		<div class="user-wrapper">
-			<!--link area riservata utente-->
-			<div class="dropdown">
-				<a href="#"
-					class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
-					data-bs-toggle="dropdown" aria-expanded="false"> <strong
-					th:text="${admin.username}"></strong>
-				</a>
-				<ul class="dropdown-menu text-small shadow">
-					<li><a class="dropdown-item" th:href="@{/}">Vai alla Homepage</a></li>
-					<li>
-						<hr class="dropdown-divider">
-					</li>
-					<li><a class="dropdown-item" th:href="@{adminReserved/logout}">Logout</a></li>
-				</ul>
-			</div>
-		</div>
-	</header>
+        <div class="boh">
+            <a th:href="@{/}"><img src="image/logo_home2.png" width="38" height="38"></a>
+
+            <div class="shop">
+                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
+                        class="bi bi-basket" viewBox="0 0 16 16">
+                        <path
+                            d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z" />
+                    </svg></a>
+            </div>
+
+            <div class="user-wrapper">
+                <strong th:text="${admin.username}"></strong>
+            </div>
+    </header>
 
 	<main>
 
@@ -92,8 +91,8 @@
 			<div th:class="'tab-pane fade ' + ${scheda==1 || scheda == null ? 'show active' : ''}" id="v-pills-profile"
 				role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="2">
 				<!--INIZIO TAB 2-->
-				<div class="container container-shop">
-					<div class="col-md-6">
+				<div class="container container-form">
+					<div class="col-md-12">
 
 						<form action="adminReserved/registraNews" name="registraNews"
 							method="post" enctype="multipart/form-data" th:object="${news}">
@@ -117,8 +116,8 @@
 			<div th:class="'tab-pane fade ' + ${scheda==2 ? 'show active' : ''}" id="v-pills-disabled" role="tabpanel"
 				aria-labelledby="v-pills-disabled-tab" tabindex="3">
 				<!--INIZIO TAB 3-->
-				<div class="container container-shop">
-					<div class="col-md-6">
+				<div class="container container-form2">
+					<div class="col-md-12">
 
 
 

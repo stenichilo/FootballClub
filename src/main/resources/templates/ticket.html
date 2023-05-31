@@ -1,25 +1,644 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="ISO-8859-1">
-		<title>Ticket</title>
-	</head>
-	<body>
-	<h1> Lista Biglietti</h1>
-		<table>
-		
-			<tr th:each="biglietto : ${biglietti}">
-				<td th:text="${biglietto.nome}"></td>
-				<td><a th:href="@{dettaglio(id=${biglietto.id})}">Dettaglio</a></td>
-			</tr>
-		</table>
-		<h1> Lista Abbonamenti</h1>
-		<table>
-			<tr th:each="abbonamento : ${abbonamenti}">
-				<td th:text="${abbonamento.nome}"></td>
-				<td><a th:href="@{dettaglio(id=${abbonamento.id})}">Dettaglio</a></td>
-			</tr>
-		</table>
-		<a th:href="@{/}">Torna alla Home Page</a>
-	</body>
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+	crossorigin="anonymous">
+<title>Tickets</title>
+<style>
+* {
+	font-family: 'Poppins', sans-serif;
+}
+
+body {
+	line-height: 2rem;
+	;
+}
+
+/* NAVBAR */
+nav {
+	padding: 2px 3%;
+	display: flex;
+
+	justify-content: space-between;
+	background-color: #c90c20;
+	width: 100%;
+
+    top: 0;
+    left: 0;
+}
+
+nav .logo {
+	width: 50px;
+}
+
+nav ul li {
+	list-style: none;
+	display: inline-block;
+	margin-left: 4%;
+}
+
+nav ul li a {
+	text-decoration: none;
+	color: #ffffff;
+	font-size: 17px;
+}
+
+li a::after {
+	content: '';
+	width: 0;
+	height: 3px;
+	background-color: #ed1c24;
+	margin: auto;
+	display: block;
+}
+
+li a:hover::after {
+	width: 100%;
+	transition: width 0.3s linear;
+}
+
+/* TITOLO */
+#titolo {
+	display: flex;
+	justify-content: center;
+	background-color: #c90c1fda;
+	color: #ffffff;
+	padding: 0px !important;
+}
+
+.container-fluid {
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+/* NAV RIMANDO ALLA HOME E ALLO SHOP */
+.rimando {
+	margin-left: 20px;
+	margin-top: 10px;
+}
+
+.rimando a {
+	text-decoration: none;
+	color: #c90c20;
+}
+
+.rimando a:hover {
+	color: black;
+}
+
+/* BOTTONE AGGIUNGI AL CARELLO */
+.st-button, .nd-button {
+	background: #c90c20;
+	padding: 10px 15px;
+	color: white;
+	font-weight: bolder;
+	text-transform: uppercase;
+	font-size: 18px;
+	border-radius: 5px;
+	box-shadow: 6px 6px 20px -4px rgba(0, 0, 0, 0.75);
+	text-decoration: none;
+	transition: 0.4s;
+}
+
+.st-button:hover, .nd-button:hover {
+	background: white;
+	color: #c90c20;
+}
+
+/* NAV SOTTO FOTO */
+.nav-sotto a {
+	color: #c90c20;
+	margin-left: 100px;
+	padding: 0;
+}
+
+.nav-sotto a:hover {
+	color: black;
+}
+
+.carrello a {
+	color: #ffffff;
+}
+
+.row-distanza {
+	margin-top: 2rem;
+}
+
+.card-body-sub {
+	display: flex;
+	justify-content: space-between;
+}
+
+.dettaglio-btn {
+	background: #ffffff;
+	padding: 3px 6px;
+	color: #ed1c24;
+	font-weight: bolder;
+	text-transform: uppercase;
+	font-size: 18px;
+	border-radius: 5px;
+	box-shadow: 6px 6px 20px -4px rgba(0, 0, 0, 0.75);
+	text-decoration: none;
+	transition: 0.4s;
+}
+
+.dettaglio-btn:hover {
+	background: #ed1c24;
+	color: #ffffff;
+}
+
+.boh {
+	display: flex;
+	align-items: center;
+	margin-right: 2rem;
+}
+
+.user-wrapper {
+	display: flex;
+	align-items: center;
+	margin-right: 5rem;
+}
+
+.user-wrapper h4 {
+	color: #000000;
+	font-size: 1.1rem;
+	margin-bottom: -5px;
+}
+
+.user-wrapper strong {
+	color: #ffffff;
+}
+
+.carrello svg {
+	margin-right: 3rem;
+}
+
+.carrello a {
+	color: #ffffff;
+}
+
+body {
+	background: #eee;
+}
+
+#side-nav {
+	background: #c90c20;
+}
+
+.header-box {
+	display: flex;
+	justify-content: center;
+}
+
+.content {
+	min-height: 100vh;
+	width: 100%;
+}
+
+.sidebar li.active {
+	background: #eee;
+	border-radius: 8px;
+}
+
+.sidebar li.active a, .sidebar li.active a:hover {
+	color: #000000;
+}
+
+.sidebar li a {
+	color: #eee;
+}
+
+/* .content {
+            justify-content: center !important;
+        } */
+.filtri {
+	color: #ffffff;
+	margin: 0 2rem 0 2rem;
+}
+
+#customRange3 {
+	color: #ffffff !important;
+}
+
+.min-maxx {
+	display: flex;
+	justify-content: space-between;
+}
+
+.navbar-text {
+	margin-top: 3rem;
+	color: #ffffff;
+}
+
+.filtro {
+	display: flex;
+	justify-content: center;
+	margin-top: 5rem;
+}
+
+.filtri-btn {
+	background: #ffffff;
+	padding: 3px 6px;
+	color: #ed1c24;
+	font-weight: bolder;
+	text-transform: uppercase;
+	font-size: 18px;
+	border-radius: 5px;
+	box-shadow: 6px 6px 20px -4px rgba(0, 0, 0, 0.75);
+	text-decoration: none;
+	transition: 0.4s;
+}
+
+.filtri-btn:hover {
+	background: #000000;
+	color: #ffffff;
+}
+
+form {
+	margin: 3rem 1rem 0 1rem;
+}
+
+form label {
+	color: #ffffff;
+}
+
+input[type=range] {
+	-webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+	width: 300px;
+	height: 5px;
+	background: #ffffff;
+	border: none;
+	border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	border: none;
+	height: 16px;
+	width: 16px;
+	border-radius: 50%;
+	background: rgb(0, 0, 0);
+	margin-top: -4px;
+}
+
+input[type=range]:focus {
+	outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+	background: #ffffff;
+}
+
+.prezzo-card {
+	font-size: 25px;
+}
+
+/* STILE BOTTONI SIDEBARI */
+.sidebar-menu .nav-link {
+	background-color: #c90c20;
+	color: white;
+}
+
+.sidebar-menu .nav-link.active {
+	background-color: white;
+	color: #c90c20;
+}
+</style>
+</head>
+
+<body>
+
+	<!-- HEADER/NAVBAR -->
+	<nav>
+		<a th:href="@{/}"><img src="image/SSC_Bari_logo.png" class="logo"></a>
+		<div class="user-wrapper">
+			<ul style="padding-right: 42px; padding-top: 18px !important;">
+				<li><a href="index.html">HOME</a></li>
+				<li><a href="shop.html">SHOP</a></li>
+				<li><a href="storia.html">LA NOSTRA STORIA</a></li>
+				<li><a href="contatti.html">CONTATTACI</a></li>
+			</ul>
+			<div class="boh">
+				<div class="carrello">
+					<!--link carrello-->
+					<a th:if="${admin == true}" th:href="@{adminReserved}"><svg
+							xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+							fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                            <path
+								d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                        </svg></a> <a th:if="${admin == false}"
+						th:href="@{utenteReserved}"><svg
+							xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+							fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                            <path
+								d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                        </svg></a>
+				</div>
+				<div class="dropdown">
+                    <a href="#"
+                        class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
+                        data-bs-toggle="dropdown" aria-expanded="false"
+                        style="color: white;"> <strong th:if="${admin}"
+                        th:text="${admin.username}"></strong> <strong th:if="${utente}"
+                        th:text="${utente.username}"></strong> <strong
+                        th:if="${admin == null && utente == null}">Accedi</strong>
+                    </a>
+                    <ul class="dropdown-menu text-small shadow">
+                        <!--sistemare spazio li>dropdown-->
+                        <li th:if="${admin != null}" style="margin-left: 4%"><a class="dropdown-item"
+                            th:href="@{adminReserved}">Area personale</a></li>
+                        <!--link area riservata utente-->
+                        <li th:if="${admin == null}" style="margin-left: 4%"><a class="dropdown-item"
+                            th:href="@{utenteReserved}">Area personale</a></li>
+                        <!--link area riservata utente-->
+                    </ul>
+                </div>				
+			</div>
+	</nav>
+
+	<div class="row"
+		style="margin-right: 0px; margin-left: 0; padding: 0px;">
+		<div class="col-md-12" style="padding-left: 0px; padding-right: 0px;">
+			<h1 id="titolo" style="margin: 0;">S.C.C. BARI OFFICIAL SHOP</h1>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+		<div class="row"
+			style="margin-right: 0px; margin-left: 0; padding: 0px;">
+			<div class="col-md-2"
+				style="height: 100vh; background-color: #c90c20;">
+
+
+
+				<div class="sidebar" id="side-nav">
+					<!-- BOTTONI BIGLIETTI / ABBONAMENTI -->
+					<!-- <div class="sidebari-menu">
+                <div class="d-flex align-items-start">
+                    <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist"
+                        aria-orientation="vertical">
+                        <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill"
+                            data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
+                            aria-selected="true">Biglietti</button>
+
+                        <hr >
+
+                        <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill"
+                            data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile"
+                            aria-selected="false">Abbonamenti</button>
+                    </div>
+
+                </div>
+
+
+            </div> -->
+
+					<div class="sidebar-menu" style="padding-top: 35px">
+						<div class="d-flex align-items-start justify-content-center">
+							<div class="nav flex-column nav-pills me-3 text-center"
+								id="v-pills-tab" role="tablist" aria-orientation="vertical">
+								<button class="nav-link active" id="v-pills-home-tab"
+									data-bs-toggle="pill" data-bs-target="#v-pills-home"
+									type="button" role="tab" aria-controls="v-pills-home"
+									aria-selected="true">Biglietti</button>
+								<hr>
+								<button class="nav-link" id="v-pills-profile-tab"
+									data-bs-toggle="pill" data-bs-target="#v-pills-profile"
+									type="button" role="tab" aria-controls="v-pills-profile"
+									aria-selected="false">Abbonamenti</button>
+							</div>
+						</div>
+					</div>
+
+
+
+
+					<form action="/shop" method="get">
+						<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+							<li class="nav-item mt-3">
+
+								<div class="row"
+									style="margin-right: 0px; margin-left: 0; padding: 0px;">
+									<div class="col-6">
+										<label for="min-price" class="form-label">Prezzo min:</label><input
+											type="range" class="form-range" id="min-price" name="min"
+											min="0" max="500" step="10" value="0"
+											oninput="changeMin(event)">
+									</div>
+									<div class="col-6">
+										<label for="max-price" class="form-label">Prezzo max:</label><input
+											type="range" class="form-range " id="max-price" name="max"
+											min="0" max="500" step="10" value="500"
+											oninput="changeMax(event)">
+									</div>
+								</div>
+								<div class="row mt-4">
+									<div class="col-6">
+
+										<input type="text" class="form-control text-center"
+											id="selected-min-price" readonly="readonly">
+									</div>
+									<div class="col-6">
+
+										<input type="text" class="form-control text-center"
+											id="selected-max-price" readonly="readonly">
+									</div>
+								</div>
+
+							</li>
+
+						</ul>
+						<div class="filtro">
+							<input type="submit" class="filtri-btn" value="Applica filtri">
+						</div>
+					</form>
+
+				</div>
+			</div>
+
+			<!--INIZIO DIV CONTENT-->
+
+			<div class="col-md-10" style="padding-left: 115px;">
+				<!-- RIMANDO ALLA HOME-->
+				<div class="row" style="margin-right: 0px; margin-left: 0;">
+					<div class="col-md-12">
+						<ol class="breadcrumb rimando">
+							<li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+							<li class="breadcrumb-item active" aria-current="page">Shop</li>
+						</ol>
+					</div>
+				</div>
+				<!-- BOTTONE SIDEBAR PER ANDARE AD ABBONAMENTI -->
+				<div class="tab-content" id="v-pills-tabContent">
+					<div class="tab-pane fade show active" id="v-pills-home"
+						role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
+
+						<div class="row"
+							style="margin-right: 0px !important; margin-left: 0; padding: 0px;">
+
+							<div th:each="biglietto : ${biglietti}"
+								class="col-md-5 d-flex align-items-stretch"
+								style="padding: 0px;">
+								<!-- align-items-stretch -->
+
+								<!-- INIZIO CARD BIGLIETTI 1 -->
+								<div class="card mb-3" style="max-width: 540px;">
+									<div class="row g-0">
+										<div class="col-md-4 d-flex align-items-stretch"
+											style="padding: 15px;">
+											<img th:src="@{${biglietto.immagine}}"
+												class="img-fluid rounded-start" alt="...">
+										</div>
+										<div class="col-md-8">
+											<div class="card-body">
+												<h5 th:text="${biglietto.nome}" class="card-title"></h5>
+												<p class="card-text prezzo-card">
+													<!-- PREZZO DEL BIGLIETTO -->
+													<small
+														th:text="'Prezzo: ' + ${#numbers.formatDecimal(biglietto.prezzo,0,'POINT',2,'COMMA')} + ' €'"
+														class="text-body-secondary"></small>
+												</p>
+												<p th:text="${biglietto.descrizione}" class="card-text"></p>
+
+												<div class="card-body-sub">
+													<!-- BOTTONE DA SISTEMARE -->
+													<a class="dettaglio-btn">ACQUISTA</a>
+													<!-- BOTTONE DA SISTEMARE -->
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- FINE CARD BIGLIETTI 1 -->
+
+							</div>
+
+
+
+						</div>
+
+
+
+					</div>
+					<!-- BOTTONE SIDEBAR PER ANDARE AD ABBONAMENTI -->
+					<div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
+						aria-labelledby="v-pills-profile-tab" tabindex="0">
+						<!-- INIZIO CARD ABBONAMENTI -->
+						<div class="row"
+							style="margin-right: 0px !important; margin-left: 0; padding: 0px;">
+
+							<div th:each="abbonamento : ${abbonamenti}"
+								class="col-md-5 d-flex align-items-stretch"
+								style="padding: 0px;">
+								<!-- align-items-stretch -->
+
+								<!-- INIZIO CARD ABBONAMENTO 1 -->
+								<div class="card mb-3" style="max-width: 540px;">
+									<div class="row g-0">
+										<div class="col-md-4 d-flex align-items-stretch"
+											style="padding: 15px;">
+											<img th:src="@{${abbonamento.immagine}}"
+												class="img-fluid rounded-start" alt="...">
+										</div>
+										<div class="col-md-8">
+											<div class="card-body">
+												<h5 th:text="${abbonamento.nome}" class="card-title"></h5>
+												<p class="card-text prezzo-card">
+													<!-- PREZZO DEL ABBONAMENTO -->
+													<small
+														th:text="'Prezzo: ' + ${#numbers.formatDecimal(abbonamento.prezzo,0,'POINT',2,'COMMA')} + ' €'"
+														class="text-body-secondary"></small>
+												</p>
+												<p th:text="${abbonamento.descrizione}" class="card-text"></p>
+
+												<div class="card-body-sub">
+													<!-- BOTTONE DA SISTEMARE -->
+													<a class="dettaglio-btn">ACQUISTA</a>
+													<!-- BOTTONE DA SISTEMARE -->
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- FINE CARD ABBONAMENTO 1 -->
+
+							</div>
+							<!-- FINE CARD ABBONAMENTI -->
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<script>
+            // slider prezzo
+            const minPriceSlider = document.getElementById('min-price');
+            const maxPriceSlider = document.getElementById('max-price');
+            const selectedMinPrice = document.getElementById('selected-min-price');
+            const selectedMaxPrice = document.getElementById('selected-max-price');
+
+            // imposta i valori iniziali dei campi di input
+            selectedMinPrice.value = minPriceSlider.value + " €";
+            selectedMaxPrice.value = maxPriceSlider.value + " €";
+
+            // aggiorna i campi di input man mano che i dispositivi di scorrimento vengono spostati
+            minPriceSlider.addEventListener('input', (event) => {
+                selectedMinPrice.value = event.target.value + " €";
+                if (parseInt(event.target.value) > parseInt(selectedMaxPrice.value)) {
+                    selectedMaxPrice.value = event.target.value + " €";
+                    maxPriceSlider.value = event.target.value;
+                }
+            });
+
+            maxPriceSlider.addEventListener('input', (event) => {
+                selectedMaxPrice.value = event.target.value + " €";
+                if (parseInt(event.target.value) < parseInt(selectedMinPrice.value)) {
+                    selectedMinPrice.value = event.target.value + " €";
+                    minPriceSlider.value = event.target.value;
+                }
+            });
+
+            // aggiorna i valori del campo di input quando cambiano i campi di input
+            selectedMinPrice.addEventListener('input', (event) => {
+                const minValue = parseInt(minPriceSlider.min);
+                const maxValue = parseInt(maxPriceSlider.max);
+                const value = Math.min(parseInt(event.target.value), parseInt(selectedMaxPrice.value));
+                selectedMinPrice.value = value + " €";
+                minPriceSlider.value = value;
+                if (value > maxValue) {
+                    selectedMaxPrice.value = value + " €";
+                    maxPriceSlider.value = value;
+                }
+            });
+
+            selectedMaxPrice.addEventListener('input', (event) => {
+                const minValue = parseInt(minPriceSlider.min);
+                const maxValue = parseInt(maxPriceSlider.max);
+                const value = Math.max(parseInt(event.target.value), parseInt(selectedMinPrice.value));
+                selectedMaxPrice.value = value + " €";
+                maxPriceSlider.value = value;
+                if (value < minValue) {
+                    selectedMinPrice.value = value + " €";
+                    minPriceSlider.value = value;
+                }
+            });
+        </script>
+
+			<script
+				src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+				integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+				crossorigin="anonymous"></script>
+</body>
+
 </html>

@@ -166,8 +166,9 @@ svg {
                   <img src="image/logo_bari/logo_bari.png" class="logo">
                   <ul>
                     <li><a th:href="@{/}">HOME</a></li>
-                    <li><a th:href="@{shop}">SHOP</a></li>
                     <li><a th:href="@{storia}">LA NOSTRA STORIA</a></li>
+                    <li><a th:href="@{shop}">SHOP</a></li>
+                    <li><a th:href="@{ticket}">TICKET</a></li>
                     <li><a th:href="@{contatti}">CONTATTACI</a></li>
                     <li th:if="${admin == false AND utente == false}"><a th:href="@{login}">ACCEDI <img src="image/icona_login/login.png" alt="icona_login" width="30px" height="30px"></a></li>
                     <li th:if="${admin}"><a th:href="@{adminReserved}">AREA RISERVATA <img src="image/icona_login/login.png" alt="icona_login" width="30px" height="30px"></a></li>
@@ -255,7 +256,7 @@ svg {
                     <!-- BANNER RIMANDO SHOP -->
                     <div class="row" style="margin-left: 0;margin-right: 0; padding-left: 0;padding-right: 0; padding-top: 141px;">
                     <div class="banner">
-                        <a th:href="@{shop}"><img src="image/banner_abbonamenti/Ivory Fine Elegant Eyewear Shop Facebook Cover.gif" alt="abbonamento"></a>
+                        <a th:href="@{ticket}"><img src="image/banner_abbonamenti/Ivory Fine Elegant Eyewear Shop Facebook Cover.gif" alt="abbonamento"></a>
                     </div> 
                   </div>
 
@@ -519,7 +520,7 @@ svg {
         <div class="carousel-item active">
           <div class="row">
             <div class="col" th:each="n : ${news}">
-              <img src="image/immagini_bari_esempioDAVEDERE/giocatori_bari.png" class="d-block w-100" alt="Image 1">
+              <img th:src="@{${n.immagine}}" class="d-block w-100" alt="Image 1">
               <div class="carousel-caption2"style="display: flex; justify-content: center; align-items: center; flex-direction: column; padding-top: 20px;">
                 <h3 th:text="${n.titolo}"></h3>
                 <p th:text="${n.descrizione}"></p>
@@ -630,9 +631,9 @@ svg {
                 <div class="col-md-3 text-center">
                   <h4>Le nostre pagine</h4>
                   <ul class="list-unstyled footer-content">
-                    <li><a th:href="@{storia}">Chi siamo</a></li>
+                    <li><a th:href="@{storia}">La nostra storia</a></li>
                     <li><a th:href="@{shop}">Shop</a></li>
-                    <li><a th:href="@{ticket}">Biglietteria</a></li>
+                    <li><a th:href="@{ticket}">Ticket</a></li>
                     <li><a th:href="@{contatti}">Contatti</a></li>
                   </ul>
                 </div>

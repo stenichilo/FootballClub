@@ -306,7 +306,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 
 	<!-- HEADER/NAVBAR -->
 	<nav>
-		<img src="image/SSC_Bari_logo.png" class="logo">
+		<a th:href="@{/}"><img src="image/SSC_Bari_logo.png" class="logo"></a>
 		<div class="user-wrapper">
 			<div class="boh">
 				<div th:if="${admin == null}" class="carrello">
@@ -392,7 +392,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 						class="form-select" aria-label="Default select example">
 							<option hidden="true"></option>
 							<option value="magliette">Magliette</option>
-							<option value="felpe">Felpe</option>
+							<option value="calze">Calze</option>
 							<option value="pantaloni">Pantaloni</option>
 							<option value="accessori">Accessori</option>
 					</select>
@@ -426,7 +426,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 							<div class="p-3">
 
 								<!--INIZIO CARD-->
-								<div class="card" style="width: 20rem; height: 27rem;">
+								<div class="card" style="width: 20rem; height: 30rem;">
 									<img th:if="${p.immagine == null}"
 										src="image/SSC_Bari_logo.png" class="card-img-top"
 										alt="Immagine del prodotto"> 
