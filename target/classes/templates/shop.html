@@ -299,6 +299,10 @@ input[type=range]:focus {
 input[type=range]:focus::-webkit-slider-runnable-track {
 	background: #ffffff;
 }
+
+.card-body-top {
+	margin-bottom: 7%;
+}
 </style>
 </head>
 
@@ -477,7 +481,9 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 										th:src="@{${p.immagine}}" class="card-img-top"
 										alt="Immagine del prodotto">
 									<div class="card-body">
+									<div class="card-body-top">
 										<h4 th:text="${p.nome}"></h4>
+										</div>
 										<div class="card-body-sub">
 											<h4 th:text="${#numbers.formatDecimal(p.prezzo,0,'POINT',2,'COMMA')} + ' €'"></h4>
 											<a th:href="@{dettaglio(id=${p.id})}" class="dettaglio-btn">Mostra</a>
