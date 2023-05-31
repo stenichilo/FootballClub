@@ -14,15 +14,15 @@
 <body>
 
     <div class="hero-mio" style="margin-bottom: 0px;">
-        <img th:src="@{image_storia/hero.jpg}" alt="bari calcio" class="backbro-video">
+        <img th:src="@{image/image_storia/hero.jpg}" alt="bari calcio" class="backbro-video">
         <nav>
-            <img th:src="@{SSC_Bari_logo.png}" class="logo">
+            <img th:src="@{image/SSC_Bari_logo.png}" class="logo">
             <ul style="color:white;">
                 <li><a th:href="@{/}">HOME</a></li>
                 <li><a th:href="@{shop}">SHOP</a></li>
                 <li><a th:href="@{storia}">LA NOSTRA STORIA</a></li>
                 <li><a th:href="@{contatti}">CONTATTACI</a></li>
-                <li><a th:href="@{ticket}">BIGLIETTERIA</a></li>
+                <li><a th:href="@{ticket}">TICKET</a></li>
                 <li th:if="${admin == false AND utente == false}"><a th:href="@{login}">ACCEDI <img src="image/icona_login/login.png" alt="icona_login" width="30px" height="30px"></a></li>
                 <li th:if="${admin}"><a th:href="@{adminReserved}">AREA RISERVATA <img src="image/icona_login/login.png" alt="icona_login" width="30px" height="30px"></a></li>
                 <li th:if="${utente}"><a th:href="@{utenteReserved}">AREA RISERVATA <img src="image/icona_login/login.png" alt="icona_login" width="30px" height="30px"></a></li>
@@ -92,7 +92,7 @@
         </div>
 
         <div class="col-md-4 image-origini">
-            <img th:src="@{image_storia/origini.jpg}"alt="origini" class="img-fluid">
+            <img th:src="@{image/image_storia/origini.jpg}"alt="origini" class="img-fluid">
         </div>
         <div class="col-md-2"></div>
 
@@ -103,7 +103,7 @@
     <div class="row matarrese" id="matarrese" style="margin-right: 0px; margin-left: 0;padding: 0px;">
         <div class="col-md-2"></div>
         <div class="col-md-4">
-            <img th:src="@{image_storia/matarrese.jpg}" alt="matarrese" class="img-fluid">
+            <img th:src="@{image/image_storia/matarrese.jpg}" alt="matarrese" class="img-fluid">
         </div>
         <div class="col-md-4 matarrese-testo">
             <h2 class="spazio-titolo">L'ERA MATARRESE </h2>
@@ -139,7 +139,7 @@
         </div>
 
         <div class="col-md-4 image-bolchi">
-            <img th:src="@{image_storia/bolchi.jpg}" alt="scalata" class="img-fluid">
+            <img th:src="@{image/image_storia/bolchi.jpg}" alt="scalata" class="img-fluid">
         </div>
 
         <div class="col-md-2"></div>
@@ -150,7 +150,7 @@
 
         <div class="col-md-2"></div>
         <div class="col-md-4">
-            <img th:src="@{image_storia/anni90.jpg}" alt="ritorno" class="img-fluid">
+            <img th:src="@{image/image_storia/anni90.jpg}" alt="ritorno" class="img-fluid">
         </div>
         <div class="col massima-serie-testo">
 
@@ -185,7 +185,7 @@
                 calcio italiano, celebrando la loro resilienza e passione per il gioco.</p>
         </div>
         <div class="col-md-4">
-            <img th:src="@{image_storia/bari-serie-a.jpg}" alt="ritorno" class="img-fluid">
+            <img th:src="@{image/image_storia/bari-serie-a.jpg}" alt="ritorno" class="img-fluid">
         </div>
 
         <div class="col-md-2"></div>
@@ -201,7 +201,7 @@
             style="background-color: #ca0c1f; margin-left: 0; margin-right: 0; padding-top: 25px;">
             <!-- Sezione 1: Logo del Bari Calcio -->
             <div class="col-md-2 align-self-center">
-                <img src="./image-footer/logo.png" class="d-block mx-auto" width="100">
+                <img th:src="@{image/SSC_Bari_logo.png}" class="d-block mx-auto" width="100">
             </div>
 
             <!-- Sezione 2: Lista di rimandi ad altre pagine -->
@@ -229,17 +229,17 @@
             <!-- Sezione 4: Rimandi ai social media -->
             <div class="col-md-3 text-center">
                 <ul class="list-inline footer-content">
-                    <li class="list-inline-item"><a href="#"><img th:src="@{footer_immagini/instagram.png}" alt="Instagram"
+                    <li class="list-inline-item"><a href="#"><img th:src="@{image/footer_immagini/instagram.png}" alt="Instagram"
                                 width="40" height="40"></a></li>
-                    <li class="list-inline-item"><a href="#"><img th:src="@{footer_immagini/facebook.png}" alt="Facebook"
+                    <li class="list-inline-item"><a href="#"><img th:src="@{image/footer_immagini/facebook.png}" alt="Facebook"
                                 width="40" height="40"></a></li>
-                    <li class="list-inline-item"><a href="#"><img th:src="@{footer_immagini/tiktok.png}" alt="TikTok"
+                    <li class="list-inline-item"><a href="#"><img th:src="@{image/footer_immagini/tiktok.png}" alt="TikTok"
                                 width="40" height="40"></a></li>
-                    <li class="list-inline-item"><a href="#"><img th:src="@{footer_immagini/youtube.png}" alt="YouTube"
+                    <li class="list-inline-item"><a href="#"><img th:src="@{image/footer_immagini/youtube.png}" alt="YouTube"
                                 width="40" height="40"></a></li>
-                    <li class="list-inline-item"><a href="#"><img th:src="@{footer_immagini/telegram.png}" alt="Telegram"
+                    <li class="list-inline-item"><a href="#"><img th:src="@{image/footer_immagini/telegram.png}" alt="Telegram"
                                 width="40" height="40"></a></li>
-                    <li class="list-inline-item"><a href="#"><img th:src="@{footer_immagini/wechat.png}" alt="WeChat"
+                    <li class="list-inline-item"><a href="#"><img th:src="@{image/footer_immagini/wechat.png}" alt="WeChat"
                                 width="40" height="40"></a></li>
                 </ul>
             </div>
