@@ -166,6 +166,22 @@ ul {
 	padding: 0;
 	margin-bottom: auto
 }
+
+#trattamento {
+    margin-left: .2rem;
+}
+
+#trattamento-margin {
+    margin-left: .5rem;
+}
+
+.invia-btn {
+    margin-top: 1rem;
+}
+
+.form-group {
+    line-height: 3rem;
+}
 </style>
 </head>
 
@@ -261,8 +277,13 @@ ul {
 											<textarea class="form-control" id="messaggio"
 												name="messaggio" rows="4" required></textarea>
 										</div>
+										
+										<input type="checkbox" id="trattamento" name="trattamento" value="trattamento" required>
+                                        <label for="trattamento" id="trattamento-margin">Acconsento al trattamento dei miei dati personali</label>
 
+										<div class="invia-btn">
 										<button type="submit" class="btn btn-primary">Invia</button>
+                                        </div>
 									</form>
 								</div>
 							</div>
