@@ -175,7 +175,7 @@ nav li a:hover::after {
 /*news*/
  .news-titolo {
     text-align: center;
-    padding-bottom: 30px;
+    margin-bottom: 20px 0 20px 0;
 } 
 
 .news-titolo::after {
