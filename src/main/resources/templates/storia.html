@@ -1,478 +1,258 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La nostra storia</title>
-    <link rel="Website Icon" type="png" href="https://upload.wikimedia.org/wikipedia/it/thumb/a/a7/SSC_Bari_logo.png/358px-SSC_Bari_logo.png?20210216191910">
-    <link
-	 href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
-	 rel="stylesheet">
+    <title>Storia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link th:href="@{css/storia.css}" rel="stylesheet">
 </head>
-<style>* {
-                        /*margin: 0;
-                        padding: 0;*/
-                        box-sizing: border-box;
-                        
-                        font-family: 'Poppins', sans-serif;
-                    }
 
-                    .hero-mio {
-                        width: 100%;
-                        height: 100vh;
-                        background-image: linear-gradient(rgba(12,3,51,0.3), rgba(12,3,51,0.3));
-                        position: relative;
-                        padding: 0 5%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        margin-bottom: 20px;
-                    }
-
-                    nav {
-                        width: 100%;
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        padding:  20px 8%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: space-between;
-
-                    }
-
-                    nav .logo {
-                        width: 80px;
-                    }
-
-                    nav ul li {
-                        list-style: none;
-                        display: inline-block;
-                        margin-left: 40px;
-                    }
-
-                    nav ul li a {
-                        text-decoration: none;
-                        color: #ffffff;
-                        font-size: 17px;
-                    }
-
-                    li a::after {
-                        content: '';
-                        width: 0;
-                        height: 3px;
-                        background-color: #ed1c24;
-                        margin: auto;
-                        display: block;
-                    }
-
-                    li a:hover::after {
-                        width: 100%;
-                        transition: width 0.3s linear;
-                    }
-
-                    .bari-testo {
-                        text-align: center;
-                    }
-
-                    .bari-testo h1 {
-                        font-size: 160px;
-                        color: #ffffff;
-                        font-weight: 600;
-                        transition: 0.5s;
-                    }
-
-                    .bari-testo h1:hover {
-                        -webkit-text-stroke: 2px #ffffff; /*marcatura esterna testuale*/
-                        color: transparent;
-                    }
-
-                    .backbro-video {
-                        position: absolute;
-                        right: 0;
-                        bottom: 0;
-                        z-index: -1;
-                    }
-
-                    @media (min-aspect-ratio: 16/9) {
-                        .backbro-video {
-                            width: 100%;
-                            height: auto;
-                        }
-                    }
-
-                    @media (max-aspect-ratio: 16/9) {
-                        .backbro-video {
-                            width: auto;
-                            height: 100%;
-                        }
-                    }
-
-                    /*scroll*/
-                    .scrolla-giu {
-                        position: absolute;
-                        bottom: 20px;
-                        left: 50%;
-                        width: 40px;
-                        height: 40px;
-                        /*background: #ffffff;*/
-                        transform: translateY(-80px) translateX(-50%) rotate(45deg);
-                    }
-
-                    .scrolla-giu span {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        display: block;
-                        width: 100%;
-                        height: 100%;
-                        border-bottom: 2px solid #ffffff;
-                        border-right: 2px solid #ffffff;
-                        animation: animate 1.5s linear infinite;
-                        opacity: 0;
-                    }
-
-                    .scrolla-giu span:nth-child(1) {
-                        transform: translate(-15px, -15px);
-                        animation-delay: -0.4s;
-                    }
-
-                    .scrolla-giu span:nth-child(2) {
-                        transform: translate(0, 0);
-                        animation-delay: -0.2s;
-                    }
-
-                    .scrolla-giu span:nth-child(3) {
-                        transform: translate(15px, 15px);
-                        animation-delay: 0s;
-                    }
-
-                    @keyframes animate {
-                        0% {
-                            top: -5px;
-                            left: -5px;
-                            opacity: 0;
-                        }
-
-                        25% {
-                            top: 0px;
-                            left: 0px;
-                            opacity: 1;
-                        }
-
-                        50%,100% {
-                            top: 5px;
-                            left: 5px;
-                            opacity: 0;
-                        }
-                    }
-
-footer {
-      background-color: #c90c20;
-      color: #fff;
-    }
-
-    /*************************************************** Colore dei link nella lista */
-    ul.list-unstyled li a {
-      color: #fff;
-    }
-
-    /* Stile dell'hr scenografico */
-    .scenic-hr {
-      border: none;
-      height: 1px;
-      background-image: linear-gradient(to right, #000, #c90c20, #fff, #c90c20, #000);
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
-
-    .bottone_footer {
-      color: white;
-      transition: background-color 0.3s, color 0.3s;
-    }
-
-    .bottone_footer:hover {
-      background-color: white;
-      color: red;
-    }
-
-    .footer-content li a {
-      color: black;
-      text-decoration: none;
-      position: relative;
-      display: inline-block;
-      padding-bottom: 4px;
-    }
-
-    .footer-content li a:before {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      height: 2px;
-      width: 100%;
-      background-color: white;
-      transform: scaleX(0);
-      transform-origin: bottom left;
-      transition: transform 0.3s;
-    }
-
-    .footer-content li a:hover {
-      color: black;
-    }
-
-    .footer-content li a:hover:before {
-      transform: scaleX(1);
-    }
-    
-
-    /*****************************************INIZIO STORY*/ 
-    
-        
-
-    .sfondo{
-    background-image: url(image/pallone.jpg);
-    
-    }
-
-    .lista
-    {
-    display: inline !important;
-    font-size: 14px !important;  
-    margin-top: 3%; 
-    }
-    
-    .sub
-    {
-    text-decoration: none;
-    color:#c90c20;
-    
-    }
-
-    .espacio{
-    margin: 0%;
-    padding: 10% 5% 10% 10%;
-    font-size: 150px;
-    font-weight: bolder;
-    font-family: 'Poppins' ;
-    }
-
-    .boton
-    {
-    text-align: center;
-    margin: 2%;
-    
-    }
-
-
-
-    .marimg{
-      margin:1%
-
-    }
-    .martext2{
-
-    margin: 3%;
-    margin-top: 5%;
-
-}
-    .martext{
-
-      margin: 3%;
-      margin-top: 15%;
-
-    }
-    .rosso{
-      color: #c90c20;
-    }
-    .margen{
-      margin-bottom: 10px;
-      margin-top: 10px;
-    }
-    
-</style>
 <body>
-    <!--INIZIO NAV E HERO-->
-    
 
-    <nav>
-        <img src="image/SSC_Bari_logo.png" class="logo">
-        <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a th:href="@{/}"><img src="image/logo_home.png" width="40" height="40"></a></li>
-        </ul>
-    </nav>
+    <div class="hero-mio" style="margin-bottom: 0px;">
+        <img th:src="@{image_storia/hero.jpg}" alt="bari calcio" class="backbro-video">
+        <nav>
+            <img th:src="@{SSC_Bari_logo.png}" class="logo">
+            <ul style="color:white;">
+                <li><a th:href="@{/}">HOME</a></li>
+                <li><a th:href="@{shop}">SHOP</a></li>
+                <li><a th:href="@{storia}">LA NOSTRA STORIA</a></li>
+                <li><a th:href="@{contatti}">CONTATTACI</a></li>
+                <li><a th:href="@{ticket}">BIGLIETTERIA</a></li>
+                <li th:if="${admin == false AND utente == false}"><a th:href="@{login}">ACCEDI <img src="image/icona_login/login.png" alt="icona_login" width="30px" height="30px"></a></li>
+                <li th:if="${admin}"><a th:href="@{adminReserved}">AREA RISERVATA <img src="image/icona_login/login.png" alt="icona_login" width="30px" height="30px"></a></li>
+                <li th:if="${utente}"><a th:href="@{utenteReserved}">AREA RISERVATA <img src="image/icona_login/login.png" alt="icona_login" width="30px" height="30px"></a></li>
+            </ul>
+        </nav>
+        <div class="bari-testo" id="bari-testo">
+            <h4>La nostra storia</h4>
+            <h1>INIZIA IL VIAGGIO</h1>
+        </div>
+        <div class="scrolla-giu">
+            <a href="#"><span></span>
+                <span></span>
+                <span></span></a>
+        </div>
+    </div>
 
-                 <!--INIZIO STORIA-->
-                     <div class="sfondo">
-
-                         <h1 class="espacio">LA NOSTRA STORIA</h1>
-
-                     </div>
-                     <div class="boton">
-                        <button type="button" class="btn btn-outline-light"><a class="sub" href= "#origen">ORIGINI</a></button>
-                    
-                        <button type="button" class="btn btn-outline-light"><a class= "sub" href= "#matarrese">L'ERA MATARRESE</a></button>
-                        
-                        <button type="button" class="btn btn-outline-light"><a class= "sub" href="#leyenda">LA STORIA DI UNA LEGENDA</a></button>
-                    
-                        <button type="button" class="btn btn-outline-light"><a class= "sub" href="#exito">RITORNO AL SUCCESSO</a></button>
-                      </div>
-                      
-                      <div>
-
-                        <a name="origen"></a>
-                        <div class="container text-center margen">
-
-                          <div class="row">
-
-                            <div class="col martext2"> 
-                              <h2>LE ORIGINI</h2>                                 
-                              <p>La prima squadra di calcio fondata a Bari, nonché nell'intera regione Puglia, fu l'effimero Club Foot-Ball Challenge, sorto nel 1901 per iniziativa di un gruppo 
-                                di studenti. Risale, invece, al 15 gennaio 1908 la costituzione del primo sodalizio stabile della città, il Foot-Ball Club Bari. Come nel caso di molte altre 
-                                squadre di calcio italiane, la fondazione del Bari fu caratterizzata, oltre che dall'apporto di sportivi locali (tra cui qualche reduce dell'esperienza del Club 
-                                Football Challenge), dalla partecipazione di alcuni forestieri: Floriano Ludwig, austriaco trapiantato a Bari che fu il principale fondatore, Gustavo Kuhn, svizzero, 
-                                cui si aggiunse Giovanni Tiberini, marchigiano trapiantato a Bari che capeggiava figli di commercianti baresi.
-                              </p>
-                            </div>
-
-                            <div class="col marimg">
-                                <img src="image/1.jpg" alt="origini">
-                            </div>
-
-                          </div>
-
-                        </div>
-
-                          <a name="matarrese"></a>
-                          <div class="container text-center margen">
-                            <div class="row">
-                              <div class="col marimg">
-                                <img src="image/3.jpg" alt="matarrese">
-                              </div>
-                              <div class="col martext">
-                                <h2>I PRIMI QUATTRO ANNI E LA COPPA ITALIA PRIMAVERA</h2>
-                                <p>Prese il posto di De Palo l'onorevole Antonio Matarrese;con lui iniziava la lunga era della  famiglia Matarrese al timone dell'A.S. Bari. Antonio, pur investendo
-                                  molto per rafforzare l'organico, non ottenne la promozione in A. Negli anni calcistici 1977-1978 e 1978-1979 i galletti cambiarono in tutto cinque allenatori  ottenendo 
-                                  la salvezza nelle ultime giornate di campionato in entrambe le stagioni.
-                                </p>
-                                
-                              </div>
-                            </div>
-                          </div>
+    <!-- INIZIO NAV EPOCHE STORICHE -->
+    <div class="container-fluid">
+        
+        <div class="row" style="margin-right: 0px; margin-left: 0;padding: 0px;">
+            <div class="col-md-12" style="padding-left: 0px;padding-right: 0px;">
+                <ul class="nav justify-content-center nav-epoche">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#origini">1908 - 1928</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#matarrese">1977 - 1986</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#bolchi">1983 - 1984</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#anni90">1986 - 2001</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#serie-a">2014 - presente</a>
+                    </li>
 
 
+                </ul>
+            </div>
+        </div>
+    </div>
 
-                      
-                          
+    <!-- main -->
 
-                      <a name="leyenda"></a>
-                      <div class="container text-center margen">
+    <div class="row origini" id="origini" style="margin-right: 0px; margin-left: 0;padding: 0px;">
+        <div class="col-md-2"></div>
 
-                        
-                        <div class="row">
+        <div class="col-md-4 origini-testo">
+            <h2 class="spazio-titolo">LE ORIGINI</h2>
+            <p>Il Bari Foot-Ball Club viene fondato il 15 gennaio 1908 da alcuni commercianti di origini europee, con
+                Floriano Ludwig come principale fondatore. I colori sociali sono il bianco e il rosso, ispirati
+                all'effigie comunale di Bari. Inizialmente, il Bari partecipa a poche competizioni ufficiali, preferendo
+                incontri amichevoli con equipaggi di navi e altre squadre pugliesi.
 
-                          <div class="col martext">
+                Dal Bari FBC si separano due altre società: l'Unione Sportiva Ideale nel 1908 e il Foot-Ball Club
+                Liberty nel 1909. Nonostante ciò, il Bari originale mantiene un legame di affinità con il Liberty. La
+                squadra partecipa a competizioni organizzate dalla FIGC, ma non riesce a vincere il campionato
+                meridionale di Seconda Categoria contro il Naples Foot-Ball Club.
 
-                            <h2>LA SCALATA DI BOLCHI</h2>
-                              <p>Per la stagione 1983-84 Franco Janich decisero di affidarsi a Bruno Bolchi  per la guida tecnica della squadra:  quella
-                              stagione si rivelòsoddisfacente. Il trequartista brasiliano Sérgio Luís Donizetti. I tifosi baresi lo considerano
-                              uno dei migliori calciatori della storia biancorossa. I successi furono raggiunti anche in Coppa Italia dove la squadra, dopo 
-                              aver concluso il girone da sei  squadre in testa con la Juventus,  con cui pareggiò 2-2, eliminò agli ottavi di finale
-                              proprio i piemontesi  per  effetto dell'ormai celebre 2-1 conquistato a Torino nella partita d'andata e del 2-2  guadagnato  in casa al ritorno.
-                              </p>
-                          </div>
+                Durante la prima guerra mondiale, il Bari F.B.C. sospende l'attività agonistica, mentre Liberty e Ideale
+                riducono l'attività ma rimangono attive. Dopo la guerra, il Bari viene rifondato nel 1924 come Foot-Ball
+                Club Bari, mantenendo i colori sociali originari. La squadra ottiene la promozione in Prima Divisione,
+                ma non riesce a ottenere buoni risultati nelle stagioni successive.
+            </p>
+        </div>
 
-                          <div class="col marimg">
-                            <img src="image/2.jpg" alt="scalata">
-                          </div>
+        <div class="col-md-4 image-origini">
+            <img th:src="@{image_storia/origini.jpg}"alt="origini" class="img-fluid">
+        </div>
+        <div class="col-md-2"></div>
 
-                          
-                          
-                        </div>
+    </div>
 
-                          
-                      </div>
+    </div>
+
+    <div class="row matarrese" id="matarrese" style="margin-right: 0px; margin-left: 0;padding: 0px;">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <img th:src="@{image_storia/matarrese.jpg}" alt="matarrese" class="img-fluid">
+        </div>
+        <div class="col-md-4 matarrese-testo">
+            <h2 class="spazio-titolo">L'ERA MATARRESE </h2>
+            <p>La famiglia Matarrese diventa azionista di maggioranza dell'A.S. Bari, con Antonio Matarrese come
+                presidente. Nonostante gli investimenti per la promozione in Serie A, il Bari non riesce nell'obiettivo.
+                Nella stagione 1981-1982, il tecnico Enrico Catuzzi porta il Bari vicino alla promozione con la tattica
+                della "zona totale". Tuttavia, la squadra retrocede nella stagione successiva. Nel 1983, Vincenzo
+                Matarrese diventa presidente e Bruno Bolchi riporta il Bari in Serie A dopo quindici anni. La permanenza
+                in Serie A dura solo un anno. Il Bari guadagna il soprannome di "squadra ammazza grandi" per le
+                prestazioni nella Coppa Italia, inclusa l'eliminazione di Juventus e Fiorentina nel 1983-1984.
+            </p>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
 
 
-                      <a name="exito"></a>
-                      <div class="container text-center margen">
-                        
-                        <div class="row">
-                          <div class="col marimg">
-                            <img src="image/0.jpg" alt="ritorno">
-                          </div>
-                          <div class="col martext">
 
-                            <h2>RITORNO E PERMANENZA IN MASSIMA SERIE (1996-2001)</h2>
-                            <p>Nella stagione 1996-1997 la squadra, allenata dall'esperto Eugenio Fascetti e rinforzatasi con Gigi Garzya e Diego De Ascentis riconquista subito la 
-                            Serie A nonostante una flessione iniziata a febbraio e protrattasi fino a Pasqua, con molti giornali a dare per certa l'esclusione dalla
-                            zona promozione e una forte contestazione da parte dei tifosi.</p>
-                          </div>
-                          
-                        </div>
-                      </div>
-                          
-                              
-                  
-</div>
+    <div class="row bolchi" id="bolchi" style="margin-right: 0px; margin-left: 0;padding: 0px;">
+        <div class="col-md-2"></div>
 
-    <!--INIZIO FOOTER-->
 
+        <div class="col-md-4 bolchi-testo">
+
+            <h2 class="spazio-titolo">LA SCALATA DI BOLCHI</h2>
+            <p>Nell'estate 1983 Antonio Matarrese cede la carica di presidente al fratello Vincenzo, che a sua volta
+                affida la panchina dei biancorossi a Bruno Bolchi questi riporta in due anni i galletti in Serie A,
+                categoria attesa dai baresi da quindici anni. La prima serie dura anche stavolta un anno (la stagione
+                1985-1986). Negli anni ottanta il Bari è soprannominato dai giornali "squadra ammazza grandi" per le
+                prestazioni effettuate in Coppa Italia, dove dal 1981 al 1984 ferma sul pari o batte varie compagini di
+                Serie A nell'edizione del 1983-1984, da militante in C1, ha eliminato Juventus e Fiorentina
+                giungendo così in semifinale.
+            </p>
+        </div>
+
+        <div class="col-md-4 image-bolchi">
+            <img th:src="@{image_storia/bolchi.jpg}" alt="scalata" class="img-fluid">
+        </div>
+
+        <div class="col-md-2"></div>
+    </div>
+
+   
+    <div class="row massima-serie" id="anni90"style="margin-right: 0px; margin-left: 0;padding: 0px;">
+
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <img th:src="@{image_storia/anni90.jpg}" alt="ritorno" class="img-fluid">
+        </div>
+        <div class="col massima-serie-testo">
+
+            <h2 class="spazio-titolo">FINE ANNI '80, ANNI '90, ANNI 2000</h2>
+            <p>Il Bari continua l'alternanza tra Serie A e Serie B fino ai primi anni duemila. Durante questo periodo,
+                la squadra lancia giovani talenti del proprio vivaio, scopre giocatori provenienti da squadre minori e
+                valorizza talenti nazionali ed internazionali. Il periodo più lungo trascorso in Serie A è il triennio
+                1989-1992, durante il quale il Bari vince la Coppa Mitropa e si piazza al decimo posto in campionato.
+                Tuttavia, nella stagione 1991-1992, nonostante pesanti investimenti, la squadra retrocede in Serie B.
+
+                Successivamente, la proprietà del Bari rinuncia all'acquisto di calciatori di alto profilo. Nel
+                quadriennio 1997-2001, sotto la guida di Eugenio Fascetti, il Bari si posiziona al decimo posto in Serie
+                A nella stagione 1998-1999.</p>
+        </div>
+
+        <div class="col-md-2"></div>
+    </div>
+
+    <div class="row serie-a" id="serie-a" style="margin-right: 0px; margin-left: 0;padding: 0px;">
+
+        <div class="col-md-2"></div>
+
+        <div class="col serie-a-testo">
+
+            <h2 class="spazio-titolo">IL RITORNO IN SERIE A</h2>
+            <p>Il Bari Calcio si trovava in una situazione difficile dopo una deludente stagione in Serie B. Nonostante
+                ciò, l'allenatore Marco riunì i giocatori e li motivò a lottare fino alla fine per raggiungere la
+                promozione. La squadra si impegnò duramente negli allenamenti e i tifosi risposero all'appello,
+                riempiendo lo stadio per sostenere la squadra. Con vittorie successive, il Bari si avvicinò alla
+                promozione. Nell'ultima partita decisiva, la squadra combatté con grinta e segnò il gol che garantì loro
+                la promozione in Serie A. La città di Bari festeggiò il ritorno della squadra nella massima serie del
+                calcio italiano, celebrando la loro resilienza e passione per il gioco.</p>
+        </div>
+        <div class="col-md-4">
+            <img th:src="@{image_storia/bari-serie-a.jpg}" alt="ritorno" class="img-fluid">
+        </div>
+
+        <div class="col-md-2"></div>
+    </div>
+
+
+
+    <!-- FINE MAIN -->
+
+    <!-- FOOTER -->
     <footer class="container-fluid text-white py-3 footer">
-        <div class="row justify-content-center" style="background-color: #ca0c1f;">
-          <!-- Sezione 1: Logo del Bari Calcio -->
-          <div class="col-md-2 align-self-center">
-            <img src="image/SSC_Bari_logo.png" alt="Logo Bari Calcio" class="d-block mx-auto" width="100">
-          </div>
-      
-          <!-- Sezione 2: Lista di rimandi ad altre pagine -->
-          <div class="col-md-3 text-center">
-            <h4>Le nostre pagine</h4>
-            <ul class="list-unstyled footer-content">
-              <li><a th:href="@{/}">Home page</a></li>
-              <li><a th:href="@{storia}">Chi siamo</a></li>
-              <li><a th:href="@{shop}">Shop</a></li>
-              <li><a th:href="@{ticket}">Biglietteria</a></li>
-              <li><a th:href="@{contatti}">Contatti</a></li>
-            </ul>
-          </div>
-      
-          <!-- Sezione 3: Newsletter -->
-          <div class="col-md-4 text-center">
-            <h4>Iscriviti alla newsletter:</h4>
-            <br />
-            <input type="email" class="form-control rounded-pill mx-auto" placeholder="Inserisci la tua email" style="width: 190px;">
-            <br />
-            <button class="btn btn-custom btn-hover bottone_footer">Iscriviti</button>
-          </div>
-      
-          <!-- Sezione 4: Rimandi ai social media -->
-          <div class="col-md-3 text-center">
-            <ul class="list-inline footer-content">
-              <li class="list-inline-item"><a href="#"><img src="image/footer_immagini/instagram.png" alt="Instagram" width="40" height="40"></a></li>
-              <li class="list-inline-item"><a href="#"><img src="image/footer_immagini/facebook.png" alt="Facebook" width="40" height="40"></a></li>
-              <li class="list-inline-item"><a href="#"><img src="image/footer_immagini/tiktok.png" alt="TikTok" width="40" height="40"></a></li>
-              <li class="list-inline-item"><a href="#"><img src="image/footer_immagini/youtube.png" alt="YouTube" width="40" height="40"></a></li>
-              <li class="list-inline-item"><a href="#"><img src="image/footer_immagini/telegram.png" alt="Telegram" width="40" height="40"></a></li>
-              <li class="list-inline-item"><a href="#"><img src="image/footer_immagini/wechat.png" alt="WeChat" width="40" height="40"></a></li>
-            </ul>
-          </div>
+        <div class="row justify-content-center"
+            style="background-color: #ca0c1f; margin-left: 0; margin-right: 0; padding-top: 25px;">
+            <!-- Sezione 1: Logo del Bari Calcio -->
+            <div class="col-md-2 align-self-center">
+                <img src="./image-footer/logo.png" class="d-block mx-auto" width="100">
+            </div>
+
+            <!-- Sezione 2: Lista di rimandi ad altre pagine -->
+            <div class="col-md-3 text-center">
+                <h4>Le nostre pagine</h4>
+                <ul class="list-unstyled footer-content">
+                    <li><a th:href="@{/}">Home page</a></li>
+                    <li><a th:href="@{storia}">La nostra storia</a></li>
+                    <li><a th:href="@{shop}">Shop</a></li>
+                    <li><a th:href="@{ticket}">Biglietteria</a></li>
+                    <li><a th:href="@{contatti}">Contatti</a></li>
+                </ul>
+            </div>
+
+            <!-- Sezione 3: Newsletter -->
+            <div class="col-md-4 text-center">
+                <h4>Iscriviti alla newsletter:</h4>
+                <br />
+                <input type="email" class="form-control rounded-pill mx-auto" placeholder="Inserisci la tua email"
+                    style="width: 190px;">
+                <br />
+                <button class="btn btn-custom btn-hover bottone_footer">Iscriviti</button>
+            </div>
+
+            <!-- Sezione 4: Rimandi ai social media -->
+            <div class="col-md-3 text-center">
+                <ul class="list-inline footer-content">
+                    <li class="list-inline-item"><a href="#"><img th:src="@{footer_immagini/instagram.png}" alt="Instagram"
+                                width="40" height="40"></a></li>
+                    <li class="list-inline-item"><a href="#"><img th:src="@{footer_immagini/facebook.png}" alt="Facebook"
+                                width="40" height="40"></a></li>
+                    <li class="list-inline-item"><a href="#"><img th:src="@{footer_immagini/tiktok.png}" alt="TikTok"
+                                width="40" height="40"></a></li>
+                    <li class="list-inline-item"><a href="#"><img th:src="@{footer_immagini/youtube.png}" alt="YouTube"
+                                width="40" height="40"></a></li>
+                    <li class="list-inline-item"><a href="#"><img th:src="@{footer_immagini/telegram.png}" alt="Telegram"
+                                width="40" height="40"></a></li>
+                    <li class="list-inline-item"><a href="#"><img th:src="@{footer_immagini/wechat.png}" alt="WeChat"
+                                width="40" height="40"></a></li>
+                </ul>
+            </div>
         </div>
-      
+
         <!-- Sezione 4: Separatore e informazioni di copyright -->
-        <div class="row">
-          <div class="col-md-12 text-center">
-            <hr class="scenic-hr">
-            <p>© 2023 S.S.C. Bari. All Rights Reserved.</p>
-          </div>
+        <div class="row" style="margin-left: 0; margin-right: 0;">
+            <div class="col-md-12 text-center">
+                <hr class="scenic-hr">
+                <p>© 2023 S.S.C. Bari. All Rights Reserved.</p>
+            </div>
         </div>
-      </footer>
-      
-
-  <!-- Script di Bootstrap -->
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
+    </footer>
 </body>
-</html>
 
+</html>
