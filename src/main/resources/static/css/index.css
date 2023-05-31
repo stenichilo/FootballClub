@@ -172,14 +172,13 @@ nav li a:hover::after {
     }
 }
 
-/*carosello*/
-.link-news {
+/*news*/
+ .news-titolo {
     text-align: center;
-    text-decoration: none;
-    color: #000000;
-}
+    padding-bottom: 30px;
+} 
 
-.link-news h2::after {
+.news-titolo::after {
     content: '';
     width: 0;
     height: 3px;
@@ -188,12 +187,12 @@ nav li a:hover::after {
     display: block;
 }
 
-.link-news h2:hover::after {
+.news-titolo:hover::after {
     width: 100%;
     transition: width 0.3s linear;
 }
 
-.link-news h2:hover {
+.news-titolo:hover {
     color: #ed1c24;
 }
 
@@ -201,26 +200,26 @@ svg {
     margin-left: 20px;
 }
 
-#myCarousel .carousel-item img {
-    height: 300px; 
-    object-fit: cover;
+.container-c  {
+   display: flex;
+   justify-content: center;
 }
 
-.carousel-inner {
-    padding: 0 10px;
-    display: flex;
-    align-items: center;
-}
- 
-.carousel-control-prev,
-.carousel-control-next {
-    margin: 0 10px;
-}
-  
-.carousel {
-    margin: 0 20px;
+.card-img-top {
+     height: 200px;
+     object-fit: cover;
 }
 
+.card {
+    height: 100%;
+    transition: 0.4s ease-in-out;
+}
+
+.card:hover {
+   	box-shadow: 3px 3px 10px 3px #77777771;
+   	scale: 1.05;
+}        
+       
 /*FOOTER*/
 /* Colore dello sfondo del footer */
 footer {

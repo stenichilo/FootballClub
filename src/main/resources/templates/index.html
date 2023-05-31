@@ -1,676 +1,707 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
-        <!-- Collegamento ai file CSS di Bootstrap -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/index.css" rel="stylesheet">
-        <link href="css/abbonamenti.css" rel="stylesheet">
-        <link href="css/sponsor.css" rel="stylesheet">
-        <title>Home Page</title>
-        <link rel="Website Icon" type="png" href="https://upload.wikimedia.org/wikipedia/it/thumb/a/a7/SSC_Bari_logo.png/358px-SSC_Bari_logo.png?20210216191910">
-        <style>
-          /* Stili personalizzati per il carosello */
-          .carousel-item {
-            height: 400px;
-          }
-      
-          .carousel-item img {
-            object-fit: cover;
-            height: 100%;
-            width: 100%;
-          }
-      
-          /* CSS PERSONALIZZATO PER CARDS ULTIME PARTITE */
-          .card-title {
-            color: #333;
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 10px;
-          }
-      
-          .card-text {
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 0;
-          }
-      
-          .card {
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease-in-out;
-          }
-      
-          .card:hover {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-          }
-      
-          /* CSS PERSONALIZZATO PER CLASSIFICA */
-          .section-title {
-            color: #333;
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 20px;
-          }
-      
-          .highlight_champions_league {
-            background-color: #0026ffbd;
-            color: white;
-          }
-      
-          .highlight_europa_league {
-            background-color: #ff8c00ca;
-            color: white;
-          }
-      
-          .highlight_bari {
-            background-color: #e10606ac;
-            color: white;
-          }
-      
-          .team-logo {
-            width: 30px;
-            height: 30px;
-            vertical-align: middle;
-            margin-right: 10px;
-          }
-      
-          /* CSS BOTTONE 'ISCRIVITI' FOOTER */
-          .bottone_footer {
-            color: white;
-            transition: background-color 0.3s, color 0.3s;
-            border: 2px solid #c90c20;
-          }
-      
-          .bottone_footer:hover {
-            background-color: white;
-            color: #c90c20;
-            border-color: #c90c20;
-          }
-      
-          .container-fluid {
-            padding:0 !important; 
-            margin:0 !important;
-          }
-      
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Collegamento ai file CSS di Bootstrap -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="css/index.css" rel="stylesheet">
+<link href="css/abbonamenti.css" rel="stylesheet">
+<link href="css/sponsor.css" rel="stylesheet">
+<title>Home Page</title>
+<link rel="Website Icon" type="png"
+	href="https://upload.wikimedia.org/wikipedia/it/thumb/a/a7/SSC_Bari_logo.png/358px-SSC_Bari_logo.png?20210216191910">
+<style>
+/* Stili personalizzati per il carosello */
+.carousel-item {
+	height: 400px;
+}
+
+.carousel-item img {
+	object-fit: cover;
+	height: 100%;
+	width: 100%;
+}
+
+/* CSS PERSONALIZZATO PER CARDS ULTIME PARTITE */
+.card-title {
+	color: #333;
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.card-text {
+	color: #666;
+	font-size: 14px;
+	margin-bottom: 0;
+}
+
+.card {
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	transition: box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* CSS PERSONALIZZATO PER CLASSIFICA */
+.section-title {
+	color: #333;
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.highlight_champions_league {
+	background-color: #0026ffbd;
+	color: white;
+}
+
+.highlight_europa_league {
+	background-color: #ff8c00ca;
+	color: white;
+}
+
+.highlight_bari {
+	background-color: #e10606ac;
+	color: white;
+}
+
+.team-logo {
+	width: 30px;
+	height: 30px;
+	vertical-align: middle;
+	margin-right: 10px;
+}
+
+/* CSS BOTTONE 'ISCRIVITI' FOOTER */
+.bottone_footer {
+	color: white;
+	transition: background-color 0.3s, color 0.3s;
+	border: 2px solid #c90c20;
+}
+
+.bottone_footer:hover {
+	background-color: white;
+	color: #c90c20;
+	border-color: #c90c20;
+}
+
+.container-fluid {
+	padding: 0 !important;
+	margin: 0 !important;
+}
 
 .link-news h2::after {
-    content: '';
-    width: 0;
-    height: 3px;
-    background-color: #ed1c24;
-    margin: auto;
-    display: block;
+	content: '';
+	width: 0;
+	height: 3px;
+	background-color: #ed1c24;
+	margin: auto;
+	display: block;
 }
 
 .link-news h2:hover::after {
-    width: 100%;
-    transition: width 0.3s linear;
+	width: 100%;
+	transition: width 0.3s linear;
 }
 
 .link-news h2:hover {
-    color: #ed1c24;
+	color: #ed1c24;
 }
 
 svg {
-    margin-left: 20px;
+	margin-left: 20px;
 }
 
 #myCarousel .carousel-item img {
-    height: 300px; 
-    object-fit: cover;
+	height: 300px;
+	object-fit: cover;
 }
 
 .carousel-inner {
-    padding: 0 10px;
-    display: flex;
-    align-items: center;
+	padding: 0 10px;
+	display: flex;
+	align-items: center;
 }
- 
-.carousel-control-prev,
-.carousel-control-next {
-    margin: 0 10px;
+
+.carousel-control-prev, .carousel-control-next {
+	margin: 0 10px;
 }
-  
+
 .carousel {
-    margin: 0 20px;
+	margin: 0 20px;
 }
-    /* SEZIONE NEWS */
-    .link-news {
-    text-align: center;
-    text-decoration: none;
-    color: #000000;
+/* SEZIONE NEWS */
+.link-news {
+	text-align: center;
+	text-decoration: none;
+	color: #000000;
 }
 
 /* BANNER RIMANDO ALLO SHOP */
-.banner2{
-  
-  display: flex;
-  justify-content: center;
-  background-color: #c90c20;
+.banner2 {
+	display: flex;
+	justify-content: center;
+	background-color: #c90c20;
 }
-        </style>
-      </head>
+</style>
+</head>
 <body>
-    <!-- APERTURA DIV CONTAINER FLUID -->
-    <div class="container-fluid">
-        <!--INIZIO NAV E HERO-->
-            <div class="hero-mio" style="margin-bottom: 0px;">
-                <video autoplay loop muted plays-inline class="backbro-video">
-                  <source src="image/image_navbar/video.mp4" type="video/mp4">
-                </video>          
-                <nav>
-                  <img src="image/logo_bari/logo_bari.png" class="logo">
-                  <ul>
-                    <li><a th:href="@{/}">HOME</a></li>
-                    <li><a th:href="@{storia}">LA NOSTRA STORIA</a></li>
-                    <li><a th:href="@{shop}">SHOP</a></li>
-                    <li><a th:href="@{ticket}">TICKET</a></li>
-                    <li><a th:href="@{contatti}">CONTATTACI</a></li>
-                    <li th:if="${admin == false AND utente == false}"><a th:href="@{login}">ACCEDI <img src="image/icona_login/login.png" alt="icona_login" width="30px" height="30px"></a></li>
-                    <li th:if="${admin}"><a th:href="@{adminReserved}">AREA RISERVATA <img src="image/icona_login/login.png" alt="icona_login" width="30px" height="30px"></a></li>
-                    <li th:if="${utente}"><a th:href="@{utenteReserved}">AREA RISERVATA <img src="image/icona_login/login.png" alt="icona_login" width="30px" height="30px"></a></li>
-                  </ul>
-                </nav>
-                <div class="bari-testo" id="bari-testo">
-                 <h1>S.S.C. BARI</h1>
-            	<h2>BENVENUTI SUL NOSTRO SITO!</h2>
-                </div>
-                <div class="scrolla-giu">
-                  <a href="#carouselExampleIndicators"><span></span>
-                    <span></span>
-                    <span></span></a>
-                </div>
-              </div>
-            <!-- CAROSELLO HOME PAGE PROSSIME PARTITE -->
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-                <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner" style="padding-top:30px">
-                  <div class="carousel-item active">
-                    <img src="image/prossime_partite_immagini/atalanta-bari.png" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="image/prossime_partite_immagini/fiorentina-bari.png" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="image/prossime_partite_immagini/bari-barcellona.png" class="d-block w-100" alt="...">
-                  </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
-              <!-- SEZIONE SOTTO HERO -->
-              <div class="row" style="margin-left: 0;margin-right: 0; padding-right: 0;padding-left: 0; padding-top: 80px;"> <!-- ROW CHE CONTIENE ULTIME PARTITE/NEWS/BANNER-SHOP/CLASSIFICA -->
-              <div class="row" style="margin-left: 0;margin-right: 0; padding:0;">
-                <div class="col-md-7" style="padding-left: 58px; padding-top: 40px;">
-                    <!-- CARDS RISULTATO ULTIME PARTITE -->
-                    <section class="ultime-partite">
+	<!-- APERTURA DIV CONTAINER FLUID -->
+	<div class="container-fluid">
+		<!--INIZIO NAV E HERO-->
+		<div class="hero-mio" style="margin-bottom: 0px;">
+			<video autoplay loop muted plays-inline class="backbro-video">
+				<source src="image/image_navbar/video.mp4" type="video/mp4">
+			</video>
+			<nav>
+				<img src="image/logo_bari/logo_bari.png" class="logo">
+				<ul>
+					<li><a th:href="@{/}">HOME</a></li>
+					<li><a th:href="@{storia}">LA NOSTRA STORIA</a></li>
+					<li><a th:href="@{shop}">SHOP</a></li>
+					<li><a th:href="@{ticket}">TICKET</a></li>
+					<li><a th:href="@{contatti}">CONTATTACI</a></li>
+					<li th:if="${admin == false AND utente == false}"><a
+						th:href="@{login}">ACCEDI <img
+							src="image/icona_login/login.png" alt="icona_login" width="30px"
+							height="30px"></a></li>
+					<li th:if="${admin}"><a th:href="@{adminReserved}">AREA
+							RISERVATA <img src="image/icona_login/login.png"
+							alt="icona_login" width="30px" height="30px">
+					</a></li>
+					<li th:if="${utente}"><a th:href="@{utenteReserved}">AREA
+							RISERVATA <img src="image/icona_login/login.png"
+							alt="icona_login" width="30px" height="30px">
+					</a></li>
+				</ul>
+			</nav>
+			<div class="bari-testo" id="bari-testo">
+				<h1>S.S.C. BARI</h1>
+				<h2>BENVENUTI SUL NOSTRO SITO!</h2>
+			</div>
+			<div class="scrolla-giu">
+				<a href="#carouselExampleIndicators"><span></span> <span></span>
+					<span></span></a>
+			</div>
+		</div>
+		<!-- CAROSELLO HOME PAGE PROSSIME PARTITE -->
+		<div id="carouselExampleIndicators" class="carousel slide"
+			data-bs-ride="carousel" data-bs-interval="3000">
+			<div class="carousel-indicators">
+				<button type="button" data-bs-target="#carouselExampleIndicators"
+					data-bs-slide-to="0" class="active" aria-current="true"
+					aria-label="Slide 1"></button>
+				<button type="button" data-bs-target="#carouselExampleIndicators"
+					data-bs-slide-to="1" aria-label="Slide 2"></button>
+				<button type="button" data-bs-target="#carouselExampleIndicators"
+					data-bs-slide-to="2" aria-label="Slide 3"></button>
+			</div>
+			<div class="carousel-inner" style="padding-top: 30px">
+				<div class="carousel-item active">
+					<img src="image/prossime_partite_immagini/atalanta-bari.png"
+						class="d-block w-100" alt="...">
+				</div>
+				<div class="carousel-item">
+					<img src="image/prossime_partite_immagini/fiorentina-bari.png"
+						class="d-block w-100" alt="...">
+				</div>
+				<div class="carousel-item">
+					<img src="image/prossime_partite_immagini/bari-barcellona.png"
+						class="d-block w-100" alt="...">
+				</div>
+			</div>
+			<button class="carousel-control-prev" type="button"
+				data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button"
+				data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
+			</button>
+		</div>
+		<!-- SEZIONE SOTTO HERO -->
+		<div class="row"
+			style="margin-left: 0; margin-right: 0; padding-right: 0; padding-left: 0; padding-top: 80px;">
+			<!-- ROW CHE CONTIENE ULTIME PARTITE/NEWS/BANNER-SHOP/CLASSIFICA -->
+			<div class="row" style="margin-left: 0; margin-right: 0; padding: 0;">
+				<div class="col-md-7" style="padding-left: 58px; padding-top: 40px;">
+					<!-- CARDS RISULTATO ULTIME PARTITE -->
+					<section class="ultime-partite">
 
-                        <h2 class="section-title text-center">Ultime Partite</h2>
-                        <div class="row">
-                          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                            <div class="card">
-                              <img src="image/ultime_partite_immagini/bari_genoa.png" class="card-img-top img-fluid" alt="Partita 1">
-                              <div class="card-body">
-                                <h5 class="card-title text-center">Bari vs. Genoa</h5>
-                                <h5 class="card-title text-center">Risultato: 2-1</h5>
-                                <p class="card-text">Il Bari ha ottenuto una vittoria agguerrita contro il Genoa con un risultato finale di 2-1. La squadra di casa ha dimostrato tenacia e determinazione segnando due gol cruciali, mentre il Genoa ha lottato per reagire ma è riuscito a segnare solo una volta.</p>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                            <div class="card">
-                              <img src="image/ultime_partite_immagini/bari_parma.png" class="card-img-top img-fluid" alt="Partita 2">
-                              <div class="card-body">
-                                <h5 class="card-title text-center">Bari vs. Parma</h5>
-                                <h5 class="card-title text-center">Risultato: 0-0</h5>
-                                <p class="card-text">Bari e Parma hanno giocato una partita equilibrata che si è conclusa con un pareggio senza gol. Entrambe le squadre hanno creato diverse occasioni da gol, ma i portieri hanno fatto degli interventi cruciali per mantenere il risultato a reti inviolate. Nonostante gli sforzi, nessuna delle due squadre è riuscita a trovare la via del gol.</p>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                            <div class="card">
-                              <img src="image/ultime_partite_immagini/bari_in_campo.png" class="card-img-top img-fluid" alt="Partita 3">
-                              <div class="card-body">
-                                <h5 class="card-title text-center">Bari vs. Torino</h5>
-                                <h5 class="card-title text-center">Risultato: 3-2</h5>
-                                <p class="card-text">In una partita piena di emozioni, il Bari ha ottenuto una vittoria emozionante contro il Torino con il punteggio finale di 3-2. Entrambe le squadre hanno mostrato un'ottima performance offensiva, ma sono stati i padroni di casa a prendere il sopravvento segnando tre gol decisivi e resistendo al ritorno del Torino nel finale della partita.</p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>                  
-                    </section>
+						<h2 class="section-title text-center">Ultime Partite</h2>
+						<div class="row">
+							<div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+								<div class="card">
+									<img src="image/ultime_partite_immagini/bari_genoa.png"
+										class="card-img-top img-fluid" alt="Partita 1">
+									<div class="card-body">
+										<h5 class="card-title text-center">Bari vs. Genoa</h5>
+										<h5 class="card-title text-center">Risultato: 2-1</h5>
+										<p class="card-text">Il Bari ha ottenuto una vittoria
+											agguerrita contro il Genoa con un risultato finale di 2-1. La
+											squadra di casa ha dimostrato tenacia e determinazione
+											segnando due gol cruciali, mentre il Genoa ha lottato per
+											reagire ma è riuscito a segnare solo una volta.</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+								<div class="card">
+									<img src="image/ultime_partite_immagini/bari_parma.png"
+										class="card-img-top img-fluid" alt="Partita 2">
+									<div class="card-body">
+										<h5 class="card-title text-center">Bari vs. Parma</h5>
+										<h5 class="card-title text-center">Risultato: 0-0</h5>
+										<p class="card-text">Bari e Parma hanno giocato una
+											partita equilibrata che si è conclusa con un pareggio senza
+											gol. Entrambe le squadre hanno creato diverse occasioni da
+											gol, ma i portieri hanno fatto degli interventi cruciali per
+											mantenere il risultato a reti inviolate. Nonostante gli
+											sforzi, nessuna delle due squadre è riuscita a trovare la via
+											del gol.</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+								<div class="card">
+									<img src="image/ultime_partite_immagini/bari_in_campo.png"
+										class="card-img-top img-fluid" alt="Partita 3">
+									<div class="card-body">
+										<h5 class="card-title text-center">Bari vs. Torino</h5>
+										<h5 class="card-title text-center">Risultato: 3-2</h5>
+										<p class="card-text">In una partita piena di emozioni, il
+											Bari ha ottenuto una vittoria emozionante contro il Torino
+											con il punteggio finale di 3-2. Entrambe le squadre hanno
+											mostrato un'ottima performance offensiva, ma sono stati i
+											padroni di casa a prendere il sopravvento segnando tre gol
+											decisivi e resistendo al ritorno del Torino nel finale della
+											partita.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
 
-                    <!-- BANNER RIMANDO SHOP -->
-                    <div class="row" style="margin-right: 228px; ;padding-right: 0;margin-top:60px;">
-                    <div class="banner">
-                        <a th:href="@{ticket}"><img src="image/banner_abbonamenti/Ivory Fine Elegant Eyewear Shop Facebook Cover.gif" width="130%" alt="abbonamento"></a>
-                    </div> 
-                  </div>
+					<!-- BANNER RIMANDO SHOP -->
+					<div class="row"
+						style="margin-right: 228px;; padding-right: 0; margin-top: 60px;">
+						<div class="banner">
+							<a th:href="@{ticket}"><img
+								src="image/banner_abbonamenti/Ivory Fine Elegant Eyewear Shop Facebook Cover.gif"
+								width="130%" alt="abbonamento"></a>
+						</div>
+					</div>
 
-                </div> <!-- DIV CHIUDE COLONNA MD-7 -->
-                <!-- SEZIONE CLASSIFICA SERIE A -->
-              
-                <div class="col-md-5" style="padding-right: 58px;">
-                    <section class="standings" style="padding-left:30px;">
-                        <h2 class="section-title" style="text-align: center;">Classifica Serie A</h2>
-                        <div class="row">
-                          <div class="col-lg-12">
-                            <table class="table table-striped">
-                              <thead>
-                                <tr>
-                                  <th scope="col">#</th>
-                                  <th scope="col">Squadra</th>
-                                  <th scope="col">Punti</th>
-                                  <th scope="col">Partite giocate</th>
-                                  <th scope="col">Vittorie</th>
-                                  <th scope="col">Sconfitte</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr class="highlight_champions_league" style="background-color: #0026ffbd;">
-                                  <th scope="row" style="color: white;">1</th>
-                                  <td  style="color: white;">
-                                    <img src="image/classifica_immagini/juventus_black.png" alt="Juventus" class="team-logo">
-                                    Juventus
-                                  </td>
-                                  <td style="color: white;">82</td>
-                                  <td style="color: white;">38</td>
-                                  <td style="color: white;">26</td>
-                                  <td style="color: white;">4</td>
-                                </tr>
-                                <tr class="highlight_champions_league">
-                                  <th scope="row">2</th>
-                                  <td>
-                                    <img src="image/classifica_immagini/inter.png" alt="Inter" class="team-logo">
-                                    Inter
-                                  </td>
-                                  <td>79</td>
-                                  <td>38</td>
-                                  <td>24</td>
-                                  <td>6</td>
-                                </tr>
-                                <tr class="highlight_champions_league" style="background-color: #0026ffbd;">
-                                <th scope="row" style="color: white;">3</th>
-                                <td style="color: white;">
-                                  <img src="image/classifica_immagini/milan.png" alt="AC Milan" class="team-logo">
-                                  AC Milan
-                                </td>
-                                <td style="color: white;">76</td>
-                                <td style="color: white;">38</td>
-                                <td style="color: white;">23</td>
-                                <td style="color: white;">7</td>
-                              </tr>
-                              <tr class="highlight_champions_league">
-                                <th scope="row">4</th>
-                                <td>
-                                  <img src="image/classifica_immagini/napoli.png" alt="Napoli" class="team-logo">
-                                  Napoli
-                                </td>
-                                <td>70</td>
-                                <td>38</td>
-                                <td>21</td>
-                                <td>8</td>
-                              </tr>
-                              <tr class="highlight_europa_league" style="background-color: #ff8c00ca;">
-                                <th scope="row" style="color: white;">5</th>
-                                <td style="color: white;">
-                                  <img src="image/classifica_immagini/atalanta.png" alt="Atalanta" class="team-logo">
-                                  Atalanta
-                                </td>
-                                <td style="color: white;">68</td>
-                                <td style="color: white;">38</td>
-                                <td style="color: white;">20</td>
-                                <td style="color: white;">10</td>
-                              </tr>
-                              <tr class="highlight_bari" style="background-color: #e10606ac;">
-                                <th scope="row">6</th>
-                                <td>
-                                  <img src="image/classifica_immagini/bari.png" alt="S.S.C. Bari" class="team-logo">
-                                  Bari
-                                </td>
-                                <td>65</td>
-                                <td>38</td>
-                                <td>20</td>
-                                <td>6</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">7</th>
-                                <td>
-                                  <img src="image/classifica_immagini/roma.png" alt="Roma" class="team-logo">
-                                  Roma
-                                </td>
-                                <td>64</td>
-                                <td>38</td>
-                                <td>19</td>
-                                <td>11</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">8</th>
-                                <td>
-                                  <img src="image/classifica_immagini/lazio.png" alt="Lazio" class="team-logo">
-                                  Lazio
-                                </td>
-                                <td>62</td>
-                                <td>38</td>
-                                <td>18</td>
-                                <td>12</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">9</th>
-                                <td>
-                                  <img src="image/classifica_immagini/sassuolo.png" alt="Sassuolo" class="team-logo">
-                                  Sassuolo
-                                </td>
-                                <td>52</td>
-                                <td>38</td>
-                                <td>14</td>
-                                <td>16</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">10</th>
-                                <td>
-                                  <img src="image/classifica_immagini/sampdoria.png" alt="Samp" class="team-logo">
-                                  Samp
-                                </td>
-                                <td>49</td>
-                                <td>38</td>
-                                <td>12</td>
-                                <td>16</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">11</th>
-                                <td>
-                                  <img src="image/classifica_immagini/verona.png" alt="Verona" class="team-logo">
-                                  Verona
-                                </td>
-                                <td>49</td>
-                                <td>38</td>
-                                <td>11</td>
-                                <td>15</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">12</th>
-                                <td>
-                                  <img src="image/classifica_immagini/bologna.png" alt="Bologna" class="team-logo">
-                                  Bologna
-                                </td>
-                                <td>47</td>
-                                <td>38</td>
-                                <td>12</td>
-                                <td>17</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">13</th>
-                                <td>
-                                  <img src="image/classifica_immagini/fiorentina.png" alt="Fiorentina" class="team-logo">
-                                  Fiorentina
-                                </td>
-                                <td>46</td>
-                                <td>38</td>
-                                <td>11</td>
-                                <td>17</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">14</th>
-                                <td>
-                                  <img src="image/classifica_immagini/udinese.png" alt="Udinese" class="team-logo">
-                                  Udinese
-                                </td>
-                                <td>45</td>
-                                <td>38</td>
-                                <td>11</td>
-                                <td>17</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">15</th>
-                                <td>
-                                  <img src="image/classifica_immagini/genoa.png" alt="Genoa" class="team-logo">
-                                  Genoa
-                                </td>
-                                <td>44</td>
-                                <td>38</td>
-                                <td>10</td>
-                                <td>18</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">16</th>
-                                <td>
-                                  <img src="image/classifica_immagini/spezia.png" alt="Spezia" class="team-logo">
-                                  Spezia
-                                </td>
-                                <td>42</td>
-                                <td>38</td>
-                                <td>9</td>
-                                <td>19</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">17</th>
-                                <td>
-                                  <img src="image/classifica_immagini/cagliari.png" alt="Cagliari" class="team-logo">
-                                  Cagliari
-                                </td>
-                                <td>41</td>
-                                <td>38</td>
-                                <td>9</td>
-                                <td>19</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">18</th>
-                                <td>
-                                  <img src="image/classifica_immagini/parma.png" alt="Parma" class="team-logo">
-                                  Parma
-                                </td>
-                                <td>36</td>
-                                <td>38</td>
-                                <td>7</td>
-                                <td>21</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">19</th>
-                                <td>
-                                  <img src="image/classifica_immagini/torino.png" alt="Torino" class="team-logo">
-                                  Torino
-                                </td>
-                                <td>35</td>
-                                <td>38</td>
-                                <td>6</td>
-                                <td>22</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">20</th>
-                                <td>
-                                  <img src="image/classifica_immagini/crotone.png" alt="Crotone" class="team-logo">
-                                  Crotone
-                                </td>
-                                <td>22</td>
-                                <td>38</td>
-                                <td>5</td>
-                                <td>27</td>
-                              </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>                    
-                    </section>
-                </div>
-              </div> <!-- CHIUSURA ROW -->
-            </div> <!-- CHIUSURA ROW SEZIONE ULTIME PARTITE/NEWS/BANNER SHOP/CLASSIFICA -->
-<!-- SEZIONE NEWS -->
-<div class="row" style="margin-left: 0;margin-right: 0; padding-left: 0;padding-right: 0; margin-top:40px;">
-  <div class="col-md-12" style="padding:0;">
-    <div id="myCarousel" class="carousel slide">
-      <a class="link-news"><h2 style="padding-bottom: 30px;">Le nostre ultime news<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-chat-left-text" viewBox="0 0 16 16">
-          <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-          <path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
-        </svg></h2></a>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="row">
-            <div class="col" th:each="n : ${news}">
-              <img th:src="@{${n.immagine}}" class="d-block w-100" alt="Image 1">
-              <div class="carousel-caption2"style="display: flex; justify-content: center; align-items: center; flex-direction: column; padding-top: 20px;">
-                <h3 th:text="${n.titolo}"></h3>
-                <p th:text="${n.descrizione}"></p>
-              </div>
-            </div>
-            
-          </div>
-        </div>
-      </div>
-      
-    </div>
-    <!-- FINE SEZIONE NEWS -->
+				</div>
+				<!-- DIV CHIUDE COLONNA MD-7 -->
+				<!-- SEZIONE CLASSIFICA SERIE A -->
 
-    <!-- BANNER RIMANDO ALLO SHOP -->
-    <div class="row" style="margin-left: 0;margin-right: 0; padding-left: 0; padding-right: 0; margin-top: 80px; background-color: #c90c20;">
-      <div class="col-md-2"style="padding:0;">    
-    </div>
+				<div class="col-md-5" style="padding-right: 58px;">
+					<section class="standings" style="padding-left: 30px;">
+						<h2 class="section-title" style="text-align: center;">Classifica
+							Serie A</h2>
+						<div class="row">
+							<div class="col-lg-12">
+								<table class="table table-striped">
+									<thead>
+										<tr>
+											<th scope="col">#</th>
+											<th scope="col">Squadra</th>
+											<th scope="col">Punti</th>
+											<th scope="col">Partite giocate</th>
+											<th scope="col">Vittorie</th>
+											<th scope="col">Sconfitte</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr class="highlight_champions_league"
+											style="background-color: #0026ffbd;">
+											<th scope="row" style="color: white;">1</th>
+											<td style="color: white;"><img
+												src="image/classifica_immagini/juventus_black.png"
+												alt="Juventus" class="team-logo"> Juventus</td>
+											<td style="color: white;">82</td>
+											<td style="color: white;">38</td>
+											<td style="color: white;">26</td>
+											<td style="color: white;">4</td>
+										</tr>
+										<tr class="highlight_champions_league">
+											<th scope="row">2</th>
+											<td><img src="image/classifica_immagini/inter.png"
+												alt="Inter" class="team-logo"> Inter</td>
+											<td>79</td>
+											<td>38</td>
+											<td>24</td>
+											<td>6</td>
+										</tr>
+										<tr class="highlight_champions_league"
+											style="background-color: #0026ffbd;">
+											<th scope="row" style="color: white;">3</th>
+											<td style="color: white;"><img
+												src="image/classifica_immagini/milan.png" alt="AC Milan"
+												class="team-logo"> AC Milan</td>
+											<td style="color: white;">76</td>
+											<td style="color: white;">38</td>
+											<td style="color: white;">23</td>
+											<td style="color: white;">7</td>
+										</tr>
+										<tr class="highlight_champions_league">
+											<th scope="row">4</th>
+											<td><img src="image/classifica_immagini/napoli.png"
+												alt="Napoli" class="team-logo"> Napoli</td>
+											<td>70</td>
+											<td>38</td>
+											<td>21</td>
+											<td>8</td>
+										</tr>
+										<tr class="highlight_europa_league"
+											style="background-color: #ff8c00ca;">
+											<th scope="row" style="color: white;">5</th>
+											<td style="color: white;"><img
+												src="image/classifica_immagini/atalanta.png" alt="Atalanta"
+												class="team-logo"> Atalanta</td>
+											<td style="color: white;">68</td>
+											<td style="color: white;">38</td>
+											<td style="color: white;">20</td>
+											<td style="color: white;">10</td>
+										</tr>
+										<tr class="highlight_bari"
+											style="background-color: #e10606ac;">
+											<th scope="row">6</th>
+											<td><img src="image/classifica_immagini/bari.png"
+												alt="S.S.C. Bari" class="team-logo"> Bari</td>
+											<td>65</td>
+											<td>38</td>
+											<td>20</td>
+											<td>6</td>
+										</tr>
+										<tr>
+											<th scope="row">7</th>
+											<td><img src="image/classifica_immagini/roma.png"
+												alt="Roma" class="team-logo"> Roma</td>
+											<td>64</td>
+											<td>38</td>
+											<td>19</td>
+											<td>11</td>
+										</tr>
+										<tr>
+											<th scope="row">8</th>
+											<td><img src="image/classifica_immagini/lazio.png"
+												alt="Lazio" class="team-logo"> Lazio</td>
+											<td>62</td>
+											<td>38</td>
+											<td>18</td>
+											<td>12</td>
+										</tr>
+										<tr>
+											<th scope="row">9</th>
+											<td><img src="image/classifica_immagini/sassuolo.png"
+												alt="Sassuolo" class="team-logo"> Sassuolo</td>
+											<td>52</td>
+											<td>38</td>
+											<td>14</td>
+											<td>16</td>
+										</tr>
+										<tr>
+											<th scope="row">10</th>
+											<td><img src="image/classifica_immagini/sampdoria.png"
+												alt="Samp" class="team-logo"> Samp</td>
+											<td>49</td>
+											<td>38</td>
+											<td>12</td>
+											<td>16</td>
+										</tr>
+										<tr>
+											<th scope="row">11</th>
+											<td><img src="image/classifica_immagini/verona.png"
+												alt="Verona" class="team-logo"> Verona</td>
+											<td>49</td>
+											<td>38</td>
+											<td>11</td>
+											<td>15</td>
+										</tr>
+										<tr>
+											<th scope="row">12</th>
+											<td><img src="image/classifica_immagini/bologna.png"
+												alt="Bologna" class="team-logo"> Bologna</td>
+											<td>47</td>
+											<td>38</td>
+											<td>12</td>
+											<td>17</td>
+										</tr>
+										<tr>
+											<th scope="row">13</th>
+											<td><img src="image/classifica_immagini/fiorentina.png"
+												alt="Fiorentina" class="team-logo"> Fiorentina</td>
+											<td>46</td>
+											<td>38</td>
+											<td>11</td>
+											<td>17</td>
+										</tr>
+										<tr>
+											<th scope="row">14</th>
+											<td><img src="image/classifica_immagini/udinese.png"
+												alt="Udinese" class="team-logo"> Udinese</td>
+											<td>45</td>
+											<td>38</td>
+											<td>11</td>
+											<td>17</td>
+										</tr>
+										<tr>
+											<th scope="row">15</th>
+											<td><img src="image/classifica_immagini/genoa.png"
+												alt="Genoa" class="team-logo"> Genoa</td>
+											<td>44</td>
+											<td>38</td>
+											<td>10</td>
+											<td>18</td>
+										</tr>
+										<tr>
+											<th scope="row">16</th>
+											<td><img src="image/classifica_immagini/spezia.png"
+												alt="Spezia" class="team-logo"> Spezia</td>
+											<td>42</td>
+											<td>38</td>
+											<td>9</td>
+											<td>19</td>
+										</tr>
+										<tr>
+											<th scope="row">17</th>
+											<td><img src="image/classifica_immagini/cagliari.png"
+												alt="Cagliari" class="team-logo"> Cagliari</td>
+											<td>41</td>
+											<td>38</td>
+											<td>9</td>
+											<td>19</td>
+										</tr>
+										<tr>
+											<th scope="row">18</th>
+											<td><img src="image/classifica_immagini/parma.png"
+												alt="Parma" class="team-logo"> Parma</td>
+											<td>36</td>
+											<td>38</td>
+											<td>7</td>
+											<td>21</td>
+										</tr>
+										<tr>
+											<th scope="row">19</th>
+											<td><img src="image/classifica_immagini/torino.png"
+												alt="Torino" class="team-logo"> Torino</td>
+											<td>35</td>
+											<td>38</td>
+											<td>6</td>
+											<td>22</td>
+										</tr>
+										<tr>
+											<th scope="row">20</th>
+											<td><img src="image/classifica_immagini/crotone.png"
+												alt="Crotone" class="team-logo"> Crotone</td>
+											<td>22</td>
+											<td>38</td>
+											<td>5</td>
+											<td>27</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+			<!-- CHIUSURA ROW -->
+		</div>
+		<!-- CHIUSURA ROW SEZIONE ULTIME PARTITE/NEWS/BANNER SHOP/CLASSIFICA -->
+		<!-- SEZIONE NEWS -->
+		<h2 class="news-titolo">
+			Le nostre ultime news
+			<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+				fill="currentColor" class="bi bi-chat-left-text" viewBox="0 0 16 16">
+          <path
+					d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+          <path
+					d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
+        </svg>
+		</h2>
+		<!--INIZIO PRIMA RIGA CARDS-->
+		<div class="container-c">
+			<div class="row">
+				<div class="col-3" th:each="n : ${news}">
+					<div class="card" style="width: 24rem;">
+						<img th:src="@{${n.immagine}}" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h4 th:text="${n.titolo}"></h4>
+							<p th:text="${n.descrizione}"></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- FINE SEZIONE NEWS -->
 
-  <div class="col-md-2"style="padding:0;">
-    <div class="banner2">
-      <a th:href="@{shop}"><img src="image/banner_shop/felpa_bianca.png" alt="BANNER SHOP"></a>
-    </div>     
-  </div>
+		<!-- BANNER RIMANDO ALLO SHOP -->
+		<div class="row"
+			style="margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; margin-top: 80px; background-color: #c90c20;">
+			<div class="col-md-2" style="padding: 0;"></div>
 
-  <div class="col-md-2"style="padding:0;">
-    <div class="banner2">
-      <a th:href="@{shop}"><img src="image/banner_shop/borsone.png" alt="BANNER SHOP"></a>
-    </div>     
-  </div>
+			<div class="col-md-2" style="padding: 0;">
+				<div class="banner2">
+					<a th:href="@{shop}"><img
+						src="image/banner_shop/felpa_bianca.png" alt="BANNER SHOP"></a>
+				</div>
+			</div>
 
-  <div class="col-md-2"style="padding:0;">
-    <div class="banner2">
-      <a th:href="@{shop}"><img src="image/banner_shop/felpa_nera.png" alt="BANNER SHOP"></a>
-    </div>     
-  </div>
+			<div class="col-md-2" style="padding: 0;">
+				<div class="banner2">
+					<a th:href="@{shop}"><img src="image/banner_shop/borsone.png"
+						alt="BANNER SHOP"></a>
+				</div>
+			</div>
 
-  <div class="col-md-2"style="padding:0;">
-    <div class="banner2">
-      <a th:href="@{shop}"><img src="image/logo_bari/logo_bari.png" alt="BANNER SHOP" width="194px" height="315px" style="padding: 30px"></a>
-    </div>     
-  </div>
+			<div class="col-md-2" style="padding: 0;">
+				<div class="banner2">
+					<a th:href="@{shop}"><img
+						src="image/banner_shop/felpa_nera.png" alt="BANNER SHOP"></a>
+				</div>
+			</div>
 
-  <div class="col-md-2"style="padding:0;">    
-  </div>
+			<div class="col-md-2" style="padding: 0;">
+				<div class="banner2">
+					<a th:href="@{shop}"><img src="image/logo_bari/logo_bari.png"
+						alt="BANNER SHOP" width="194px" height="315px"
+						style="padding: 30px"></a>
+				</div>
+			</div>
 
-  </div>
-    <!-- FINE BANNER RIMANDO ALLO SHOP -->
+			<div class="col-md-2" style="padding: 0;"></div>
 
-  </div>
-</div>
-            
+		</div>
+		<!-- FINE BANNER RIMANDO ALLO SHOP -->
 
-            <!-- SEZIONE SPONSOR -->
-            <div class="row" style="margin-left: 0;margin-right: 0; padding-left: 0; padding-right: 0;padding-top: 20px; padding-bottom: 20px; background-color: #fdfcfd;">  
-                <div class="col-md-3" style="padding: 0;">
-                </div>
-                <!-- SPONSOR -->
-                <div class="col-md-1">
-                  <div class="sponsor">
-                    <img src="image/sponsor/kappa.PNG" width="150px" alt="sponsor">
-                  </div>
-                </div>
-
-                <div class="col-md-1">
-                  <div class="sponsor">
-                    <img src="image/sponsor/casillo.PNG" width="150px" alt="sponsor">
-                  </div>
-                </div>
-
-                <div class="col-md-1">
-                  <div class="sponsor">
-                    <img src="image/sponsor/generation.PNG" width="150px" alt="sponsor">
-                  </div>
-                </div>
-
-                <div class="col-md-1">
-                  <div class="sponsor">
-                    <img src="image/sponsor/granarolo.PNG" width="150px" alt="sponsor">
-                  </div>
-                </div>
-
-                <div class="col-md-1">
-                  <div class="sponsor">
-                    <img src="image/sponsor/swarovski.PNG" width="150px" alt="sponsor">
-                  </div>
-                </div>
-
-                <div class="col-md-1">
-                  <div class="sponsor">
-                    <img src="image/sponsor/GiochiPreziosi.PNG" width="150px" alt="sponsor">
-                  </div>
-                </div>
-
-                <div class="col-md-3" style="padding: 0;">
-                </div>               
-            </div>
-
-            <!-- SEZIONE FOOTER -->
-            
-            <footer class="container-fluid text-white py-3 footer">
-              <div class="row justify-content-center" style="background-color: #ca0c1f; margin-left: 0; margin-right: 0; padding-top: 25px;">
-                <!-- Sezione 1: Logo del Bari Calcio -->
-                <div class="col-md-2 align-self-center">
-                  <img src="image/logo_bari/logo_bari.png" alt="Logo Bari Calcio" class="d-block mx-auto" width="100">
-                </div>
-            
-                <!-- Sezione 2: Lista di rimandi ad altre pagine -->
-                <div class="col-md-3 text-center">
-                  <h4>Le nostre pagine</h4>
-                  <ul class="list-unstyled footer-content">
-                    <li><a th:href="@{storia}">La nostra storia</a></li>
-                    <li><a th:href="@{shop}">Shop</a></li>
-                    <li><a th:href="@{ticket}">Ticket</a></li>
-                    <li><a th:href="@{contatti}">Contatti</a></li>
-                  </ul>
-                </div>
-            
-                <!-- Sezione 3: Newsletter -->
-                <div class="col-md-4 text-center">
-                  <h4>Iscriviti alla newsletter:</h4>
-                  <br />
-                  <input type="email" class="form-control rounded-pill mx-auto" placeholder="Inserisci la tua email" style="width: 190px;">
-                  <br />
-                  <button class="btn btn-custom btn-hover bottone_footer">Iscriviti</button>
-                </div>
-            
-                <!-- Sezione 4: Rimandi ai social media -->
-                <div class="col-md-3 text-center">
-                  <ul class="list-inline footer-content">
-                    <li class="list-inline-item"><a href="#"><img src="image/footer_immagini/instagram.png" alt="Instagram" width="40" height="40"></a></li>
-                    <li class="list-inline-item"><a href="#"><img src="image/footer_immagini/facebook.png" alt="Facebook" width="40" height="40"></a></li>
-                    <li class="list-inline-item"><a href="#"><img src="image/footer_immagini/tiktok.png" alt="TikTok" width="40" height="40"></a></li>
-                    <li class="list-inline-item"><a href="#"><img src="image/footer_immagini/youtube.png" alt="YouTube" width="40" height="40"></a></li>
-                    <li class="list-inline-item"><a href="#"><img src="image/footer_immagini/telegram.png" alt="Telegram" width="40" height="40"></a></li>
-                    <li class="list-inline-item"><a href="#"><img src="image/footer_immagini/wechat.png" alt="WeChat" width="40" height="40"></a></li>
-                  </ul>
-                </div>
-              </div>
-            
-              <!-- Sezione 4: Separatore e informazioni di copyright -->
-              <div class="row" style="margin-left: 0; margin-right: 0;">
-                <div class="col-md-12 text-center">
-                  <hr class="scenic-hr">
-                  <p>© 2023 S.S.C. Bari. All Rights Reserved.</p>
-                </div>
-              </div>
-            </footer>
+	</div>
+	</div>
 
 
+	<!-- SEZIONE SPONSOR -->
+	<div class="row"
+		style="margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; padding-top: 20px; padding-bottom: 20px; background-color: #fdfcfd;">
+		<div class="col-md-3" style="padding: 0;"></div>
+		<!-- SPONSOR -->
+		<div class="col-md-1">
+			<div class="sponsor">
+				<img src="image/sponsor/kappa.PNG" width="150px" alt="sponsor">
+			</div>
+		</div>
+
+		<div class="col-md-1">
+			<div class="sponsor">
+				<img src="image/sponsor/casillo.PNG" width="150px" alt="sponsor">
+			</div>
+		</div>
+
+		<div class="col-md-1">
+			<div class="sponsor">
+				<img src="image/sponsor/generation.PNG" width="150px" alt="sponsor">
+			</div>
+		</div>
+
+		<div class="col-md-1">
+			<div class="sponsor">
+				<img src="image/sponsor/granarolo.PNG" width="150px" alt="sponsor">
+			</div>
+		</div>
+
+		<div class="col-md-1">
+			<div class="sponsor">
+				<img src="image/sponsor/swarovski.PNG" width="150px" alt="sponsor">
+			</div>
+		</div>
+
+		<div class="col-md-1">
+			<div class="sponsor">
+				<img src="image/sponsor/GiochiPreziosi.PNG" width="150px"
+					alt="sponsor">
+			</div>
+		</div>
+
+		<div class="col-md-3" style="padding: 0;"></div>
+	</div>
+
+	<!-- SEZIONE FOOTER -->
+
+	<footer class="container-fluid text-white py-3 footer">
+		<div class="row justify-content-center"
+			style="background-color: #ca0c1f; margin-left: 0; margin-right: 0; padding-top: 25px;">
+			<!-- Sezione 1: Logo del Bari Calcio -->
+			<div class="col-md-2 align-self-center">
+				<img src="image/logo_bari/logo_bari.png" alt="Logo Bari Calcio"
+					class="d-block mx-auto" width="100">
+			</div>
+
+			<!-- Sezione 2: Lista di rimandi ad altre pagine -->
+			<div class="col-md-3 text-center">
+				<h4>Le nostre pagine</h4>
+				<ul class="list-unstyled footer-content">
+					<li><a th:href="@{storia}">La nostra storia</a></li>
+					<li><a th:href="@{shop}">Shop</a></li>
+					<li><a th:href="@{ticket}">Ticket</a></li>
+					<li><a th:href="@{contatti}">Contatti</a></li>
+				</ul>
+			</div>
+
+			<!-- Sezione 3: Newsletter -->
+			<div class="col-md-4 text-center">
+				<h4>Iscriviti alla newsletter:</h4>
+				<br /> <input type="email"
+					class="form-control rounded-pill mx-auto"
+					placeholder="Inserisci la tua email" style="width: 190px;">
+				<br />
+				<button class="btn btn-custom btn-hover bottone_footer">Iscriviti</button>
+			</div>
+
+			<!-- Sezione 4: Rimandi ai social media -->
+			<div class="col-md-3 text-center">
+				<ul class="list-inline footer-content">
+					<li class="list-inline-item"><a href="#"><img
+							src="image/footer_immagini/instagram.png" alt="Instagram"
+							width="40" height="40"></a></li>
+					<li class="list-inline-item"><a href="#"><img
+							src="image/footer_immagini/facebook.png" alt="Facebook"
+							width="40" height="40"></a></li>
+					<li class="list-inline-item"><a href="#"><img
+							src="image/footer_immagini/tiktok.png" alt="TikTok" width="40"
+							height="40"></a></li>
+					<li class="list-inline-item"><a href="#"><img
+							src="image/footer_immagini/youtube.png" alt="YouTube" width="40"
+							height="40"></a></li>
+					<li class="list-inline-item"><a href="#"><img
+							src="image/footer_immagini/telegram.png" alt="Telegram"
+							width="40" height="40"></a></li>
+					<li class="list-inline-item"><a href="#"><img
+							src="image/footer_immagini/wechat.png" alt="WeChat" width="40"
+							height="40"></a></li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- Sezione 4: Separatore e informazioni di copyright -->
+		<div class="row" style="margin-left: 0; margin-right: 0;">
+			<div class="col-md-12 text-center">
+				<hr class="scenic-hr">
+				<p>© 2023 S.S.C. Bari. All Rights Reserved.</p>
+			</div>
+		</div>
+	</footer>
 
 
 
@@ -681,8 +712,10 @@ svg {
 
 
 
-                </div>
-            </div>
+
+
+	</div>
+	</div>
 
 
 
@@ -695,8 +728,14 @@ svg {
 
 
 
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+	</div>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
+		integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
+		integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
+		crossorigin="anonymous"></script>
 </body>
 </html>
