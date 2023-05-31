@@ -150,14 +150,18 @@ nav li a::after {
 	content: '';
 	width: 0;
 	height: 3px;
-	background-color: #ed1c24;
+	background-color: white;
 	margin: auto;
 	display: block;
 }
 
+li a:hover::after {
+	width: 100%;
+	transition: width 0.3s linear;
+}
 nav li a:hover {
 	text-decoration: none;
-	color: #000;
+	color: white;
 	width: 100%;
 	transition: width 0.3s linear;
 }
@@ -201,8 +205,9 @@ ul {
 				<div class="col-md-6">
 					<ul>
 						<li><a th:href="@{/}">HOME</a></li>
-						<li><a th:href="@{shop}">SHOP</a></li>
 						<li><a th:href="@{storia}">LA NOSTRA STORIA</a></li>
+						<li><a th:href="@{shop}">SHOP</a></li>
+						<li><a th:href="@{ticket}">TICKET</a></li>
 						<li><a th:href="@{contatti}">CONTATTACI</a></li>
 						<li th:if="${admin == false AND utente == false}"><a
 							th:href="@{login}">ACCEDI <img
